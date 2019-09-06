@@ -1,0 +1,16 @@
+.scroll-viewport {
+  height: 200px;
+  width: 200px;
+  border: 1px solid transparent;
+}
+
+.scroll-item {
+  height: 50px;
+}
+
+cdk-virtual-scroll-viewport {
+  background: #111a;
+  margin: 50px auto;
+  border: 1px solid #088a;
+  box-shadow: 0 0 10px 10px #111a;
+}

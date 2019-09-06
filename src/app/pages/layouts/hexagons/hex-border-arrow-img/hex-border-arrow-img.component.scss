@@ -1,0 +1,184 @@
+// ###### Horizontal  ######
+.hex-border-arrow-horizontal {
+
+  width: 100px;
+  height: 110px;
+  position: relative;
+  background-image: url(https://www.html5rocks.com/en/tutorials/speed/img-compression/len_std.jpg);
+  background-size: cover;
+  border: 1px solid crimson;
+  margin: 12px auto;
+
+  &>div {
+
+    width: 100px;
+    height: 60px;
+    position: absolute;
+    top: 23%;
+    left: 0;
+    background-color: transparent;
+    border: 1px dashed aqua;
+    box-sizing: border-box;
+  }
+
+  &::before {
+
+    width: 0;
+    height: 0;
+    content: " ";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    border-left: 50px solid aquamarine;
+    border-right: 50px solid aquamarine;
+    border-top: 25px solid transparent;
+
+    animation: rota-top 3s alternate ease-out infinite;
+
+    @keyframes rota-top {
+      0% {
+        border-left: 1px solid aquamarine;
+        border-right: 1px solid aquamarine;
+        border-top: 1px solid transparent;
+      }
+
+      25% {
+        border-top: 1px solid transparent;
+        border-left: 50px solid aquamarine;
+        border-right: 50px solid aquamarine;
+      }
+
+      100% {
+        border-left: 50px solid aquamarine;
+        border-top: 25px solid transparent;
+        border-right: 50px solid aquamarine;
+
+      }
+    }
+  }
+
+  &::after {
+
+    content: " ";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-left: 50px solid aqua;
+    border-right: 50px solid aqua;
+    animation: rota-bottom 3s alternate infinite;
+    border-bottom: 25px solid transparent;
+
+    @keyframes rota-bottom {
+      0% {
+        border-left: 1px solid aquamarine;
+        border-right: 1px solid aquamarine;
+        border-bottom: 1px solid transparent;
+      }
+
+      25% {
+        border-bottom: 1px solid transparent;
+        border-left: 50px solid aquamarine;
+        border-right: 50px solid aquamarine;
+      }
+
+      100% {
+        border-left: 50px solid aquamarine;
+        border-bottom: 25px solid transparent;
+        border-right: 50px solid aquamarine;
+
+      }
+    }
+  }
+}
+
+// ###### Vertical  ######
+.hex-border-arrow-vertical {
+
+  position: relative;
+  margin: 0px auto;
+  width: 110px;
+  height: 100px;
+  background-image: url(https://www.html5rocks.com/en/tutorials/speed/img-compression/len_std.jpg);
+  background-size: cover;
+  border: 1px solid crimson;
+
+  & .center {
+
+    position: absolute;
+    top: 0px;
+    left: 25%;
+    width: 58px;
+    height: 98px;
+    border: 1px dashed aqua;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
+  & .left {
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0;
+    height: 0;
+    border-top: 50px solid aquamarine;
+    border-bottom: 50px solid aquamarine;
+    border-right: 25px solid transparent;
+    line-height: 50px;
+    font-size: 50px;
+    animation: rota-left 3s alternate infinite;
+
+    @keyframes rota-left {
+      0% {
+        border-top: 1px solid aquamarine;
+        border-bottom: 1px solid aquamarine;
+        border-right: 1px solid transparent;
+      }
+      25% {
+        border-right: 1px solid transparent;
+        border-top: 50px solid aquamarine;
+        border-bottom: 50px solid aquamarine;
+      }
+      100% {
+        border-top: 50px solid aquamarine;
+        border-right: 25px solid transparent;
+        border-bottom: 50px solid aquamarine;
+      }
+    }
+  }
+
+  & .right {
+    width: 0;
+    height: 0;
+    border-top: 50px solid turquoise;
+    border-bottom: 50px solid turquoise;
+    border-left: 25px solid transparent;
+    line-height: 50px;
+    font-size: 50px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    animation: rota-right 3s alternate infinite;
+
+    @keyframes rota-right {
+      0% {
+        border-top: 1px solid aquamarine;
+        border-bottom: 1px solid aquamarine;
+        border-left: 1px solid transparent;
+      }
+      25% {
+        border-left: 1px solid transparent;
+        border-top: 50px solid aquamarine;
+        border-bottom: 50px solid aquamarine;
+      }
+      100% {
+        border-top: 50px solid aquamarine;
+        border-left: 25px solid transparent;
+        border-bottom: 50px solid aquamarine;
+      }
+    }
+  }
+}

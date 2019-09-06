@@ -1,0 +1,17 @@
+<nlg-business-card></nlg-business-card>
+
+<div class="split-container">
+
+  <div class="split-l" (click)="dev.click()"></div>
+
+  <div class="split-r">
+    <div class="split-r-helper" (click)="des.click()"></div>
+  </div>
+
+  <a routerLink="/gn8-player" #dev routerLinkActive="active">
+    <span class="split-l-text">Develop</span>
+  </a>
+  <a routerLink="/parallax-scroll" #des routerLinkActive="active">
+    <span class="split-r-text">Design</span>
+  </a>
+</div>

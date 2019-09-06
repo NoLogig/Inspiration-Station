@@ -1,0 +1,76 @@
+.split-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.split-l {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../../../../assets/img/ethereum-27.jpg");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    transition: transform .2s;
+    box-sizing: border-box;
+    &:hover {
+        transform: scale(1.1);
+    } 
+    &:hover + .split-r-helper .split-r,
+    &:hover ~ .r-text {
+        opacity: 0.7; 
+    }
+}
+
+.split-r {
+    position: absolute;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: skew(-30deg);
+    box-sizing: border-box;
+}
+
+.split-r-helper {
+    width: 100%;
+    height: 100%;
+    background: url("../../../../assets/img/ethereum-40.jpg");
+    background-size: cover;
+    background-position: center;
+    transform: scale(1) skew(30deg);
+    position: absolute;
+    right: 50%;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: transform .2s;
+    &:hover {
+        transform: scale(1.1) skew(30deg);
+    }
+}
+
+.split-l-text {
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    float: left;
+    font-weight: bolder;
+    font-size: xx-large;
+    color: #fff;
+    padding: 8px;
+    text-shadow: 0 5px 15px rgba( #ffffff, 1);
+}
+
+.split-r-text {
+    position: absolute;
+    bottom: 40%;
+    right: 5%;
+    font-weight: bolder;
+    font-size: xx-large;
+    color: #fff;
+    padding: 8px;
+    text-shadow: 0 5px 15px rgba( #000000, 1);
+}

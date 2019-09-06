@@ -1,0 +1,21 @@
+<mat-card>
+
+  <form (submit)="$event.preventDefault(); atkin();" >
+    <mat-form-field>
+      <input matInput autofocus type="number" #limitSrc placeholder="Sieve limit" [value]="100"
+        (change)="this.limit = limitSrc.value" />
+    </mat-form-field>
+  </form>
+
+  <br>
+
+  <button mat-raised-button color="primary" type="button" (click)="atkin()">Atkin</button>
+
+  <p>
+    <span *ngFor="let item of primes; index as i">
+      <button mat-button *ngIf="!(i === 0)" [color]="item ? 'primary' : 'accent'">{{ i <= 9 ? '0' + i : i }} </button>
+    </span>
+  </p>
+
+
+</mat-card>

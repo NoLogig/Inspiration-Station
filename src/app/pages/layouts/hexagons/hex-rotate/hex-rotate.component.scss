@@ -1,0 +1,145 @@
+/* ####  Hexagon Transformed   #### */
+
+.hexagon-transformed {
+
+  margin: 8px;
+  position: relative;
+  background-color: #333;
+  width: 104px;
+  height: 120px;
+
+  & .inside-hex {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 104px;
+    height: 60px;
+    top: 25%;
+    left: 0;
+    margin: 0 auto;
+    background: #6C6;
+    border-left: 1px solid turquoise;
+    border-right: 1px solid turquoise;
+
+    animation: rota 5s alternate ease-in infinite;
+    
+    @keyframes rota {
+      0% {
+        background: #6C6;
+      }
+
+      50% {
+        background: #6C6;
+      }
+
+      100% {
+        
+        background: transparent;
+      }
+    }
+
+    &::after {
+
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: -1px;
+      width: 100%;
+      height: 100%;
+      transform: rotateZ(-60deg);
+      animation: rota-l 5s alternate ease-in infinite;
+      border-left: 1px solid aquamarine;
+      border-right: 1px solid aquamarine;
+
+      @keyframes rota-l {
+        0% {
+          transform: rotateZ(-60deg);
+          background: #6C6;
+        }
+
+        75% {
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          transform: rotateZ(0);
+        }
+
+        100% {
+          width: 0%;
+          transform: rotateZ(0deg);
+          background: transparent;
+          height: 0%;
+        }
+      }
+    }
+
+    &::before {
+
+      content: " ";
+      position: absolute;
+      bottom: 0;
+      right: -1px;
+      width: 100%;
+      height: 100%;
+      animation: rota-r 5s alternate ease-in infinite;
+      transform: rotateZ(60deg);
+      border-left: 1px solid aqua;
+      border-right: 1px solid aqua;
+
+      @keyframes rota-r {
+        0% {
+          background: #6C6;
+          transform: rotateZ(60deg);
+        }
+
+        75% {
+          background: transparent;
+          width: 100%;
+          height: 100%;
+          transform: rotateZ(0);
+        }
+
+        100% {
+          background: transparent;
+          width: 0%;
+          transform: rotateZ(0deg);
+          height: 0%;
+        }
+      }
+
+    }
+  }
+}
+
+/* 
+Each of these CSS properties is in fact unique. 
+In addition to rendering an element not visible, 
+they have the following additional effect(s):
+
+1.Collapses the space that the element would normally occupy
+2.Responds to events (e.g., click, keypress)
+3.Participates in the taborder
+
+                   collapse events taborder
+opacity: 0              No     Yes     Yes
+visibility: hidden      No     No      No
+visibility: collapse    *      No      No
+display: none          Yes     No      No
+
+* Yes inside a table element, otherwise No.
+
+#opacity does not inherit, while visibility does
+
+opacity is animatable while visibility is not.
+(Well, technically it is, but there is simply no behaviour defined for, say, "37% collapsed and 63% hidden", so you can consider this as non-animatable.)
+
+Using opacity, you can not make a child element more opaque than its parent. E.G. if you have a p with color:black and opacity:0.5, you can not make any of its children fully black. Valid values for opacity are between 0 and 1, and this example would require 2!
+Consequently, according to Martin's comment, you can have a visible child (with visibility:visible) in an invisible parent (with visibility:hidden). This is impossible with opacity; if a parent has opacity:0; its children are always invisible.
+
+Kornel's answer mentions that opacity values less than 1 create their own stacking context; no value for visibility does.
+(I wish I could think of a way to demonstrate this, but I can't think of any means to show the stacking context of a visibility:hidden element.)
+
+According to philnash's answer, elements with opacity:0 are still read by screen readers, while visible:hidden elements are not.
+
+According to Chris Noe's answer, visibility has more options (such as collapse) and elements that are not visible no longer respond to clicks and cannot be tabbed to.
+*/

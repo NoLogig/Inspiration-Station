@@ -1,0 +1,24 @@
+.git-card {
+  max-width: 400px;
+  float: left;
+}
+.transparent {
+  background-color: transparent;
+}
+.git-header-image {
+  width: 380px;
+  height: 360px;
+}
+
+mat-card-title {
+  margin-top: 16px;
+}
+
+.git-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.git-container>* {
+  width: 100%;
+}

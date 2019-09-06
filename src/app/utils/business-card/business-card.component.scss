@@ -1,0 +1,52 @@
+.business-card {
+  font-size: 12px;
+  position: fixed;
+  z-index: 101;
+  color: #fff;
+  width: 260px;
+  max-height: 100px;
+  right: 12px;
+  bottom: 12px;
+  padding: 4px 2px 2px 8px;
+  background: rgba(0, 0, 0, 0.75);
+
+  & mat-card-title {
+    line-height: 22px;
+    font-weight: 400;
+    font-size: 18px;
+    margin: 0;
+  }
+
+  & mat-card-subtitle {
+    line-height: 14px;
+    font-weight: 300;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
+  & mat-card-actions {
+    font-family: 'consolas', sans-serif;
+    padding: 2px 8px;
+    margin-bottom: 1px;
+    margin-top: 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+
+    & a {
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(0, 255, 255, 0.4);
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      margin-right: 4px;
+      line-height: 20px;
+      font-size: 10px;
+
+      &:hover {
+        color: #fff;
+        border-bottom: 1px dotted rgba(0, 255, 255, 0.8);
+      }
+    }
+  }
+}

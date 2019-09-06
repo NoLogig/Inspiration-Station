@@ -1,0 +1,130 @@
+<!-- Header -->
+<mat-toolbar class="nlg-head" color="primary" >
+
+  <!-- Navigation - Toggle -->
+  <button type="button" mat-button aria-label="Toggle navigation" (click)="nav.toggle()">
+    <mat-icon aria-label="Side navigation toggle icon">menu</mat-icon>
+  </button>
+
+  <span>{{title}}</span>
+
+  <!-- Header - Links -->
+  <nav mat-tab-nav-bar>
+
+    <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="home">
+      <mat-icon>home</mat-icon>
+    </a>
+    <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="theorems">
+      Theorems
+    </a>
+
+  </nav>
+
+  <!-- SpaceFiller -->
+  <span class="flex-space-filler"><!-- {{title}} --></span>
+
+  <!-- Settings - Toggle -->
+  <button type="button" mat-button aria-label="Toggle settings" (click)="set.toggle();">
+    <mat-icon aria-label="Side settings toggle icon">settings</mat-icon>
+  </button>
+
+</mat-toolbar>
+
+<!-- Main Content & Side Navigation -->
+<mat-sidenav-container>
+
+  <!-- Left Sidenav - Navigation -->
+  <mat-sidenav #nav class="sidenav-shadow" fixedInViewport="true" opened="false"
+  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+  [mode]="(isHandset$ | async) ? 'over' : 'side'">
+
+    <!-- Navigation - Header -->
+    <mat-toolbar class="navigation-bar" (click)="nav.close();">
+
+      <button mat-button aria-label="Toggle navigation" >
+        <mat-icon class="menu-animation" aria-label="Side navigation toggle icon">menu</mat-icon>
+      </button>
+
+      <span>NoLogig</span>
+
+    </mat-toolbar>
+
+    <!-- Navigation - Links -->
+    <mat-nav-list>
+
+      <span mat-list-item></span>
+      <a mat-list-item routerLink="home">Split Screen</a>
+      <a mat-list-item routerLink="parallax-scroll">Parallax Scroll</a>
+      <a mat-list-item routerLink="parallax-mouse">Parallax Mouse</a>
+      <mat-divider></mat-divider>
+
+      <a mat-list-item routerLink="charts">Charts</a>
+      <mat-divider></mat-divider>
+
+      <a mat-list-item routerLink="gn8-player">NLG-Player</a>
+      <a mat-list-item routerLink="synthesizer">Synthesizer</a>
+      <a mat-list-item routerLink="soundwaves">Sound Waves</a>
+      <mat-divider></mat-divider>
+
+      <a mat-list-item routerLink="mat-layouts">Mat Layouts</a>
+      <a mat-list-item routerLink="hexagon">Hexagons</a>
+      <mat-divider></mat-divider>
+
+      <a mat-list-item routerLink="node-garden">Node Garden</a>
+      <a mat-list-item routerLink="velocity">Velocity</a>
+      <a mat-list-item routerLink="particle-spiral-ray">Particle Spiral-Ray</a>
+      <a mat-list-item routerLink="golden">Golden Ratio</a>
+      <a mat-list-item routerLink="drop-garden">Drop Garden</a>
+      <mat-divider></mat-divider>
+
+      <a mat-list-item routerLink="github">GitHub Viewer</a>
+      <mat-divider></mat-divider>
+
+      <a mat-list-item routerLink="maps">Google-Maps</a>
+      <mat-divider></mat-divider>
+
+      <a mat-list-item routerLink="numberzam">NumberShazam</a>
+      <a mat-list-item routerLink="isometric">Isometric</a>
+      <a mat-list-item routerLink="checkboard">ColorBoard</a>
+      <mat-divider></mat-divider>
+
+      <a mat-list-item routerLink="peil">PEIL</a>
+      <a mat-list-item routerLink="pixels">Pixels</a>
+      <mat-divider></mat-divider>
+
+      <span mat-list-item></span>
+      <a mat-list-item routerLink="impressum">Impressum</a>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <!-- Right Sidenav - Settings -->
+  <mat-sidenav #set mode="over" position="end" fixedInViewport="true" role="settings">
+
+    <!-- Settings - Header -->
+    <mat-toolbar color="primary" class="settings-bar" (click)="set.toggle();">
+
+      <span>Settings</span>
+
+      <button mat-button type="button">
+        <mat-icon aria-label="Side settings toolbar icon" class="gear-spinner">settings</mat-icon>
+      </button>
+
+    </mat-toolbar>
+
+    <!-- Settings - Links -->
+    <mat-list>
+      <a mat-list-item></a>
+      <a mat-list-item></a>
+      <a mat-list-item></a>
+    </mat-list>
+
+  </mat-sidenav>
+
+  <!-- Sidenav - Content / Router Outlet -->
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

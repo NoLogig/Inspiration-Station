@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://inspiration-station.herokuapp.com/",
+    "secure": false
+  }
+}

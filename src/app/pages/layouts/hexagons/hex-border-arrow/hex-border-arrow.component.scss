@@ -1,0 +1,50 @@
+
+/* #### Hexagon - Border Arrow Img #### */
+
+.hex {
+
+  background-color: #6C6;
+  width: 104px;
+  height: 60px;
+  position: relative;
+  margin-top: 30px;
+  float: left;
+  margin: 1px;
+
+  &::before {
+
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -30px;
+    border-left: 52px solid transparent;
+    border-right: 52px solid transparent;
+    border-bottom: 30px solid #6C6;
+  }
+
+
+  &::after {
+
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: -30px;
+    border-top: 30px solid #6C6;
+    border-left: 52px solid transparent;
+    border-right: 52px solid transparent;
+  }
+
+  &~.hex-row-clear {
+
+    clear: both;
+    margin-bottom: 30px;
+  }
+
+  &~.hex-row-clear:nth-child(even)+div {
+
+    margin-left: -52px;
+  }
+}

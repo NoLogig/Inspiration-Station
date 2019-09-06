@@ -1,0 +1,37 @@
+<mat-form-field class="glas">
+  <mat-select [(value)]="chartType.active" placeholder="Chart display layout">
+    <mat-option *ngFor="let l of chartType.type" [value]="l">{{l}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<div style="display: block; width: 600px;" class="glas">
+  <canvas baseChart [datasets]="chartData" [labels]="chartLabels.quartal" [options]="chartOptions"
+    [legend]="chartLegend" [chartType]="chartType.active" (chartHover)="chartHover($event)"
+    (chartClick)="chartClicked($event)"></canvas>
+</div>
+
+
+<mat-form-field>
+  <input matInput placeholder="Filter Argument" #myFilter>
+</mat-form-field>
+<button mat-button (click)="stateOfData(myFilter.value)">Filter State</button>
+<button mat-button (click)="idOfData()">Filter ID</button>
+
+<table matSort (matSortChange)="sortData($event)" class="glas">
+  <tr>
+    <th mat-sort-header="Id">Id</th>
+    <th mat-sort-header="Created">Created</th>
+    <th mat-sort-header="Created2">Created2</th>
+    <th mat-sort-header="State">State</th>
+    <th mat-sort-header="Service">Service</th>
+  </tr>
+
+  <tr *ngFor="let dat of data">
+    <td>{{dat.Id}}</td>
+    <td>{{dat.Created}}</td>
+    <td>{{dat.Created2}}</td>
+    <td>{{dat.State}}</td>
+    <td>{{dat.Service}}</td>
+  </tr>
+</table>

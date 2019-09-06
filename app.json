@@ -1,0 +1,28 @@
+{
+  "name": "nologig",
+  "description": "NoLogig's Inspiration Station MEAN-Stack",
+  "keywords": [
+    "MEAN",
+    "MongoDB",
+    "Express",
+    "Angular 2+",
+    "NodeJS",
+    "Angular Material",
+    "Angular CLI",
+    "ElectronJS",
+    "Heroku",
+    "TypeScript"
+  ],
+  "repository": "https://github.com/NoLogig/Inspiration-Station",
+  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+  "image": "heroku/nodejs",
+  "success_url": "/",
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+  ]
+}

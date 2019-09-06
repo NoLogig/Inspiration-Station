@@ -1,0 +1,12 @@
+
+  <nlg-business-card></nlg-business-card>
+
+<div style="position: relative; height: 100%; width: 100%; overflow: hidden;"
+    (mousemove)="parallaxMouse($event,{ targetContainer: bg, moveFactor: 5, zIndex: 1 });
+                 parallaxMouse($event,{ targetContainer: bg1, moveFactor: 15, zIndex: 1 });">
+
+    <div class="mouse-bg background" #bg></div>
+    <div class="mouse-bg foreground" #bg1></div>
+    <!-- <div class="mouse-bg fore-foreground" #bg2></div> -->
+    <div class="mouse-bg fore-fore-foreground" #bg3></div>
+</div>

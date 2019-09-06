@@ -1,0 +1,31 @@
+mat-slider {
+    display: block !important;
+    padding: 0 !important;
+    height: 24px;
+}
+.tri {
+    width: 400px;
+    /*        ↓↑  ←→   */
+    /* margin: 0 auto; */
+    /*   ←  ↑  →  ↓    */
+    margin: 36px 0 0 36px;
+}
+
+.tri-side {
+    width: 360px;
+}
+.a {
+
+}
+.b {    
+    height: 360px;
+}
+.c {
+    transform-origin: 0 0;
+    transform: rotateZ(-45deg);
+    width: 510px;
+}
+
+mat-card {
+    background-color: transparent;
+}

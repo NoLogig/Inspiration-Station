@@ -1,0 +1,38 @@
+/* 
+Mouse Parallax
+==============
+This is just initialization so that your background area is not hidden on page load.  Apply this class to elements you will use with $(element).mouseParallax();  
+Or not!  You can use mouseParallax on an element without this class and specify all the styles yourself, if you prefer.
+I went with "fixed," but "absolute" positioning also works, depending on the application.
+*/
+
+
+.background {
+    // background-image: url('http://subtlepatterns.com/patterns/giftly.png');
+    // background-image: url('C6-9KrMUwAApPPh.jpg');
+    // background-image: url('800px_COLOURBOX9025445.jpg');
+    background-image: url('../../../../../assets/images/infinity-bg.jpg');
+}
+
+.foreground {
+    background-image: url('../../../../../assets/images/435px-Metatrons-cube.png');
+}
+
+// .fore-foreground {
+    // background-image: url('220px-Hexahedron.svg.png');
+// }
+
+div.fore-fore-foreground {
+    background-image: url('../../../../../assets/images/moon.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 5;
+}
+.mouse-bg {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 1;
+}

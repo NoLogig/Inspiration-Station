@@ -1,0 +1,76 @@
+/* ####  Hexagon Transformed Img  #### */
+
+.hexagon-box {
+
+  width: 400px;
+  height: 400px;
+  padding: 0px;
+  background-color: transparent;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+
+  .img-hexagon {
+
+    position: relative;
+    width: 104px;
+    height: 120px;
+    background-color: #444;
+    background-image: url(https://www.html5rocks.com/en/tutorials/speed/img-compression/len_std.jpg);
+    opacity: 0.8;
+    background-size: 100%;
+    background-position: 50% 50%;
+    margin-bottom: 9px;
+    float: left;
+    margin-right: 28px;
+    overflow: visible;
+
+    &::before {
+
+      content: " ";
+      width: 104px;
+      height: 60px;
+      position: absolute;
+      top: 30px;
+      left: -28px;
+      background-color: transparent;
+      transform: rotateZ(60deg);
+      border-right: 28px solid #444;
+      border-left: 28px solid #444;
+      z-index: 10;
+    }
+
+    &::after {
+
+      content: " ";
+      width: 104px;
+      height: 60px;
+      position: absolute;
+      top: 30px;
+      left: -28px;
+      background-color: transparent;
+      transform: rotateZ(120deg);
+      border-right: 28px solid #444;
+      border-left: 28px solid #444;
+    }
+
+    &:hover {
+
+      background-size: 125%;
+      opacity: 1;
+    }
+
+  }
+}
+
+.clearer {
+  clear: both;
+}
+
+.clearer+div {
+  margin-left: -66px
+}
+
+.clearer~div {
+  margin-top: -54px;
+}

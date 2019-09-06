@@ -1,0 +1,239 @@
+.ih-row-clear+div {
+  margin-left: 60px;
+  clear: both;
+}
+
+div.hx-main {
+  width: 200px;
+  height: 200px;
+  background-color: aqua;
+  overflow: visible;
+}
+
+.hx-main::before {
+  content: " ";
+  width: 200px;
+  height: 200px;
+  transform: skewX(45deg);
+  border: 1px solid blue;
+}
+
+.hx-main::after {
+  content: " ";
+  width: 200px;
+  height: 200px;
+  transform: skewX(45deg), rotateZ(90deg);
+  border: 1px solid orangered;
+}
+
+.hexa::before {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -30px;
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+  border-bottom: 30px solid #6C6;
+}
+
+.hexa {
+  background-color: #6C6;
+  width: 104px;
+  height: 60px;
+  position: relative;
+  margin-top: 30px;
+  float: left;
+  margin: 1px;
+}
+
+.hexa::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -30px;
+  border-top: 30px solid #6C6;
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+}
+
+.hexa-row-clear {
+  clear: both;
+  margin-bottom: 30px;
+}
+
+.hexa-row-clear:nth-child(even)+div {
+  margin-left: -52px;
+}
+
+
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid black;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #f00;
+}
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 50px solid green;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-right: 50px solid blue;
+}
+
+.trans {
+  transform: rotateZ(60deg);
+  width: 50px;
+  height: 50px;
+  border: 1px solid red;
+  margin: 25px auto;
+}
+
+/*########### Generated #############*/
+
+.hexagon {
+  position: relative;
+  width: 100px;
+  height: 57.74px;
+  background-color: #64C7CC;
+  margin: 28.87px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  border-left: solid 2px #333333;
+  border-right: solid 2px #333333;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 70.71px;
+  height: 70.71px;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background-color: inherit;
+  left: 12.6447px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.hexagon:before {
+  top: -35.3553px;
+  border-top: solid 2.8284px #333333;
+  border-right: solid 2.8284px #333333;
+}
+
+.hexagon:after {
+  bottom: -35.3553px;
+  border-bottom: solid 2.8284px #333333;
+  border-left: solid 2.8284px #333333;
+}
+
+/*cover up extra shadows*/
+
+.hexagon span {
+  display: block;
+  position: absolute;
+  top: 1.1547005383792515px;
+  left: 0;
+  width: 96px;
+  height: 55.4256px;
+  z-index: 2;
+  background: inherit;
+}
+
+/* inside way */
+
+.insiden-hex {
+  width: 104px;
+  height: 120px;
+  position: relative;
+  margin-right: 16px;
+  overflow: hidden;
+  background-color: #64C7CC;
+  background-image: url(https://www.html5rocks.com/en/tutorials/speed/img-compression/len_std.jpg);
+  background-size: cover;
+  float: left;
+}
+
+.ihn-row-clear {
+  clear: both;
+}
+
+.ihn-row-clear+div {
+  margin-left: 60px;
+}
+
+.ihn-top-r {
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+  border-bottom: 30px solid #333;
+}
+
+.ihn-top-l {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+  border-top: 30px solid #333;
+}
+
+.ihn-bottom-r {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+  border-top: 30px solid #333;
+}
+
+.ihn-bottom-l {
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+  border-bottom: 30px solid #333;
+}
+
+.new-hex {
+  margin: 0 auto;
+  position: relative;
+  background-color: green;
+  width: 104px;
+  height: 120px;
+  z-index: 3;
+}

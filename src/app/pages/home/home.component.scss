@@ -1,0 +1,91 @@
+
+mat-toolbar.nlg-head {
+
+  overflow-x: scroll;
+  padding: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// This fills the remaining space, by using flexbox. 
+// Every material toolbar uses a flexbox row layout. 
+.flex-space-filler {
+
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+mat-sidenav {
+
+  width: 160px;
+  max-width: 160px;
+  min-width: 80px;
+  box-sizing: border-box;
+  background-color: #333;
+}
+
+mat-toolbar {
+
+  height: 50px;
+  font-weight: bolder;
+}
+
+.sidenav-shadow {
+
+  box-shadow: 0 8px 10px 5px rgba(0, 0, 0, .2),
+              0 16px 24px 2px rgba(0, 0, 0, .14),
+              0 6px 30px 5px rgba(0, 0, 0, .12);
+}
+
+mat-sidenav-container {
+
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  overflow-y: visible;
+}
+
+.navigation-bar {
+
+  width: auto;
+  padding-left: 0;
+  justify-content: flex-start;
+  position: fixed;
+  z-index: 100;
+}
+
+.main-content {
+
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #444a;
+}
+
+.settings-bar {
+
+  width: auto;
+  padding-right: 0;
+  justify-content: flex-end;
+  position: fixed;
+  z-index: 100;
+}
+
+.gear-spinner { 
+  
+  animation: gear-spin 1s linear forwards infinite;
+}
+@keyframes gear-spin {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(60deg);
+  }
+}

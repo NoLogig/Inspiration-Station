@@ -1,0 +1,52 @@
+<mat-card>
+
+  <mat-card-header>
+    <mat-card-title>Number Shazam / Mindreader</mat-card-title>
+
+    <mat-card-subtitle>There are 10 types of people in this world, those who understand binary and those who dont</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    Think on a number & mark where it is.
+  </mat-card-content>
+
+  <mat-card-actions align="start">
+    <label (click)="limitRange.focus();" class="mat-raised-button"> 1 - {{this.limit}}</label>
+
+    <mat-slider #limitRange [title]="this.limit" thumbLabel="true" max="250" (change)="resetCards();" style="width: 50vw;"
+      [(ngModel)]="this.limit"></mat-slider>
+
+    <button mat-raised-button (click)="resetCards();">Show cards</button>
+  </mat-card-actions>
+
+  <mat-card-content>
+    <mat-card *ngFor="let bit of this.cards; let i = index;" style="width: 25%; box-sizing: border-box; height: auto; display: inline-block;">
+      <mat-card-actions align="middle">
+        <mat-button-toggle-group #group="matButtonToggleGroup" (change)="solution.ripple.launch({centered: true});"
+          [(ngModel)]="this.bits[i]">
+          <mat-button-toggle [value]="true">
+            <mat-icon>check</mat-icon>
+          </mat-button-toggle>
+
+          <mat-button-toggle [value]="false">
+            <mat-icon>block</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </mat-card-actions>
+
+      <mat-card-content >
+        <span *ngFor="let n of this.possibles;">
+          <button mat-button style="min-width: 10%; width: 10%; padding: 0;" *ngIf="this.nCompareBit(n, i);">{{n}}</button>
+        </span>
+      </mat-card-content>
+    </mat-card>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-button color="warn" #solution (click)="this.guessN = this.guessNumber(this.bits);" style="width: 100%; line-height: 2em; font-size: 2em;">{{guessN
+      === 0 ? 'Guess Number' : guessN}}</button>
+  </mat-card-actions>
+</mat-card>
+
+
+<nlg-business-card></nlg-business-card>

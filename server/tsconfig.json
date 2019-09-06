@@ -1,0 +1,26 @@
+{
+  // "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../dist/server",
+    
+    // "mapRoot": "../dist/server",
+    // "sourceMap": true,
+    // "declarationMap": false,
+
+    "module": "commonjs",
+    "target": "es2016",
+    "typeRoots": [
+      "../node_modules/@types"
+      // body-parser issue tryouts
+      // "node_modules/@types",
+      // "~/node_modules/@types",
+      // "./node_modules/@types",
+      // "../client/node_modules/@types",
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  }
+
+}

@@ -1,0 +1,21 @@
+.hex-unicode-card {
+    height: 75vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hex-unicode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6c6;
+  line-height: 72px;
+  font-size: 64px;
+  height: 72px;
+  vertical-align: center;
+  &>.hex-code {
+    font-size: 32px;
+  }
+}

@@ -1,0 +1,42 @@
+<mat-card>
+
+  <mat-card-header>
+    <div mat-card-avatar>
+      <mat-icon md-36>signal_cellular_null</mat-icon>
+    </div>
+    <mat-card-title>Pythagoras's Theorem</mat-card-title>
+    <mat-card-subtitle>Right Triangle</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="tri">
+
+    <mat-slider class="tri-side a" [disabled]="'false'" [invert]="'false'" [max]="" [min]="" [step]=""
+      [thumbLabel]="'true'" [tickInterval]="" [(ngModel)]="rightTriShape.adjacent" [vertical]="'false'"
+      title="BC value a"></mat-slider>
+
+    <mat-slider class="tri-side b" [disabled]="'false'" [invert]="'true'" [max]="" [min]="" [step]=""
+      [thumbLabel]="'true'" [tickInterval]="" [(ngModel)]="rightTriShape.opposite" [vertical]="'true'"
+      title="AC value b"></mat-slider>
+
+    <mat-slider class="tri-side c" [disabled]="'false'" [invert]="'false'" [max]="" [min]="" [step]=""
+      [thumbLabel]="'true'" [tickInterval]="" [(ngModel)]="rightTriShape.hypotenuse" [vertical]="'false'"
+      title="AB value c"></mat-slider>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button
+      (click)="rightTriShape = pythagoras({adjacent: undefined, opposite: rightTriShape.opposite, hypotenuse: rightTriShape.hypotenuse})">a:
+      {{rightTriShape.adjacent}}</button>
+    <button mat-button
+      (click)="rightTriShape = pythagoras({adjacent: rightTriShape.adjacent, opposite: undefined, hypotenuse: rightTriShape.hypotenuse})">b:
+      {{rightTriShape.opposite}}</button>
+    <button mat-button
+      (click)="rightTriShape = pythagoras({adjacent: rightTriShape.adjacent, opposite: rightTriShape.opposite, hypotenuse: undefined})">c:
+      {{rightTriShape.hypotenuse}}</button>
+
+    <button mat-button (click)="''">alpha</button>
+    <!-- <button mat-button (click)="''">beta:  {{ rad2deg(betaRadAngle(rightTriShape.adjacent, rightTriShape.opposite)) | number: '.2' }}</button> -->
+  </mat-card-actions>
+
+</mat-card>

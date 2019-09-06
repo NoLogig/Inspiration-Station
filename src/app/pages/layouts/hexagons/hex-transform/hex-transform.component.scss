@@ -1,0 +1,366 @@
+.hex-filled {
+
+  position: relative;
+  box-sizing: border-box;
+  width: 104px;
+  height: 60px;
+  margin: 30px 8px;
+  background-color: #6C6d;
+
+  &::before {
+
+    content: " ";
+    display: block;
+    position: absolute;
+    top: -30px;
+    width: 0;
+    height: 0;
+    border-left: 52px solid transparent;
+    border-right: 52px solid transparent;
+    border-bottom: 30px solid #6C6d;
+    animation: rota-fill-top 3s alternate infinite ease-out;
+
+    @keyframes rota-fill-top {
+      0% {
+        top: 0px;
+        border: 1px solid aqua;
+      }
+
+      50% {
+        top: 0px;
+        border-left: 52px solid transparent;
+        border-right: 52px solid transparent;
+        border-bottom: 1px solid #6C6d;
+      }
+
+      100% {
+        top: -30px;
+        border-left: 52px solid transparent;
+        border-right: 52px solid transparent;
+        border-bottom: 30px solid #6C6d;
+      }
+    }
+  }
+
+  &::after {
+
+    content: " ";
+    position: absolute;
+    bottom: -30px;
+    width: 0;
+    height: 0;
+    border-top: 30px solid #6C6d;
+    border-left: 52px solid transparent;
+    border-right: 52px solid transparent;
+    animation: rota-fill-bottom 3s alternate infinite ease-out;
+
+    @keyframes rota-fill-bottom {
+      0% {
+        bottom: 0px;
+        border: 1px solid aqua;
+      }
+
+      50% {
+        bottom: 0px;
+        border-left: 52px solid transparent;
+        border-right: 52px solid transparent;
+        border-top: 1px solid #6C6d;
+      }
+
+      100% {
+        bottom: -30px;
+        border-left: 52px solid transparent;
+        border-right: 52px solid transparent;
+        border-top: 30px solid #6C6d;
+      }
+    }
+  }
+}
+
+// #### Horizontal ####
+.hex-border-arrow-1 {
+
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 110px;
+  border: 1px solid blue;
+  background-image: url(https://www.html5rocks.com/en/tutorials/speed/img-compression/len_std.jpg);
+  background-size: cover;
+
+  &>div {
+
+    position: absolute;
+    top: 23%;
+    left: 0;
+    box-sizing: border-box;
+    width: 100px;
+    height: 60px;
+    border: 1px dashed aqua;
+    background-color: transparent;
+  }
+
+  &::before {
+
+    content: " ";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 0;
+    height: 0;
+    border-left: 50px solid aquamarine;
+    border-right: 50px solid aquamarine;
+    border-top: 25px solid transparent;
+    animation: rota-top 3s alternate ease-in-out infinite;
+
+    @keyframes rota-top {
+      0% {
+        border: 1px solid aqua;
+      }
+
+      50% {
+        border-left: 50px solid aquamarine;
+        border-right: 50px solid aquamarine;
+        border-top: 1px solid transparent;
+      }
+
+      100% {
+        border-left: 50px solid aquamarine;
+        border-right: 50px solid aquamarine;
+        border-top: 25px solid transparent;
+      }
+    }
+  }
+
+  &::after {
+
+    content: " ";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 0;
+    height: 0;
+    border-left: 50px solid aqua;
+    border-right: 50px solid aqua;
+    border-bottom: 25px solid transparent;
+    animation: rota-bottom 3s alternate ease-in-out infinite;
+
+
+    @keyframes rota-bottom {
+      0% {
+        border: 1px solid aqua;
+      }
+
+      50% {
+        border-left: 50px solid aqua;
+        border-right: 50px solid aqua;
+        border-bottom: 1px solid transparent;
+      }
+
+      100% {
+        border-left: 50px solid aqua;
+        border-right: 50px solid aqua;
+        border-bottom: 25px solid transparent;
+      }
+    }
+  }
+}
+
+// ####  Vertical  ####
+.hex-border-arrow-2 {
+
+  display: inline-block;
+  position: relative;
+  width: 110px;
+  height: 100px;
+  background-image: url(https://www.html5rocks.com/en/tutorials/speed/img-compression/len_std.jpg);
+  background-size: cover;
+  border: 1px solid orchid;
+
+  &>.center {
+
+    position: absolute;
+    left: 25%;
+    top: 0;
+    box-sizing: border-box;
+    width: 60px;
+    height: 100px;
+    border: 1px dashed aqua;
+  }
+
+  &>.left {
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 50px solid aquamarine;
+    border-bottom: 50px solid aquamarine;
+    border-right: 25px solid transparent;
+    line-height: 50px;
+    font-size: 50px;
+    animation: rota-left 3s alternate ease-in-out infinite;
+
+    @keyframes rota-left {
+      0% {
+        border: 1px solid aqua;
+      }
+
+      50% {
+        border-top: 50px solid aquamarine;
+        border-bottom: 50px solid aquamarine;
+        border-right: 1px solid transparent;
+      }
+
+      100% {
+        border-top: 50px solid aquamarine;
+        border-bottom: 50px solid aquamarine;
+        border-right: 25px solid transparent;
+      }
+    }
+  }
+
+  &>.right {
+
+    // float: left;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-top: 50px solid turquoise;
+    border-bottom: 50px solid turquoise;
+    border-left: 25px solid transparent;
+    line-height: 50px;
+    font-size: 50px;
+    animation: rota-right 3s alternate ease-in-out infinite;
+
+    @keyframes rota-right {
+      0% {
+        border: 1px solid aqua;
+      }
+
+      50% {
+        border-top: 50px solid aquamarine;
+        border-bottom: 50px solid aquamarine;
+        border-left: 1px solid transparent;
+      }
+
+      100% {
+        border-top: 50px solid aquamarine;
+        border-bottom: 50px solid aquamarine;
+        border-left: 25px solid transparent;
+      }
+    }
+  }
+}
+
+// ####  Combined  ####
+
+.hex {
+
+  background-color: #6C6d;
+  width: 104px;
+  height: 60px;
+  position: relative;
+  margin-top: 30px;
+  float: left;
+  margin: 1px;
+
+  &::before {
+
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -30px;
+    border-left: 52px solid transparent;
+    border-right: 52px solid transparent;
+    border-bottom: 30px solid #6C6d;
+  }
+
+  &::after {
+
+    content: " ";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: -30px;
+    border-top: 30px solid #6C6d;
+    border-left: 52px solid transparent;
+    border-right: 52px solid transparent;
+  }
+}
+
+.hex-row-clearer {
+
+  clear: both;
+  margin-bottom: 30px;
+
+  &:nth-child(even)+div {
+
+    margin-left: -52px;
+  }
+}
+
+// #### Image Hexagons ####
+.inside-hex {
+  width: 104px;
+  height: 120px;
+  position: relative;
+  // margin-right: 16px;
+  overflow: hidden;
+  background-color: #64C7CC;
+  background-image: url(https://www.html5rocks.com/en/tutorials/speed/img-compression/len_std.jpg);
+  background-size: cover;
+  float: left;
+}
+
+.inside-hex>div {
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+  float: left;
+}
+
+.ih-row-clear+div {
+  margin-left: -52px;
+  clear: both;
+}
+
+.ih-top {
+  top: 0;
+  border-top: 30px solid #333;
+}
+
+.ih-bottom {
+  bottom: 0;
+  border-top: 0px solid #333;
+  border-bottom: 30px solid #333;
+}
+
+.ih-top-l {
+  right: 50%;
+}
+
+.ih-top-r {
+  left: 50%;
+}
+
+.ih-bottom-r {
+  left: 50%;
+}
+
+.ih-bottom-l {
+  right: 50%;
+}
+
+.hex-img-wrapper {
+  width: 315px;
+  height: 300px;
+  border: 1px solid teal;
+}

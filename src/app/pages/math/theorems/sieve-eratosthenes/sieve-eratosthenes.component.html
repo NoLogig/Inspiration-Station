@@ -1,0 +1,165 @@
+<mat-card>
+
+<form (submit)="prevDef($event); eratosthenes();"> 
+
+  <mat-form-field>
+    <input matInput  autofocus type="number" #limitSrc placeholder="Sieve limit" [value]="100" (change)="this.limit = limitSrc.value" />
+  </mat-form-field>
+   
+  <button mat-raised-button type="button" color="primary" (click)="eratosthenes()">Eratosthenes</button>
+  <button mat-raised-button type="button" color="primary" (click)="eratosthenesOpti()">Eraeratosthenes Opt.</button>
+</form>
+
+  <p>
+    <span *ngFor="let item of primes; index as i">
+      <button mat-button *ngIf="!(i === 0)" [color]="item ? 'primary' : 'accent'">{{ i <= 9 ? '0' + i : i }} </button>
+          </span> </p> <h1>Primzahltests - Sieb des Eratosthenes*</h1>
+
+          <h2> Einfache Prinzipdarstellung</h2>
+
+          <p>
+            Nach folgendem Prinzip:
+
+            Schreibt man eine Liste aller natürlichen Zahlen auf, die man überprüfen will, dann sieht das nachher z.B.
+            so
+            aus:
+            123456789.....
+            .........99100
+
+            a) Nun streicht man als erstes die 1 weg, da es sich bei 1 um keine Primzahl handelt.
+            b) Es folgt die 2. 2 wurde bis jetzt nicht weggestrichen und ist deshalb Primzahl. Wir markieren 2 als
+            Primzahl.
+            c) Wir streichen nun alle durch 2 teilbaren Zahlen, weil diese nicht Primzahlen sein können. (Sie hätten
+            jeweils die Teiler 1,2 und sich selbst)
+            d) Die 3 ist nun die nächste ungestrichene Zahl! Wir markieren 3 als Primzahl.
+            e) Wir streichen nun alle durch 3 teilbaren Zahlen, weil diese ebenfalls keine Primzahlen mehr sein können.
+            f) Nun wiederholen wir Schritt d) und e) bis alle Zahlen entweder als Primzahlen markiert, bzw. als
+            Nichtprimzahlen durchgestrichen sind.
+
+            Achtung: Diese Schritte müssen nur bis zur Zahl durchgeführt werden, die größer oder gleich der Wurzel des
+            zu
+            überprüfenden Bereich ist.
+            z.B. 10 bei 100, 32 bei 1000, da 10 * 10 = 100 bzw. 32 * 32 = 1024 > 1000
+
+            Man erhält in dem oberen Beispiel nun eine Liste von Primzahlen:
+            2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97.
+          </p>
+          <h2>Komplexe Darstellung</h2>
+
+          <p>
+            Schreibt man eine Liste aller natürlichen Zahlen auf, die man überprüfen will. Hier im Beispiel bis 660.
+
+            Achtung: Diese Schritte müssen nur bis zur Zahl durchgeführt werden, die größer oder gleich der Wurzel des
+            zu
+            überprüfenden Bereiches ist. Z.B. 10 bei 100, 32 bei 1000, da 10 * 10 = 100 bzw. 32 * 32 = 1024 > 1000.
+            Hier
+            bei 660 bis 26.
+
+            Nun streicht man als erstes die 1 weg, da es sich bei 1 um keine Primzahl handelt.
+            Es folgt die 2. Die Zahl 2 wurde bis jetzt nicht weggestrichen und ist deshalb Primzahl. Wir markieren 2
+            als
+            Primzahl und streichen nun alle durch 2 teilbaren Zahlen, weil diese nicht Primzahlen sein können. Sie
+            hätten
+            jeweils den Teiler 2. Sie liegen alle auf Geraden.
+          </p>
+          <h3>Komplexe Darstellung mit 2</h3>
+
+          <p>
+            Es folgt die 3. Die Zahl 3 wurde bis jetzt nicht weggestrichen und ist deshalb Primzahl. Wir markieren 3
+            als
+            Primzahl und streichen nun alle durch 3 teilbaren Zahlen, weil diese nicht Primzahlen sein können. Sie
+            hätten
+            jeweils den Teiler 3. Sie liegen alle auf Geraden.
+          </p>
+          <h3>Komplexe Darstellung mit 3</h3>
+
+          <p>
+            Es werden nur ungestrichene Zahlen beachtet.
+
+            Es folgt die 5. Die Zahl 5 wurde bis jetzt nicht weggestrichen und ist deshalb Primzahl. Wir markieren 5
+            als
+            Primzahl und streichen nun alle durch 5 teilbaren Zahlen, weil diese nicht Primzahlen sein können. Sie
+            hätten
+            jeweils den Teiler 5. Sie liegen alle auf Geraden.
+          </p>
+          <h3>Komplexe Darstellung mit 5</h3>
+
+          <p>
+            Es werden nur ungestrichene Zahlen beachtet.
+
+            Es folgt die 7. Die Zahl 7 wurde bis jetzt nicht weggestrichen und ist deshalb Primzahl. Wir markieren 7
+            als
+            Primzahl und streichen nun alle durch 7 teilbaren Zahlen, weil diese nicht Primzahlen sein können. Sie
+            hätten
+            jeweils den Teiler 7. Sie liegen alle auf Geraden.
+          </p>
+          <h3>Komplexe Darstellung mit 7</h3>
+
+          <p>
+            Es werden nur ungestrichene Zahlen beachtet.
+
+            Es folgt die 11. Die Zahl 11 wurde bis jetzt nicht weggestrichen und ist deshalb Primzahl. Wir markieren 11
+            als Primzahl und streichen nun alle durch 11 teilbaren Zahlen, weil diese nicht Primzahlen sein können. Sie
+            hätten jeweils den Teiler 11. Sie liegen alle auf Geraden.
+          </p>
+          <h3>Komplexe Darstellung mit 11</h3>
+
+          <p>
+            Es werden nur ungestrichene Zahlen beachtet.
+
+            Es folgt die 13. Die Zahl 13 wurde bis jetzt nicht weggestrichen und ist deshalb Primzahl. Wir markieren 13
+            als Primzahl und streichen nun alle durch 13 teilbaren Zahlen, weil diese nicht Primzahlen sein können. Sie
+            hätten jeweils den Teiler 13. Sie liegen alle auf Geraden.
+          </p>
+          <h3>Komplexe Darstellung mit 13</h3>
+
+          <p>
+            Es werden nur ungestrichene Zahlen beachtet.
+
+            Es folgt die 17. Die Zahl 17 wurde bis jetzt nicht weggestrichen und ist deshalb Primzahl. Wir markieren 17
+            als Primzahl und streichen nun alle durch 17 teilbaren Zahlen, weil diese nicht Primzahlen sein können. Sie
+            hätten jeweils den Teiler 17. Sie liegen alle auf Geraden.
+          </p>
+          <h3>Komplexe Darstellung mit 17</h3>
+
+          <p>
+            Es werden nur ungestrichene Zahlen beachtet.
+
+            Es folgt die 19. Die Zahl 19 wurde bis jetzt nicht weggestrichen und ist deshalb Primzahl. Wir markieren 19
+            als Primzahl und streichen nun alle durch 19 teilbaren Zahlen, weil diese nicht Primzahlen sein können. Sie
+            hätten jeweils den Teiler 19. Sie liegen alle auf Geraden.
+          </p>
+          <h3>Komplexe Darstellung mit 19</h3>
+
+          <p>
+            Es werden nur ungestrichene Zahlen beachtet.
+
+            Es folgt die 23. Die Zahl 23 wurde bis jetzt nicht weggestrichen und ist deshalb Primzahl. Wir markieren 23
+            als Primzahl und streichen nun alle durch 23 teilbaren Zahlen, weil diese nicht Primzahlen sein können. Sie
+            hätten jeweils den Teiler 23. Sie liegen alle auf Geraden.
+
+            ![Komplexe Darstellung mit 23](http://www.primzahlen.de/primzahltests/sieb23.gif "Example")
+          </p>
+          <h3> Komplexe Darstellung mit 23 </h3>
+
+          <p>
+            Die Zahlen 24, 25 und 26 sind schon gestrichen. Jetzt ist das Ziel erreicht. Alle noch nicht gestrichenen
+            Zahlen sind Primzahlen (siehe oben).
+
+            Wir markieren die restlichen Zahlen als Primzahlen.
+          </p>
+
+          <dl>* griechischer Gelehrter und Dichter aus Kyrene, * um 275 v. Chr., † um 195 v. Chr.;
+            <dt>
+              Leiter der Bibliothek von Alexandria, bezeichnete sich als Erster als Philologe;
+            </dt>
+            <dd>
+              Er berechnete annähernd richtig den Umfang der Erdkugel aus den Sonnenhöhen an 2 Punkten des gleichen
+              Meridians und entwarf eine Erdkarte;
+            </dd>
+            <dt>
+              Erzählende Gedichte: "Hermes", "Erigone". (Quelle: www.wissen.de)
+            </dt>
+          </dl>
+
+</mat-card>

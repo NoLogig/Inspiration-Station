@@ -1,0 +1,22 @@
+.googleMaps-card mat-img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+.googleMaps {
+  width: 100%;
+  height: 300px;
+}
+
+mat-card {
+  background-color: transparent;
+}
+
+mat-toolbar {
+  height: 50px;
+  background-color: #111a;
+}
+
+canvas {
+  background-color: transparent;
+}

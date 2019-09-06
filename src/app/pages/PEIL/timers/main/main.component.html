@@ -1,0 +1,13 @@
+<div class="t-center">
+  <button mat-button (click)="setZone(true)" [class.active]="inZone">Show regular</button>
+  <button mat-button (click)="setZone(false)" [class.active]="!inZone">Show optimized</button>
+</div>
+
+<div class="t-center">
+  <ng-container *ngIf="inZone">
+    <app-canvas></app-canvas>
+  </ng-container>
+  <ng-container *ngIf="!inZone">
+    <app-canvas-optimized></app-canvas-optimized>
+  </ng-container>
+</div>

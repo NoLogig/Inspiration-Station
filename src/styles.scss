@@ -1,0 +1,56 @@
+// You can add global styles to this file, and also import other style files
+
+html, body {
+    
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #1331;
+}
+
+body {
+
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+
+    &::-webkit-scrollbar { display: none; }
+
+    &>nlg-root::-webkit-scrollbar { display: none; }
+
+    & * { &::-webkit-scrollbar { display: none; } }
+}
+// Loads angular material theming variables & functions => enable customize & interact material theme
+@import '../node_modules/@angular/material/theming';
+// @import '~node_modules/@angular/material/theming';
+
+
+// Add default styling for the material components: colors, padding,..
+@include mat-core();
+
+// Defined colors to use in theme
+$primary: mat-palette($mat-teal, 700);
+$accent: mat-palette($mat-teal, A700);
+$warn: mat-palette($mat-red, A400);
+
+// Applies theme colors
+$theme: mat-dark-theme($primary, $accent, $warn);
+
+// Applies variables to the theme with the defined styling 
+@include angular-material-theme($theme);
+
+// Rules for sizing <mat-icon>
+.material-icons[mat-18] { font-size: 18px; }
+.material-icons[mat-24] { font-size: 24px; }
+.material-icons[mat-36] { font-size: 36px; }
+.material-icons[mat-48] { font-size: 48px; }
+
+// Rules for black icon on a light background. 
+.material-icons[mat-dark] { color: rgba(0, 0, 0, 0.54); }
+.material-icons[mat-dark][mat-inactive] { color: rgba(0, 0, 0, 0.26); }
+
+// Rules for white icon on a dark background. 
+.material-icons[mat-light] { color: rgba(255, 255, 255, 1); }
+.material-icons[mat-light][mat-inactive] { color: rgba(255, 255, 255, 0.3); }
+
+// Rules for tabs
+mat-tab-group mat-tab-header { background: #0008; }
+mat-tab-group[ng-trans] mat-tab-header { background: transparent; }

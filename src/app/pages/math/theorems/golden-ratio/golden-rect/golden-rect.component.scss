@@ -1,0 +1,46 @@
+mat-card {
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.golden-card-major {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 62%;
+    height: 100%;
+    /* background-image: radial-gradient(circle at 110% 110%,  #fa0959 28%, transparent); */
+    border-radius: 100% 0% 0% 0% / 100% 0% 0% 0%;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.golden-card-minor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-sizing: border-box;
+    width: 38%;
+    height: 62%;
+    /* background-image: radial-gradient(circle at  0% 120%,  #fa0959 28%, transparent ); */
+    border-radius: 0% 100% 0% 0% / 0% 100% 0% 0%;
+    border-right: 1px solid white;
+}
+
+.golden-card-minors-min {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    box-sizing: border-box;
+    width: 38%;
+    height: 38%;
+    /* background-image: radial-gradient(circle at  0% 120%,  #fa0959 28%, transparent ); */
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+    // Where the magic happens
+    transform: rotateZ(180deg);
+}

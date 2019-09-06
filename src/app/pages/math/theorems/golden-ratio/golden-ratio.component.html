@@ -1,0 +1,52 @@
+<nlg-business-card [metas]="metas"></nlg-business-card>
+
+<mat-card class="golden-container">
+
+  <mat-card-header>
+    <mat-card-title>Golden Rectangles & Spiral Sequence</mat-card-title>
+    <span>Scale:</span>
+    <mat-slider max="1" min="0" step=".05" [thumbLabel]="'true'" [(ngModel)]="scaleView" title="Scale golden rect">
+    </mat-slider>
+
+
+
+  </mat-card-header>
+
+  <mat-card-content class="golden-card" [style.transform]="'scale(' + scaleView + ')'">
+
+    <!-- Recursive component instead nesting HTML-Tags. 
+    <mat-card class="golden-card-major"> </mat-card>
+    <mat-card class="golden-card-minor"> </mat-card>
+    <mat-card class="golden-card-minors-min">
+
+      <mat-card class="golden-card-major"> </mat-card>
+      <mat-card class="golden-card-minor"> </mat-card>
+      <mat-card class="golden-card-minors-min">
+
+        And so on...
+
+      </mat-card>
+    </mat-card> -->
+    <nlg-golden-rect [repeat]="7"></nlg-golden-rect>
+
+  </mat-card-content>
+  <mat-card-actions>
+    
+      <div class="golden-calc-wrapper">
+
+          <!-- Main -->
+          <mat-form-field class="golden-calc-input">
+            <input #main type="number" name="nmain" [value]="golden.main" (input)="golden = this.nlgMath.goldenMain(main.value);" matInput placeholder="Main" />
+          </mat-form-field>
+          <!-- Major -->
+          <mat-form-field class="golden-calc-input">
+            <input #major type="number" name="nmajor" [value]="golden.major" (input)="golden = this.nlgMath.goldenMajor(major.value);" matInput placeholder="Major" />
+          </mat-form-field>
+          <!-- Minor -->
+          <mat-form-field class="golden-calc-input">
+            <input #minor type="number" name="nminor" [value]="golden.minor" (input)="golden = this.nlgMath.goldenMinor(minor.value);"  matInput placeholder="Minor" />
+          </mat-form-field>
+      
+        </div>
+  </mat-card-actions>
+</mat-card>

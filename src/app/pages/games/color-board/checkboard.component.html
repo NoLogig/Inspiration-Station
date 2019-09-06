@@ -1,0 +1,49 @@
+
+
+  <nlg-business-card></nlg-business-card>
+
+<mat-card>
+
+  <mat-card-title>Popular Game</mat-card-title>
+
+  <mat-card-subtitle>
+      <span>Setup your board</span>
+      <span class="space-filler"></span>
+      <mat-slide-toggle color="warn" class="hint-slider" #hints>
+          Show Hints!
+      </mat-slide-toggle>
+  </mat-card-subtitle>
+
+  <mat-card-header>
+
+      <form>
+          <mat-form-field>
+              <input matInput type="number" placeholder="Field size" #counterRows min="2" value="8" required>
+          </mat-form-field>
+
+          <mat-form-field>
+              <input matInput type="color" placeholder="Add colors" #userColor (change)="addColor(userColor.value)" required>
+          </mat-form-field>
+
+          <button color="primary" mat-raised-button (click)="createBoard(counterRows.value)">Create New Board</button>
+          <!-- <button color="primary" mat-raised-button (click)="iterateMe()">Generator Test</button> -->
+
+      </form>
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+      <button *ngFor="let color of colors" color="accent" mat-button (click)="playerMove(color)" [style.background-color]="color">
+          {{color}}
+      </button>
+
+      <mat-card-footer *ngIf="hints.checked">
+          Moves: 0,
+          <span [style.background-color]="colors[0]"> next color</span>
+      </mat-card-footer>
+  </mat-card-content>
+
+</mat-card>
+
+<canvas #checkBoard width="600" height="600"></canvas>
