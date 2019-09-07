@@ -13,9 +13,9 @@ export interface ICanvas {
 }
 
 @Component({
-  selector: 'nlg-canvas-init',
-  templateUrl: './initializer.component.html',
-  styleUrls: ['./initializer.component.scss']
+  selector: 'nlg-velocity',
+  templateUrl: './velocity.component.html',
+  styleUrls: ['./velocity.component.scss']
 })
 export class VelocityComponent implements OnInit, OnDestroy, AfterContentChecked, AfterViewChecked, AfterViewInit, AfterContentInit, OnChanges {
 
