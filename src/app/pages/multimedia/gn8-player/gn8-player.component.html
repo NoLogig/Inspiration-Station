@@ -35,7 +35,7 @@
           Rnd</button>
           
         <!-- SelectList - Add -->
-        <button mat-raised-button color="primary" (click)="selectList.concat(currentList);" [disabled]="currentList[0] ? false : true">
+        <button mat-raised-button color="primary" (click)="selectList = selectList.concat(currentList);" [disabled]="currentList[0] ? false : true">
           Add²List</button>
 
         <!-- Audio Proccesor - Connect -->
