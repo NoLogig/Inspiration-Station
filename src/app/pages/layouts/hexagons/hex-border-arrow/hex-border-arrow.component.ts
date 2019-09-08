@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HexBorderArrowComponent implements OnInit {
 
+  metas = {
+    title: 'Hexagon - Border Arrow Img',
+    subTitle: '',
+    subExtra: '',
+    links: {
+      down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
+      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/layouts/hexagons/hex-border-arrow',
+      live: 'https://inspiration-station.herokuapp.com/hexagon',
+    }
+  };
   constructor() { }
 
   ngOnInit() {

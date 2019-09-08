@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HexLinearGradientComponent } from './hex-linear-gradient.component';
+import { HexGradientComponent } from './hex-gradient.component';
 
-describe('HexLinearGradientComponent', () => {
-  let component: HexLinearGradientComponent;
-  let fixture: ComponentFixture<HexLinearGradientComponent>;
+describe('HexGradientComponent', () => {
+  let component: HexGradientComponent;
+  let fixture: ComponentFixture<HexGradientComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HexLinearGradientComponent ]
+      declarations: [ HexGradientComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HexLinearGradientComponent);
+    fixture = TestBed.createComponent(HexGradientComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

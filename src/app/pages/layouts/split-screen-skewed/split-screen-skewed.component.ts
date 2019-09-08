@@ -6,8 +6,18 @@ import { Component, OnInit, OnChanges, OnDestroy, AfterContentChecked, AfterCont
   templateUrl: './split-screen-skewed.component.html',
   styleUrls: ['./split-screen-skewed.component.scss']
 })
-export class SplitScreenSkewedComponent implements OnInit, AfterContentChecked, AfterContentInit, 
-AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
+export class SplitScreenSkewedComponent implements OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
+
+  metas = {
+    title: 'SplitScreen - CSS',
+    subTitle: '',
+    subExtra: '',
+    links: {
+      down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
+      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/home',
+      live: 'https://inspiration-station.herokuapp.com',
+    }
+  };
 
   constructor() { }
 

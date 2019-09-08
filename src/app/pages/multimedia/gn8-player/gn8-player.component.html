@@ -1,7 +1,7 @@
+<nlg-business-card [metas]="metas"></nlg-business-card>
 <div class="tw"></div>
 
 <div class="media-container">
-
 
   <mat-card class="player-container">
 
@@ -9,16 +9,9 @@
       <mat-card-title>
         <span>{{media.current.media.name ? media.current.media.name : 'NLGn8 Player'}}</span>
       </mat-card-title>
-      <mat-card-subtitle *ngIf="!media.current.media.name">
-        Fall asleep during a movie & be awakened by extremely loud sounds.
-        
-        Sound effects are often incredibly loud, voices too quiet or dialogues are mumbled.
-        To make the sound sound more realistic, many directors decide to mix their sounds high dynamically - after all,
-        an explosion is very loud even in real life, voices much quieter in comparison.
-        
-        But even when awake, volume jumps are annoying.
-        The music drowned out & makes watching movies, series & broadcasts as a torture! 
-      </mat-card-subtitle>
+      <!-- <mat-card-subtitle *ngIf="!media.current.media.name">
+
+      </mat-card-subtitle> -->
     </mat-card-header>
 
     <mat-card-content class="player-wrapper">
@@ -26,24 +19,28 @@
       <form class="configuration">
 
         <!-- File Reader -->
-        <input type="file" (change)="selectList = selectLocalMedias(fred.files);" #fred multiple hidden />
+        <input type="file" (change)="currentList = selectLocalMedias(fred.files);" #fred multiple hidden />
         <button mat-raised-button color="primary" (click)="fred.click();">Select</button>
 
         <!-- Playlist - Add -->
         <mat-form-field class="playlist-name">
-          <input #plname matInput placeholder="Playlist Name" [disabled]="selectList[0] ? false : true" />
+          <input #plname matInput placeholder="Playlist Name" [disabled]="currentList[0] ? false : true" />
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="select2Paylist(plname.value); plname.value = ''"
-          [disabled]="selectList[0] && plname.value !== '' ? false : true">
-          Add²List</button>
+          [disabled]="currentList[0] && plname.value !== '' ? false : true">
+          Save</button>
 
         <!-- SelectList - Play Random -->
-        <button mat-raised-button color="primary" (click)="playRnd();" [disabled]="selectList[0] ? false : true">Play
+        <button mat-raised-button color="primary" (click)="playRnd();" [disabled]="currentList[0] ? false : true">
           Rnd</button>
+          
+        <!-- SelectList - Add -->
+        <button mat-raised-button color="primary" (click)="selectList.push(currentList);" [disabled]="currentList[0] ? false : true">
+          Add²List</button>
 
         <!-- Audio Proccesor - Connect -->
         <button mat-raised-button color="primary" #con
-          (click)="initAudioContextDecibelMeter(); startDecibelMeter(meter); con.disabled = true; rangeDecibel = 1;">Enable
+          (click)="initAudioContextDecibelMeter(); startDecibelMeter(meter); con.disabled = true; rangeDecibel = 1;">
           Decibel Ranger</button>
 
       </form>
@@ -65,7 +62,6 @@
 
   </mat-card>
 
-
 </div>
 
 <mat-tab-group ng-trans class="slist">
@@ -75,30 +71,29 @@
 
       <!-- Selection List -->
       <mat-card>
-        <!--   
-          <mat-card-header>
-            <mat-card-title>
+        <!-- <mat-card-header>
+          <mat-card-title>
   
-              <span>SelectList</span>
+            <span>SelectList</span>
   
-              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
   
-              <mat-menu #menu xPosition="before">
-                <button mat-menu-item>Expand</button>
-                <button mat-menu-item>Remove</button>
-              </mat-menu>
-  
-            </mat-card-title>
-          </mat-card-header> -->
+            <mat-menu #menu xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+
+          </mat-card-title>
+        </mat-card-header> -->
 
         <!-- <mat-card-content> -->
 
         <!-- <mat-divider></mat-divider> -->
 
         <mat-action-list>
-          <mat-list-item *ngFor="let item of selectList, let index = index" color="primary"
+          <mat-list-item *ngFor="let item of currentList, let index = index" color="primary"
             (click)="videoPlayer.src = item.url;  media.current.media = item; media.current.index = index">
             {{item.name}}
           </mat-list-item>
@@ -117,34 +112,11 @@
       <!-- Playlist -->
       <mat-card class="playl">
 
-        <!-- <mat-card-header class="playlh">
-            <mat-card-title>
-  
-              <div>PlayLists</div>
-  
-              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-  
-              <mat-menu #menu="matMenu" xPosition="before">
-                <button mat-menu-item>Expand</button>
-                <button mat-menu-item>Remove</button>
-              </mat-menu>
-  
-            </mat-card-title>
-          </mat-card-header> -->
-
-        <!-- <mat-card-content class="dashboard-card-content"> -->
-
-        <!-- <mat-divider></mat-divider> -->
-
         <mat-action-list class="playlist">
           <mat-list-item mat-button *ngFor="let item of playList" color="warn" (click)="selectList = item.files">
             {{item.name}}
           </mat-list-item>
         </mat-action-list>
-
-        <!-- </mat-card-content> -->
 
       </mat-card>
 

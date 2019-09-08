@@ -14,8 +14,18 @@ export class DropNodesComponent implements OnInit {
   width: number;
   height: number;
   raf: number;
-
   
+  metas = {
+    title: 'Drop Garden',
+    subTitle: '',
+    subExtra: '',
+    links: {
+      down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
+      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/math/garden/drop',
+      live: 'https://inspiration-station.herokuapp.com',
+    }
+  };
+
 
   constructor(public ngZone: NgZone) {
 

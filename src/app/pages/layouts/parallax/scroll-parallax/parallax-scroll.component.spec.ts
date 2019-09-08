@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MouseParallaxComponent } from './mouse-parallax.component';
+import { ParallaxScrollCSSComponent } from './parallax-scroll.component';
 
-describe('MouseParallaxComponent', () => {
-  let component: MouseParallaxComponent;
-  let fixture: ComponentFixture<MouseParallaxComponent>;
+describe('ParallaxScrollCSSComponent', () => {
+  let component: ParallaxScrollCSSComponent;
+  let fixture: ComponentFixture<ParallaxScrollCSSComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MouseParallaxComponent ]
+      declarations: [ ParallaxScrollCSSComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MouseParallaxComponent);
+    fixture = TestBed.createComponent(ParallaxScrollCSSComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

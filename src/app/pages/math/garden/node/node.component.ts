@@ -27,12 +27,12 @@ export class NodeGardenComponent implements OnInit, OnDestroy, AfterContentCheck
 
   metas = {
     title: 'Node Garden',
-    subTitle: 'Iteration / Array Performance & Math Optimation:',
+    subTitle: 'Iteration / Array Performance & Math Operator Optimation',
     subExtra: '',
     links: {
-      down: 'https://github.com/NoLogig/Inspiration-Station/master',
-      git: 'https://github.com/NoLogig/Inspiration-Station',
-      live: 'https://inspiration-station.herokuapp.com',
+      down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
+      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/math/garden/node',
+      live: 'https://inspiration-station.herokuapp.com/node-garden',
     }
   };
 

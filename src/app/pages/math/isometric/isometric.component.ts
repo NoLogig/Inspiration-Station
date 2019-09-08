@@ -10,6 +10,17 @@ export class IsometricComponent implements OnInit {
   @ViewChild('base', { static: true }) canvasBase: ElementRef;
   @ViewChild('char', { static: true }) canvasChar: ElementRef;
 
+  metas = {
+    title: 'Isometrics',
+    subTitle: 'JS',
+    subExtra: '',
+    links: {
+      down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
+      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/math/isometric',
+      live: 'https://inspiration-station.herokuapp.com',
+    }
+  };
+
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
   charCanvas: HTMLCanvasElement;

@@ -1,9 +1,7 @@
-
 import { Component, NgZone, ViewChild, ElementRef,
-  OnInit, OnDestroy, AfterContentChecked, AfterViewChecked, AfterViewInit, AfterContentInit, OnChanges  } from '@angular/core';
+  OnInit, OnDestroy, AfterContentChecked, AfterViewChecked, AfterViewInit, AfterContentInit, OnChanges } from '@angular/core';
 import { CanvasPaintToolsService } from '../../../utils/canvas/tools/paint-tools.service';
 import { Particle } from 'src/app/services/math/particle.service';
-import { Vector } from 'src/app/services/math/vector.service';
 
 export interface ICanvas {
   canvas: HTMLCanvasElement;
@@ -21,6 +19,17 @@ export class VelocityComponent implements OnInit, OnDestroy, AfterContentChecked
 
   @ViewChild('base', { static: true }) baseCanvas: ElementRef;
   @ViewChild('overlay', { static: true }) overlayCanvas: ElementRef;
+
+  metas = {
+    title: 'Velocity & Gravity',
+    subTitle: '',
+    subExtra: '',
+    links: {
+      down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
+      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/math/velocity',
+      live: 'https://heroku.apps.com/NoLogig/Inspiration-Station/velocity',
+    }
+  };
 
   cbase: ICanvas;
 

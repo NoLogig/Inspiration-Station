@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-import { ParallaxCSSComponent } from './scroll-parallax/parallax-css.component';
 import { RouterModule } from '@angular/router';
-import { MouseParallaxComponent } from './mouse-parallax/mouse-parallax.component';
+
 import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
+
+import { ParallaxMouseJSComponent } from './mouse-parallax/parallax-mouse.component';
+import { ParallaxScrollCSSComponent } from './scroll-parallax/parallax-scroll.component';
 
 @NgModule({
   imports: [
@@ -14,15 +15,15 @@ import { BusinessCardModule } from 'src/app/utils/business-card/business-card.mo
     RouterModule.forRoot([
       {
         path: 'parallax-scroll',
-        component: ParallaxCSSComponent
+        component: ParallaxScrollCSSComponent
       },
       {
         path: 'parallax-mouse',
-        component: MouseParallaxComponent
+        component: ParallaxMouseJSComponent
       }
     ])
   ],
-  exports: [ ParallaxCSSComponent, MouseParallaxComponent ],
-  declarations: [ ParallaxCSSComponent, MouseParallaxComponent ]
+  exports: [ ParallaxScrollCSSComponent, ParallaxMouseJSComponent ],
+  declarations: [ ParallaxScrollCSSComponent, ParallaxMouseJSComponent ]
 })
 export class ParallaxModule {}

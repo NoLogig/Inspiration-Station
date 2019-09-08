@@ -7,12 +7,23 @@ interface IParallaxMouse {
 }
 
 @Component({
-  selector: 'nlg-mouse-parallax',
-  templateUrl: './mouse-parallax.component.html',
-  styleUrls: ['./mouse-parallax.component.scss']
+  selector: 'nlg-parallax-mouse',
+  templateUrl: './parallax-mouse.component.html',
+  styleUrls: ['./parallax-mouse.component.scss']
 })
-export class MouseParallaxComponent implements OnInit, AfterContentChecked, AfterContentInit, 
-AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
+export class ParallaxMouseJSComponent implements OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
+
+
+  metas = {
+    title: 'Parallax Mouse - JS',
+    subTitle: '',
+    subExtra: '',
+    links: {
+      down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
+      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/layouts/parallax/mouse-parallax',
+      live: 'https://inspiration-station.herokuapp.com/parallax-mouse',
+    }
+  };
 
   title = 'Mouse Parallax Component';
   parallaxElements: IParallaxMouse[];
