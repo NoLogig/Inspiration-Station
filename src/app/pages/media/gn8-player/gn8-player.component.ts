@@ -31,17 +31,15 @@ export class Gn8PlayerComponent implements OnInit, OnDestroy, AfterContentChecke
   @ViewChild('player', { static: true }) videoRef: ElementRef;
 
   metas = {
-    title: '',
+    title: 'Good N8 Player',
     subTitle: `
     Fall asleep during a movie & be awakened by extremely loud sounds?
-    Even when awake, volume jumps are annoying.
-    Dialogues are too quiet or mumbled & sound effects incredibly loud in comparison.
-    The music drowned out & makes watching movies as as a torture!`,
+    Dialogues are too quiet, sound effects drowned out & makes watching movies as a torture!`,
     subExtra: '',
     links: {
       down: 'https://github.com/NoLogig/Inspiration-Station.git',
-      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/math/garden/node',
-      live: 'https://heroku.apps.com/NoLogig/Inspiration-Station',
+      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/multimedia/gn8-player',
+      live: 'https://heroku.apps.com/NoLogig/Inspiration-Station/gn8-player',
     }
   };
 

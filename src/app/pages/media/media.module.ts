@@ -16,4 +16,4 @@ import { DecibelMeterComponent } from './decibel-meter/decibel-meter.component';
   exports: [ DecibelMeterComponent ],
   declarations: [ DecibelMeterComponent ]
 })
-export class MultiMediaModule {}
+export class MediaModule {}

@@ -11,7 +11,7 @@ import { BusinessCardModule } from '../utils/business-card/business-card.module'
 import { ChartsDataModule } from './charts/chatrs.module';
 import { MapModule } from './API/google-maps/maps.module';
 import { MathModule } from './math/math.module';
-import { MultiMediaModule } from './multimedia/multimedia.module';
+import { MediaModule } from './media/media.module';
 import { PixelsModule } from './pixels/pixels.module';
 import { PEILModule } from './PEIL/peil.module';
 
@@ -32,7 +32,7 @@ import { GamesModule } from './games/games.module';
     BusinessCardModule,
     ChartsDataModule,
     GamesModule,
-    MultiMediaModule,
+    MediaModule,
     MathModule, MapModule,
     PEILModule,
     PixelsModule,

@@ -9,9 +9,7 @@
       <mat-card-title>
         <span>{{media.current.media.name ? media.current.media.name : 'NLGn8 Player'}}</span>
       </mat-card-title>
-      <!-- <mat-card-subtitle *ngIf="!media.current.media.name">
-
-      </mat-card-subtitle> -->
+      <!-- <mat-card-subtitle *ngIf="!media.current.media.name"></mat-card-subtitle> -->
     </mat-card-header>
 
     <mat-card-content class="player-wrapper">
@@ -19,28 +17,27 @@
       <form class="configuration">
 
         <!-- File Reader -->
-        <input type="file" (change)="currentList = selectLocalMedias(fred.files);" #fred multiple hidden />
+        <input type="file" (change)="selectList = selectLocalMedias(fred.files);" #fred multiple hidden />
         <button mat-raised-button color="primary" (click)="fred.click();">Select</button>
 
         <!-- Playlist - Add -->
         <mat-form-field class="playlist-name">
-          <input #plname matInput placeholder="Playlist Name" [disabled]="currentList[0] ? false : true" />
+          <input #plname matInput placeholder="Playlist Name" [disabled]="selectList[0] ? false : true" />
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="select2Paylist(plname.value); plname.value = ''"
-          [disabled]="currentList[0] && plname.value !== '' ? false : true">
+        [disabled]="selectList[0] && plname.value !== '' ? false : true">
           Save</button>
 
         <!-- SelectList - Play Random -->
-        <button mat-raised-button color="primary" (click)="playRnd();" [disabled]="currentList[0] ? false : true">
+        <button mat-raised-button color="primary" (click)="playRnd();" [disabled]="selectList[0] ? false : true">
           Rnd</button>
           
         <!-- SelectList - Add -->
-        <button mat-raised-button color="primary" (click)="selectList = selectList.concat(currentList);" [disabled]="currentList[0] ? false : true">
+        <button mat-raised-button color="primary" (click)="selectList = selectList.concat(selectList);" [disabled]="selectList[0] ? false : true">
           Add²List</button>
 
         <!-- Audio Proccesor - Connect -->
-        <button mat-raised-button color="primary" #con
-          (click)="initAudioContextDecibelMeter(); startDecibelMeter(meter); con.disabled = true; rangeDecibel = 1;">
+        <button mat-raised-button color="primary" #con (click)="initAudioContextDecibelMeter(); startDecibelMeter(meter); con.disabled = true; rangeDecibel = 1;">
           Decibel Ranger</button>
 
       </form>
@@ -49,8 +46,7 @@
 
       <div class="decibel-wrapper">
 
-        <mat-slider class="decibel-slider" max="1" min="0" step="0.01" thumbLabel="true" [(ngModel)]="rangeDecibel"
-          title="Decibel range"></mat-slider>
+        <mat-slider class="decibel-slider" max="1" min="0" step="0.01" thumbLabel="true" [(ngModel)]="rangeDecibel" title="Decibel range"></mat-slider>
         <div #meter class="decibel-meter"></div>
 
       </div>
@@ -93,8 +89,8 @@
         <!-- <mat-divider></mat-divider> -->
 
         <mat-action-list>
-          <mat-list-item *ngFor="let item of currentList, let index = index" color="primary"
-            (click)="videoPlayer.src = item.url;  media.current.media = item; media.current.index = index">
+          <mat-list-item *ngFor="let item of selectList, let index = index" color="primary"
+          (click)="videoPlayer.src = item.url;  media.current.media = item; media.current.index = index">
             {{item.name}}
           </mat-list-item>
         </mat-action-list>

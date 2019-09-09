@@ -10,8 +10,8 @@ import { Component,
 export class ChartsComponent implements OnInit, OnChanges, OnDestroy, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit {
 
   metas = {
-    title: 'ChartsJS',
-    subTitle: 'Display Data In Angular +2:',
+    title: 'Chart.js in Angular 2+',
+    subTitle: 'ng2-charts',
     subExtra: '',
     links: {
       down: 'https://github.com/NoLogig/Inspiration-Station/master',
