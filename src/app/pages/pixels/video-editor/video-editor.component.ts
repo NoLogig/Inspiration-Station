@@ -27,8 +27,8 @@ export class VideoEditorComponent implements OnInit {
       this.ctx2 = this.c2.getContext('2d');
       let self = this;
       this.video.addEventListener('play', function() {
-          self.width = self.video.videoWidth / 2;
-          self.height = self.video.videoHeight / 2;
+          self.width = self.video.videoWidth / 8;
+          self.height = self.video.videoHeight / 8;
           self.timerCallback();
         }, false);
     },

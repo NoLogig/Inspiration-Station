@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HexBorderArrowComponent implements OnInit {
 
   metas = {
-    title: 'Hexagon - Border Arrow Img',
-    subTitle: '',
+    title: 'Hexagon - Border Arrow',
+    subTitle: 'CSS',
     subExtra: '',
     links: {
       down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',

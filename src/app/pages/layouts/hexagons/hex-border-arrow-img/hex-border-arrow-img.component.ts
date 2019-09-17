@@ -9,7 +9,7 @@ export class HexBorderArrowImgComponent implements OnInit {
 
   metas = {
     title: 'Hexagon - Border Arrow Img',
-    subTitle: '',
+    subTitle: 'CSS',
     subExtra: '',
     links: {
       down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',

@@ -9,7 +9,7 @@ export class HexGradientComponent implements OnInit {
 
   metas = {
     title: 'Hexagon - Gradient',
-    subTitle: '',
+    subTitle: 'CSS',
     subExtra: '',
     links: {
       down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',

@@ -157,8 +157,7 @@ export class MathUtilsService {
         if (n > max) { return min; }
         return max;
     }
-    /**
-     * Linear Normalization convert a value from a range into a normed value between 0-1
+    /** Linear Normalization convert a value from a range into a normed value between 0-1
      * @example  Min  Val    Max
      *           4    x      23  ← param x, min, max
      *           |____|______|
@@ -166,25 +165,28 @@ export class MathUtilsService {
      *           0    ?      1   ← return
      * Hint: Math.min() & Math.max()
      */
-    norm = (value: number, minimum: number, maximum: number): number => ((value - minimum) / (maximum - minimum));
-    /**
-     * Linear Interpolation does the opposite of normalization
+    norm = (value: number, minimum: number, maximum: number): number => 
+    ((value - minimum) / (maximum - minimum));
+
+    /** Linear Interpolation does the opposite of normalization
      * @example Min  Val    Max
-     *          0    ?      10   ← return
+     *          0    x      1     ←  x, min, max
      *          |____|______|
      *          |    |      |
-     *          0    x      1    ← param x, min, max
+     *          0    ?      10    ← return
      */
-    lerp = (normed: number, minimum: number, maximum: number): number => ((maximum - minimum) * normed + minimum);
-    /**
-     * Convert a value from one scale into another scale
+    lerp = (normed: number, minimum: number, maximum: number): number => 
+    ((maximum - minimum) * normed + minimum);
+
+    /** Convert a value from one scale into another scale
      * @example Min   Val    Max
      *          src   x      src  ← params = x, src & dst min/max
      *          |_____|______|
      *          |     |      |
      *          dst   ?      dst  ← return
      */
-    map = (val: number, srcMin: number, srcMax: number, destMin: number, destMax: number): number => this.lerp(this.norm(val, srcMin, srcMax), destMin, destMax)
+    map = (val: number, srcMin: number, srcMax: number, destMin: number, destMax: number): number => 
+    this.lerp(this.norm(val, srcMin, srcMax), destMin, destMax);
 
     /**
      *  let dx = p1.x - p0.x,

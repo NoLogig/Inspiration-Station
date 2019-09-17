@@ -9,7 +9,7 @@ export class HexRotateComponent implements OnInit {
 
   metas = {
     title: 'Hexagon - Rotate',
-    subTitle: '',
+    subTitle: 'CSS',
     subExtra: '',
     links: {
       down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
