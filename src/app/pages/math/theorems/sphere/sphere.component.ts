@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone, OnDestroy, AfterViewChecked, AfterViewInit, OnChanges, AfterContentChecked, AfterContentInit } from '@angular/core';
 import { ICirclePoint } from 'src/app/services/math/interfaces/imath';
-import ctxTools from "src/app/utils/canvas/tools/paint-tools.service";
+import ctxTools from "src/app/utils/tools/paint-tools.service";
 
 @Component({
   selector: 'nlg-sphere',

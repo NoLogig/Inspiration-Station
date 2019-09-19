@@ -1,6 +1,6 @@
 import { Component, NgZone, ViewChild, ElementRef,
   OnInit, OnDestroy, AfterContentChecked, AfterViewChecked, AfterViewInit, AfterContentInit, OnChanges } from '@angular/core';
-import { CanvasPaintToolsService } from '../../../utils/canvas/tools/paint-tools.service';
+import { CanvasPaintToolsService } from '../../../utils/tools/paint-tools.service';
 import { Particle } from 'src/app/services/math/particle.service';
 
 export interface ICanvas {

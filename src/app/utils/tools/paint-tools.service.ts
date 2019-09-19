@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IPoint, IRGBA, ICirclePoint, IRectPoint } from 'src/app/services/math/interfaces/imath';
+import { IPoint, IRGBA, ICirclePoint, IRectPoint, IParticle } from 'src/app/services/math/interfaces/imath';
 import maths, { CIRCLE, utils } from 'src/app/services/math/math.service';
 
 @Injectable({
@@ -140,6 +140,39 @@ export class CanvasPaintToolsService {
     return;
   }
 
+  // Stroke line between nodes
+  connectNodes(ctx: CanvasRenderingContext2D, nodes: IPoint[], currentIndex: number, range?: number, ): void {
+
+    let node = nodes[currentIndex];
+
+    for (let i = currentIndex + 1, limit = nodes.length; i < limit; i++) {
+
+      let _node = nodes[i],
+             dx = _node.x - node.x,
+             dy = _node.y - node.y;
+
+      if(range) {
+
+        let dist = Math.sqrt((dx ** 2) + (dy ** 2));
+        if (dist > range) { continue; }
+        ctx.lineWidth = 1 - dist / range;
+
+      }
+
+      this.drawLine(ctx, node, _node);
+
+    }
+    return;
+  }
+  
+  randomColor(): string {
+
+    let r = Math.floor(Math.random() * 255),
+        g = Math.floor(Math.random() * 255),
+        b = Math.floor(Math.random() * 255);
+
+    return "rgb(" + r + "," + g + "," + b + ")d";
+  }
   /** Get RGBA of pixel at x/y coordinates
    * @param imgData
    *+  `data`:`number[]` imgData in RGBA order as 0 to 255 ints

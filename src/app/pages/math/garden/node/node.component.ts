@@ -2,8 +2,9 @@ import {
   Component,ViewChild, ElementRef, NgZone,
   OnInit, OnDestroy, AfterContentChecked, AfterViewChecked, AfterViewInit, AfterContentInit, OnChanges 
 } from '@angular/core';
-import { ICircleParticle, IPoint } from 'src/app/services/math/interfaces/imath';
-import maths, { utils } from 'src/app/services/math/math.service';
+import { ICircleParticle } from 'src/app/services/math/interfaces/imath';
+import { utils } from 'src/app/services/math/math.service';
+import ctxTools from "src/app/utils/tools/paint-tools.service";
 
 @Component({
   selector: 'nlg-node-garden',
@@ -39,35 +40,6 @@ export class NodeGardenComponent implements OnInit, OnDestroy, AfterContentCheck
   constructor(public ngZone: NgZone) { }
 
   /* ########################### */
-  /* ####  Livecycle Hooks  #### */
-  /* ########################### */
-
-  ngOnInit(): void {
-
-    console.log('NodeGarden Init');
-
-    this.initCanvas();
-    this.initConfigs();
-
-    // Prevent memory leak
-    this.ngZone.runOutsideAngular(this.render);
-  }
-  ngAfterViewChecked() {    console.log('NodeGarden ViewChecked'); }
-  ngAfterContentChecked() { console.log('NodeGarden ContentChecked'); }
-  ngAfterContentInit() {    console.log('NodeGarden ContentInit'); }
-  ngAfterViewInit() {       console.log('NodeGarden ViewInit'); }
-  ngOnChanges() {           console.log('NodeGarden Changes'); }
-  ngOnDestroy(): void {
-
-    this.ngZone.run(() => {
-      cancelAnimationFrame(this.raf);
-    });
-    cancelAnimationFrame(this.raf);
-
-    console.log('NodeGarden Destroy');
-  }
-
-  /* ########################### */
   /* ####       Canvas      #### */
   /* ########################### */
 
@@ -87,13 +59,13 @@ export class NodeGardenComponent implements OnInit, OnDestroy, AfterContentCheck
   initConfigs() {
     
     this.connectRange = 100;
-    this.nodeCounter = 100;
+    this.nodeCounter = Math.floor(window.innerWidth / 10);
     this.nodes = this.createRndCircleShapes(this.nodeCounter, this.cWidth, this.cHeight);
   }
 
   render = (): void => {
 
-    console.log('render');
+    // console.log('nodegarden render');
     this.ctx.clearRect(0, 0, this.cWidth, this.cHeight);
 
     this.updateNodes(this.nodes);
@@ -110,30 +82,9 @@ export class NodeGardenComponent implements OnInit, OnDestroy, AfterContentCheck
       node.x = utils.lock(node.x + node.vx, 0, this.cWidth);
       node.y = utils.lock(node.y + node.vy, 0, this.cHeight);
 
-      this.drawCircle(this.ctx, node);
+      ctxTools.drawCircle(this.ctx, node);
+      ctxTools.connectNodes(this.ctx, this.nodes, i, this.connectRange);
 
-      this.connectAllNodes(this.nodes, i, this.connectRange);
-    }
-    return;
-  }
-
-  // Stroke line between nodes if in range
-  connectAllNodes(nodes: ICircleParticle[], currentIndex: number, maxDist: number): void {
-
-    let node = nodes[currentIndex];
-
-    for (let i = currentIndex + 1, limit = nodes.length; i < limit; i++) {
-
-      let _node = nodes[i],
-        dx = _node.x - node.x,
-        dy = _node.y - node.y,
-        dist = Math.sqrt((dx ** 2) + (dy ** 2));
-
-      if (dist < maxDist) {
-
-        this.ctx.lineWidth = 1 - dist / maxDist;
-        this.drawLine(this.ctx, node, _node);
-      }
     }
     return;
   }
@@ -160,21 +111,33 @@ export class NodeGardenComponent implements OnInit, OnDestroy, AfterContentCheck
     return _shapes;
   }
 
-  drawCircle(ctx: CanvasRenderingContext2D, shape: ICircleParticle): void {
+  /* ########################### */
+  /* ####  Livecycle Hooks  #### */
+  /* ########################### */
 
-    ctx.beginPath();
-    ctx.arc(shape.x, shape.y, shape.r, 0, 6.29);
-    ctx.fill();
-    return;
+  ngOnInit(): void {
+
+    console.log('NodeGarden Init');
+
+    this.initCanvas();
+    this.initConfigs();
+
+    // Prevent memory leak
+    this.ngZone.runOutsideAngular(this.render);
   }
+  ngAfterViewChecked() {    console.log('NodeGarden ViewChecked'); }
+  ngAfterContentChecked() { console.log('NodeGarden ContentChecked'); }
+  ngAfterContentInit() {    console.log('NodeGarden ContentInit'); }
+  ngAfterViewInit() {       console.log('NodeGarden ViewInit'); }
+  ngOnChanges() {           console.log('NodeGarden Changes'); }
+  ngOnDestroy(): void {
 
-  drawLine(ctx: CanvasRenderingContext2D, p1: IPoint, p2: IPoint): void {
+    this.ngZone.run(() => {
+      cancelAnimationFrame(this.raf);
+    });
+    cancelAnimationFrame(this.raf);
 
-    ctx.beginPath();
-    ctx.moveTo(p1.x, p1.y);
-    ctx.lineTo(p2.x, p2.y);
-    ctx.stroke();
-    return;
+    console.log('NodeGarden Destroy');
   }
 
 }
