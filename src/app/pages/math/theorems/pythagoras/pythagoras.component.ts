@@ -1,12 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ITheoremPythagoras, ITriangle } from 'src/app/services/math/interfaces/imath';
-
-
-
-// Speeds rad/deg converters performance in iterations up
-const DEG = Math.PI / 180;
-const RAD = 180 / Math.PI;
-const FULL_ARC = Math.PI * 2;
+import { Component } from '@angular/core';
+import { ITheoremPythagoras } from 'src/app/services/math/interfaces/imath';
 
 @Component({
   selector: 'nlg-pythagoras',

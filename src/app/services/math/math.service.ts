@@ -3,10 +3,10 @@ import { scan } from 'rxjs/operators';
 import { IGoldenRatio, IPoint, ITheoremPythagoras, ITriangle } from './interfaces/imath';
 
 
-// Arcs
+export const DEG = Math.PI / 180;
+export const RAD = 180 / Math.PI;
 export const PI = Math.PI;
 export const CIRCLE = Math.PI * 2;
-// Golden Ratio
 export const PHI = 1.61803398875;
 
 

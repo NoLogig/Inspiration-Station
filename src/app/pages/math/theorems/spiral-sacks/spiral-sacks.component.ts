@@ -8,7 +8,7 @@ import maths from 'src/app/services/math/math.service';
 })
 export class SpiralSacksComponent implements OnInit, AfterViewChecked, AfterViewInit, OnChanges, AfterContentChecked, AfterContentInit, OnDestroy {
 
-  @ViewChild('spiral', {static: true}) canvasRef1: ElementRef;
+  @ViewChild('sacks', {static: true}) canvasRef1: ElementRef;
 
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;

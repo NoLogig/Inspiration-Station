@@ -1,9 +1,8 @@
-#Satz von Euklid
+# Satz von Euklid
 Wer gelesen werden möchte, sollte sich Formeln und Zahlen ersparen. Dies gilt zumindest für das populärwissenschaftliche Schreiben. Alles was über Einsteins E = mc² hinausgeht, eine Formel die auch auf dutzenden Briefmarken zu finden ist, ist hier bereits zu viel. Will man jedoch über einen (indirekten,) mathematischen Beweis schreiben, kommt man um das ein oder andere mathematische Objekt nicht umher.
 
 Dies ist mein erster Aufsatz zu einem mathematischen Thema, zum Satz von Euklid. Der Satz von Euklid besagt, dass es unendlich (genauer!: nicht-endlich) viele Primzahlen gibt. Primzahlen sind diejenigen natürlichen Zahlen, die exakt 2 natürliche Zahlen als Teiler haben. Die 11 ist beispielsweise eine Primzahl, da sie durch, und nur durch sich selbst und die 1 teilbar ist. Genauso ist die 53 eine Primzahl, da sie sich nach obigen Bedingungen nur durch 1 und 53 teilen lässt. Usf.
 
- 
 Fangen wir nun zunächst mit der kleinsten Primzahl, der 2, an. Addieren wir nun die 2 mit 1, ergibt sich eine weitere Primzahl, die 3. Nun multiplizieren wir die Primzahl 2 mit der „gefundenen“ Primzahl 3 und geben wieder 1 hinzu. Wir erhalten wieder eine Primzahl, die 7. Dann multipliziert man die 2 mit 3 mit 7, addiert erneut 1 und kommt auf 43. Auch wenn man vielleicht nicht auf Anhieb weiß, ob die 43 eine Primzahl ist, so lässt sich doch immer etwas über das Ergebnis aussagen. Es ist nicht durch die bisher „gefundenen“ Primzahlen 2,3 und 7 teilbar. Denn teilt man 43 durch eine dieser „gefundenen“ Zahlen, kommt man immer auf eineZahl, Rest 1. Die 43 ist also entweder selbst eine Primzahl oder muss durch eine weitere, bislang „ungefundene“ Primzahl teilbar sein. Dasselbe gilt für jede so erfolgte Lösung. Deshalb lässt sich mit diesem Verfahren, Primzahlen miteinander multiplizieren und das Produkt dann um 1 aufsummieren, immer eine weitere Primzahl bestimmen. Weil jede auf diesen Weg „gefundene“ Zahl entweder selbst eine Primzahl ist, oder einen „neuen“ Primteiler besitzt.
 
 2 + 1        | **3**
