@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'nlg-video-editor',
   templateUrl: './video-editor.component.html',
-  styleUrls: ['./video-editor.component.css']
+  styleUrls: ['./video-editor.component.scss']
 })
 export class VideoEditorComponent implements OnInit {
 
