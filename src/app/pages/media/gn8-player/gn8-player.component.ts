@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Renderer2, ElementRef, AfterViewChecked, AfterViewInit, OnChanges, AfterContentChecked, AfterContentInit, OnDestroy } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import maths from 'src/app/services/math/math.service';
+import maths, { utils } from 'src/app/services/math/math.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
 export interface IMediaPlayer {
@@ -183,10 +183,10 @@ export class Gn8PlayerComponent implements OnInit, OnDestroy, AfterContentChecke
     // Need to round cuz 0.94 rounding bug that turns value into 0.93999... 
     // Therefore it's impossible to mute the player without rounding here.
     if (e.deltaY < 0 && this.videoPlayer.volume < 1.00) {
-      this.videoPlayer.volume = maths.roundToPlaces(this.videoPlayer.volume += 0.01, 3);
+      this.videoPlayer.volume = utils.roundToPlaces(this.videoPlayer.volume += 0.01, 3);
       return;
     }
-    if (this.videoPlayer.volume >= 0.01) this.videoPlayer.volume = maths.roundToPlaces(this.videoPlayer.volume -= 0.01, 3);
+    if (this.videoPlayer.volume >= 0.01) this.videoPlayer.volume = utils.roundToPlaces(this.videoPlayer.volume -= 0.01, 3);
   }
 
   autoplayNext = () => {

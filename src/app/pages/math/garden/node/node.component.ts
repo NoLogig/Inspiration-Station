@@ -3,7 +3,7 @@ import {
   OnInit, OnDestroy, AfterContentChecked, AfterViewChecked, AfterViewInit, AfterContentInit, OnChanges 
 } from '@angular/core';
 import { ICircleParticle, IPoint } from 'src/app/services/math/interfaces/imath';
-import maths from 'src/app/services/math/math.service';
+import maths, { utils } from 'src/app/services/math/math.service';
 
 @Component({
   selector: 'nlg-node-garden',
@@ -107,8 +107,8 @@ export class NodeGardenComponent implements OnInit, OnDestroy, AfterContentCheck
 
       let node = nodes[i];
 
-      node.x = maths.lock(node.x + node.vx, 0, this.cWidth);
-      node.y = maths.lock(node.y + node.vy, 0, this.cHeight);
+      node.x = utils.lock(node.x + node.vx, 0, this.cWidth);
+      node.y = utils.lock(node.y + node.vy, 0, this.cHeight);
 
       this.drawCircle(this.ctx, node);
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { lookups } from "src/app/services/math/math.service";
 
 @Component({
   selector: 'nlg-fibonacci',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class FibonacciComponent {
 
+  fibonaccis = lookups.fibonaccis;
   title = 'fibonacci';
 
   constructor() { }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IPoint, IRGBA, ICirclePoint, IRectPoint } from 'src/app/services/math/interfaces/imath';
-import maths, { FULL_ARC } from 'src/app/services/math/math.service';
+import maths, { CIRCLE, utils } from 'src/app/services/math/math.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class CanvasPaintToolsService {
 
   grid = {
 
-    draw(ctx: CanvasRenderingContext2D, width: number, height: number, gridSize: number, strokeStyle = '#0ff7'): void {
+    init(ctx: CanvasRenderingContext2D, width: number, height: number, gridSize: number, strokeStyle = '#0ff7'): void {
       
       ctx.save();
       ctx.strokeStyle = strokeStyle;
@@ -33,8 +33,8 @@ export class CanvasPaintToolsService {
 
     move2Nearest(ctx: CanvasRenderingContext2D, x: number, y: number, gridSize: number) {
 
-      let gridX = maths.roundNearest(x, gridSize),  // event.clientX
-          gridY = maths.roundNearest(y, gridSize);  // event.clientY
+      let gridX = utils.roundNearest(x, gridSize),  // event.clientX
+          gridY = utils.roundNearest(y, gridSize);  // event.clientY
   
       ctx.beginPath();
       ctx.arc(gridX, gridY, 10, 0, Math.PI * 2);
@@ -50,7 +50,7 @@ export class CanvasPaintToolsService {
   drawPoint(ctx: CanvasRenderingContext2D, x: number, y: number): void {
 
     ctx.beginPath();
-    ctx.arc(x, y, 1, 0, FULL_ARC);
+    ctx.arc(x, y, 1, 0, CIRCLE);
     ctx.closePath();
     ctx.fill();
     return;

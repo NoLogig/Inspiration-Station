@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import maths from "src/app/services/math/math.service";
+import { lookups } from "src/app/services/math/math.service";
 
 @Component({
   selector: 'nlg-factorial',
@@ -10,8 +9,12 @@ import maths from "src/app/services/math/math.service";
 export class FactorialComponent {
 
   title = 'Factorial';
+  factorials: number[];
 
-  constructor() { }
+  constructor() {
 
+    this.factorials = lookups.factorials;
+
+  }
 
 }
