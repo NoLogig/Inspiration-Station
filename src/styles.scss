@@ -12,19 +12,19 @@ body {
 
   font-family: Roboto, "Helvetica Neue", sans-serif;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  // &::-webkit-scrollbar {
+    // display: none;
+  // }
 
-  &>nlg-root::-webkit-scrollbar {
-    display: none;
-  }
+  // &>nlg-root::-webkit-scrollbar {
+    // display: none;
+  // }
 
-  & * {
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
+  // & * {
+  //   &::-webkit-scrollbar {
+  //     display: none;
+  //   }
+  // }
 }
 
 /***********************************

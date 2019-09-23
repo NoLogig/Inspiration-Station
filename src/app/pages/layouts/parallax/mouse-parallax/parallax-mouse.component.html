@@ -1,12 +1,14 @@
 <nlg-business-card [metas]="metas"></nlg-business-card>
 
 <div style="position: relative; height: 100%; width: 100%; overflow: hidden;"
-(mousemove)="parallaxMouse($event,{ targetContainer: bg, moveFactor: 5, zIndex: 1 });
-             parallaxMouse($event,{ targetContainer: bg1, moveFactor: 15, zIndex: 1 });">
+    (mousemove)="parallaxMouse($event,{ targetContainer: background, moveFactor: 5, zIndex: 1 });
+                 parallaxMouse($event,{ targetContainer: foreground, moveFactor: 10, zIndex: 1 });
+                 parallaxMouse($event,{ targetContainer: foreforeground, moveFactor: 15, zIndex: 1 });
+                 parallaxMouse($event,{ targetContainer: foreforeforeground, moveFactor: 20, zIndex: 1 });;">
 
-    <div class="mouse-bg background" #bg></div>
-    <div class="mouse-bg foreground" #bg1></div>
-    <!-- <div class="mouse-bg fore-foreground" #bg2></div> -->
-    <div class="mouse-bg fore-fore-foreground" #bg3></div>
+    <div class="mouse-bg background" #background></div>
+    <div class="mouse-bg foreground" #foreground></div>
+    <div class="mouse-bg fore-foreground" #foreforeground></div>
+    <div class="mouse-bg fore-fore-foreground" #foreforeforeground></div>
 
 </div>

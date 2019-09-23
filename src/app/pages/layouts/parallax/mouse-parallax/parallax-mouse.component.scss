@@ -8,9 +8,6 @@ I went with "fixed," but "absolute" positioning also works, depending on the app
 
 
 .background {
-    // background-image: url('http://subtlepatterns.com/patterns/giftly.png');
-    // background-image: url('C6-9KrMUwAApPPh.jpg');
-    // background-image: url('800px_COLOURBOX9025445.jpg');
     background-image: url('../../../../../assets/images/infinity-bg.jpg');
 }
 
@@ -18,9 +15,10 @@ I went with "fixed," but "absolute" positioning also works, depending on the app
     background-image: url('../../../../../assets/images/435px-Metatrons-cube.png');
 }
 
-// .fore-foreground {
-    // background-image: url('220px-Hexahedron.svg.png');
-// }
+.fore-foreground {
+    background-image: url('../../../../../assets/img/ethereum-icon-md.png');
+    background-size: 400px 400px;
+}
 
 div.fore-fore-foreground {
     background-image: url('../../../../../assets/images/moon.png');

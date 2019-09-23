@@ -78,7 +78,7 @@ npm run start
 Navigate to [`http://localhost:8080/`](http://localhost:8080/).
 Disconnect internet connection & reload the page.
 
-### Native-File-System-API
+#### Native-File-System-API
 
 The lack of access to the file system is one of the biggest obstacles to the success of **P**rogressive-**W**eb-**A**pps.
 In Chrome 77 (beta) an access to the file system can be activated.

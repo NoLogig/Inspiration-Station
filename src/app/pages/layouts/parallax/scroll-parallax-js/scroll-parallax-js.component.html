@@ -1,0 +1,45 @@
+<div  (click)="updateSizes([ p1,p2,p3,p4 ], me);" #me style="height: 100vh; overflow-y: scroll; position: relative;" (scroll)="updateScroll(me);">
+
+    <!-- Section #1 -->
+	<section class="full-height bg1" data-parallax data-bgHeight="500" #p1>
+        <article>
+            <!-- <img src="../../../../../assets/images/parallax.jpg" alt="bg1"> -->
+            <h1>The <span class="emphasis">Perfect</span><br><span class="large">Parallax</span><br>Solution</h1>
+			<p class="footnote right">- By <a href="http://www.bespokepixels.co.uk/">Tom Dyer</a></p>
+		</article>
+	</section>
+	<!-- Section #2 -->
+	<section class="fixed-height bg2" #p2 data-parallax>
+        <article>
+            <h2>Never exceed the boundaries!</h2>
+			<p>The JS code will load the images in the background in order to retrieve the image height, meaning the
+                scrolling never exceeds the image boundaries, giving you a perfectly seamless parallax solution.</p>
+                <p>To ensure you make the most of your parallax images, remember to add the data-position="top" to any elements that are flush with the top of the window and data-position="bottom" to any elements flush with the bottom of the window. The script won't break if you forget to add these, but you might be wasting some valuable pixels ;)</p>
+                
+                <!-- Even embedded parallaxerers?! -->
+                <div class="inner-parallax" #p3 data-parallax data-scrollHeight="900" data-invert="true">
+                    <p class="footnote center">Yep, even nests elements can be controlled from the script!</p>
+			</div>
+            
+		</article>
+	</section>
+	<!-- Section #3 -->
+	<section class="bg3" data-parallax #p4>
+        <article>
+            <h3>Download</h3>
+			<a class="btn" href="perfect-parallax.zip">Download the files</a>
+			<hr>
+			<h3>Usage:</h3>
+			<p>The code looks for any elements with the following attributes:</p>
+			<ul>
+                <li><p><span class="code">data-type="parallax"</span> - This is the only required attribute. It tells the code to add the parallax control to this element.</p></li>
+				<li><p><span class="code">data-scroll-height="int(px)|percent"</span> (optional) - Specify the scroll-height if you want this to differ from the actual image height. Useful for experimenting with tiled backgrounds. Defaults to background image height.</p></li>
+				<li><p><span class="code">data-invert="true|false"</span> (optional) - Invert the movement direction. Defaults to false.</p></li>
+				<li><p><span class="code">data-bg-height="int(px)/percentage(%)"</span> (optional) - Set the background height. Using this will disable loading the image in the background and scale the image to this height instead. Widths are set to auto. If this is set to a value less-than the elements height, then it will be scaled to the elements height and no parallax effect will take place.</p></li>
+			</ul>
+            
+			<p>This script can lag on some browsers/operating systems. Suggestions for code improvements are welcomed.</p>
+            
+		</article>
+	</section>
+</div>

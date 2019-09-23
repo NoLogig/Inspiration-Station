@@ -22,6 +22,11 @@ export class Particle {
     this.position.addTo(this.velocity);
   }
 
+  public updateNoGravity() {
+
+    this.position.addTo(this.velocity);
+  }
+
   public accelerate(accel) {
 
     this.velocity.addTo(accel);

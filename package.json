@@ -14,14 +14,11 @@
     "lint": "ng lint",
     "start": "ng serve -o",
     "test": "ng test",
-
     "tsc": "tsc",
     "electron": "electron .",
-
     "start-electron": "npm run build-electron && npm run electron",
     "start-http": "http-server -p 8080 -c-1 ./dist/client",
     "start-server": "concurrently \"tsc -w -p ./server\" \"nodemon ./dist/server/bin/www.js\" ",
-
     "build-client": "ng build --aot=true --prod --source-map=false",
     "build-electron": "ng build --aot=true --base-href=./ --prod --source-map=false && tsc -p ./electron",
     "build-server": "tsc -p ./server"
