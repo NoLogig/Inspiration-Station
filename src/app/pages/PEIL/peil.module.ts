@@ -7,7 +7,7 @@ import { MatTabsModule } from "@angular/material";
 @NgModule({
   imports: [
     MatTabsModule,
-
+    
     RouterModule.forRoot([
       {
         path: 'peil',
@@ -15,7 +15,7 @@ import { MatTabsModule } from "@angular/material";
       }
     ])
   ],
-  exports: [PEILComponent],
+  exports: [ PEILComponent],
   declarations: [
     PEILComponent
   ]
