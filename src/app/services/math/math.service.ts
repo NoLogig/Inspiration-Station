@@ -12,7 +12,7 @@ export const PHI = 1.61803398875;
 
 export class MathUtilsService {
 
-    // Depending on wich language you use, mathematical access is faster than internal 2/3D access
+    // Depending on wich language you use, mathematical way is faster than internal 2/3D access
     array = {
 
         /** Array 1D - As 2D Matrix
@@ -48,24 +48,26 @@ export class MathUtilsService {
          *  (2 * 4    + 2) + (4    * 4     * 1) = index 3D
          *  (    10      ) + (       16       ) = 26
          */
-        as3D: (x: number, y: number, z: number, cols: number, deeps: number): number => (y * cols + x) + (cols * deeps * z),
+        as3D: (x: number, y: number, z: number, cols: number, deeps: number): number => (y * cols + x) + (cols * deeps * z)
         // set3D: (x: number, y: number, z: number, cols: number, deeps: number, value: any): void => this.MYARR[(y*cols+x) + (cols*deeps*z)] = value;
+    
     };
 
-    /* Factorial algorithms: n!
+    /** Factorial algorithms: n!
      *     5! = 5 * 4 * 3 * 2 * 1 = 120
      *     0! = 1 so that 1! = 1 * 0! = 1
      */
-    factorialCounter$: Observable<number>;
-    factorial$: Observable<number>;
     factorial = {
 
+        factorialCounter$: {} as Observable<number>,
+        factorial$: {} as Observable<number>,
+        
         observer: (n: number): Subscription => {
 
-            this.factorialCounter$ = range(1, n);
-            this.factorial$ = this.factorialCounter$.pipe(scan((acc, value) => acc * value));
+            this.factorial.factorialCounter$ = range(1, n);
+            this.factorial.factorial$ = this.factorial.factorialCounter$.pipe(scan((acc, value) => acc * value));
 
-            return this.factorial$.subscribe(
+            return this.factorial.factorial$.subscribe(
                 (x) => { console.log('Next: ' + x); },
                 (err) => { console.log('Error: ' + err); },
                 () => { console.log('Complete'); }
@@ -126,6 +128,7 @@ export class MathUtilsService {
                 return n % x ? [] : [x];                        // monadic fail or inject/return
             });
         }
+
     };
 
     /** Fibonacci algorithms: (Phi Φ)
@@ -137,8 +140,8 @@ export class MathUtilsService {
      */
     fibonacci = {
 
-        // Fibonacci Recursive Generator #worst
-        * recursive(n: number, current = 0, next = 1): IterableIterator<number> {
+        // Fibonacci Recursive Generator - #worst
+        * recursiveGenerator(n: number, current = 0, next = 1): IterableIterator<number> {
 
             if (n === 0) { return 0; }
 
@@ -146,8 +149,8 @@ export class MathUtilsService {
             yield* this.fibonaccibRecursive(n - 1, next, current + next);
         },
 
-        // Fibonacci Iterative Generator #best if calculate values > 75!
-        * iterative(n: number): IterableIterator<number> {
+        // Fibonacci Iterative Generator - #best if calculate values > 75!
+        * iterativeGenerator(n: number): IterableIterator<number> {
 
             const isInfinite = isFinite(n);
             let current = 0,
@@ -160,7 +163,7 @@ export class MathUtilsService {
             }
         },
 
-        // Fibonacci lookup Array #best if memory is wayne
+        // Fibonacci lookup Array - #best if memory is wayne
         * lookupGenerator(n: number): IterableIterator<number> {
 
             if (n > 79) { throw new Error('Not available for n > 79.'); }
@@ -172,7 +175,7 @@ export class MathUtilsService {
 
             return Math.round((1 / Math.sqrt(5)) * (Math.pow(((1 + Math.sqrt(5)) * .5), n) - Math.pow(((1 - Math.sqrt(5)) * .5), n)));
         },
-        * formula(n: number): IterableIterator<number> {
+        * formulaGenerator(n: number): IterableIterator<number> {
 
             const isInfinite = isFinite(n);
             let current = 0;
@@ -182,13 +185,14 @@ export class MathUtilsService {
                 current++;
             }
         }
+
     };
 
     /** ℙ Prime Numbers */
     prime = {
 
         /** Creates a new primality instance.
-         * @param nsa A number, string, or array to check the primality of.
+         * @param numStrArr A number, string or array to check the primality of.
          * @returns Returns `true` if `nsa` is prime.
          * @example primality(7);
          * // => true
@@ -197,22 +201,22 @@ export class MathUtilsService {
          * primality([17, 19, 23]);
          * // => true
          */
-        primality(nsa: number | string | any[]): boolean {
+        primality(numStrArr: number | string | any[]): boolean {
 
-            if (nsa === null || nsa === '') { return null; }
+            if (numStrArr === null || numStrArr === '') { return null; }
 
-            if (nsa instanceof Array) {
+            if (numStrArr instanceof Array) {
 
-                let i = nsa.length;
+                let i = numStrArr.length;
                 while (i--) {
 
-                    if (!this.isPrime(nsa[i])) { return false; }
+                    if (!this.isPrime(numStrArr[i])) { return false; }
                 }
 
                 return true;
             }
 
-            return this.isPrime(nsa);
+            return this.isPrime(numStrArr);
         },
         /** Checks if `n` is prime.
          * @param n The value to check
@@ -496,6 +500,7 @@ export class MathUtilsService {
 
             return false;
         }
+
     };
 
     /** Ratio - Aspekt / Golden */
@@ -550,7 +555,9 @@ export class MathUtilsService {
 
                 return { main, major, minor };
             }
+
         }
+
     };
 
     /** Sqaure² bench */
@@ -573,6 +580,7 @@ export class MathUtilsService {
             // even
             return (this.squareBitShiftRecursice(x) << 2);
         }
+
     };
 
     /** Triangle -  */
@@ -647,7 +655,8 @@ export class MathUtilsService {
                 let BDeg = Math.acos((a ** 2 + c ** 2 - b ** 2) / (2 * b * c));
                 let Ydeg = Math.acos((a ** 2 + b ** 2 - c ** 2) / (2 * a * b));
                 return c;
-            },
+            }
+
         },
 
         right: {
@@ -700,8 +709,10 @@ export class MathUtilsService {
              * @param gegenkathete Side b
              * @return β angle in Radiant
              */
-            Brad_AnkaGegen(ankathete: number, gegenkathete: number): number { return Math.atan(ankathete / gegenkathete); },
+            Brad_AnkaGegen(ankathete: number, gegenkathete: number): number { return Math.atan(ankathete / gegenkathete); }
+
         }
+
     };
 
     euclid = {
@@ -862,7 +873,9 @@ export const utils = {
         let mult = Math.pow(10, places);
         return Math.round(value * mult) / mult;
     }
+
 };
+
 
 export const lookups = {
 
@@ -1071,6 +1084,7 @@ export const lookups = {
     primes: [1, 2, 3, 5, 7, 9, 11, 13, 17, 19],
     wieferichs: [1093, 3511],
     wilsons: [5, 13, 563]
+
 }
 
 

@@ -13,7 +13,6 @@ export class Particle {
     this.velocity = new Vector(0, 0);
     this.velocity.length = speed;
     this.velocity.angle = direction;
-
   }
 
   public update() {
