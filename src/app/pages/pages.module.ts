@@ -7,7 +7,6 @@ import {
 } from '@angular/material';
 
 import { BusinessCardModule } from '../utils/business-card/business-card.module';
-
 import { ChartsDataModule } from './charts/charts.module';
 import { GamesModule } from './games/games.module';
 import { MapModule } from './API/google-maps/maps.module';

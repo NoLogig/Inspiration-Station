@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { MathUtilsService } from "src/app/services/math/math.service";
+import maths from "src/app/services/math/math.service";
 import { IGoldenRatio } from 'src/app/services/math/interfaces/imath';
 
 @Component({
   selector: 'nlg-golden-ratio',
   templateUrl: './golden-ratio.component.html',
-  styleUrls: ['./golden-ratio.component.scss'],
-  providers: [ MathUtilsService ]
+  styleUrls: ['./golden-ratio.component.scss']
 })
 export class GoldenRatioComponent implements OnInit {
 
   public scaleView = .75;
-
+  maths = maths;
   public golden: IGoldenRatio;
 
   metas = {
@@ -25,7 +24,7 @@ export class GoldenRatioComponent implements OnInit {
     }
   };
 
-  constructor(public nlgMath: MathUtilsService) { 
+  constructor() { 
     
     this.golden = {
       main: 100,
