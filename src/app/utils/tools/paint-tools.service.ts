@@ -125,6 +125,7 @@ export class CanvasPaintToolsService {
 
   drawCenter(ctx: CanvasRenderingContext2D, strokeStyle = '#f3f') {
 
+    ctx.save();
     ctx.strokeStyle = strokeStyle;
 
     ctx.beginPath();
@@ -137,8 +138,10 @@ export class CanvasPaintToolsService {
 
     ctx.closePath();
     ctx.stroke();
+    ctx.restore();
     return;
   }
+
 
   // Stroke line between nodes
   connectNodes(ctx: CanvasRenderingContext2D, nodes: IPoint[], currentIndex: number, range?: number, ): void {
@@ -165,6 +168,7 @@ export class CanvasPaintToolsService {
     return;
   }
   
+
   randomColor(): string {
 
     let r = Math.floor(Math.random() * 255),
@@ -173,6 +177,7 @@ export class CanvasPaintToolsService {
 
     return "rgb(" + r + "," + g + "," + b + ")d";
   }
+
   /** Get RGBA of pixel at x/y coordinates
    * @param imgData
    *+  `data`:`number[]` imgData in RGBA order as 0 to 255 ints
@@ -239,6 +244,7 @@ export class CanvasPaintToolsService {
     return;
   }
 
+  
   /* Helpers */
   attachEvent(ele: HTMLElement, event: string, fn: (e: KeyboardEvent | MouseEvent) => void) {
     ele.addEventListener(event, fn);

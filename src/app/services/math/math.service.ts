@@ -2,13 +2,11 @@ import { Observable, range, Subscription } from 'rxjs';
 import { scan } from 'rxjs/operators';
 import { IGoldenRatio, IPoint, ITheoremPythagoras, ITriangle } from './interfaces/imath';
 
-
 export const DEG = Math.PI / 180;
 export const RAD = 180 / Math.PI;
 export const PI = Math.PI;
 export const CIRCLE = Math.PI * 2;
 export const PHI = 1.61803398875;
-
 
 export class MathUtilsService {
 
