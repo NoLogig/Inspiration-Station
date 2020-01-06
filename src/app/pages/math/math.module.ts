@@ -7,6 +7,7 @@ import { TheoremsModule } from './theorems/theorems.module';
 import { VelocityModule } from './velocity/velocity.module';
 import { IsometricModule } from './isometric/isometric.module';
 import { NodeGardenModule } from './garden/node/node.module';
+import { PISModule } from './pis/pis.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NodeGardenModule } from './garden/node/node.module';
   exports: [
   ],
   imports: [
+    PISModule,
     BusinessCardModule,
     DropNodesModule,
     GoldenModule, IsometricModule,

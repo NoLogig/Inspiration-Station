@@ -1,7 +1,7 @@
-// You can add global styles to this file, and also import other style files
+// You can add global styles to this file and also import other style files
 
 html, body {
-
+  width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -48,6 +48,7 @@ $theme: mat-dark-theme($primary, $accent, $warn);
 
 // Applies variables to the theme with the defined styling 
 @include angular-material-theme($theme);
+
 
 // Rules for sizing <mat-icon>
 .material-icons[mat-18] { font-size: 18px; }

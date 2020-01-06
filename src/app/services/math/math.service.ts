@@ -715,7 +715,7 @@ export class MathUtilsService {
 
     euclid = {
 
-        rekursive: (a, b) => {
+        rekursive: (a: number, b: number): number => {
 
             if (b === 0) { return a; }
             if (a === 0) { return b; } 
@@ -723,7 +723,7 @@ export class MathUtilsService {
             return this.euclid.rekursive(a, b - a);
         },
 
-        iterative(a, b) {
+        iterative(a: number, b: number): number {
 
             if (a === 0) { return b; }
 
@@ -740,13 +740,13 @@ export class MathUtilsService {
 
         // Modern Variantions
 
-        rekursive_modern: (a, b) => {
+        rekursive_modern: (a: number, b: number): number => {
 
             if (b === 0) { return a; }
             return this.euclid.rekursive_modern(b, a % b);
         },
 
-        iterative_modern(a, b) {
+        iterative_modern(a: number, b: number): number {
 
             let tmp = 0;
             while (b !== 0) {
@@ -815,7 +815,7 @@ export const utils = {
      *          |     |      |
      *          dst   ?      dst  ← return
      */
-    map: (val: number, srcMin: number, srcMax: number, destMin: number, destMax: number): number => this.lerp(this.norm(val, srcMin, srcMax), destMin, destMax),
+    map: (val: number, srcMin: number, srcMax: number, destMin: number, destMax: number): number => utils.lerp(utils.norm(val, srcMin, srcMax), destMin, destMax),
 
     /**
      *  let dx = p1.x - p0.x,
