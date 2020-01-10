@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 
 export class Livecycle implements OnInit, AfterContentChecked, AfterContentInit, 
-                                           AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
+                                  AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
 
   /* ########################### */
   /* ####  Livecycle Hooks  #### */
