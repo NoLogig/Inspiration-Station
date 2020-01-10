@@ -4,6 +4,7 @@ $trans: transparent;
 
 .gradient-hexagon {
     width: auto;
+    background-color: dimgray;
     background: radial-gradient(circle farthest-side at 0% 50%, $fill 23.5%, $trans 0) 21px 30px,
                 radial-gradient(circle farthest-side at 0% 50%, $stroke 24%, $trans 0) 19px 30px,
                 linear-gradient($fill 14%, $trans 0, $trans 85%, $fill 0) 0 0,
