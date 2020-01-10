@@ -36,7 +36,7 @@ export class PISComponent implements OnInit {
   ctx: CanvasRenderingContext2D;
   width: number;
   height: number;
-  raf: Number;
+  raf: number;
 
   // Shapes
   numShapes = 100;

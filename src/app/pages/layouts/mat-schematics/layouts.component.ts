@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatLayoutsComponent implements OnInit {
 
+  cardMetas = {
+    title: 'Material Generated Layouts',
+    subTitle: '',
+    subExtra: '',
+    links: {
+      down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
+      git:  'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/layouts/mat-layouts',
+      live: 'https://inspiration-station.herokuapp.com/mat-layouts',
+    }
+  };
+
   constructor() { }
 
   ngOnInit() {

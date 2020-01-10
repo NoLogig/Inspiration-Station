@@ -13,7 +13,7 @@ import { HexBorderArrowImgComponent } from './hex-border-arrow-img/hex-border-ar
 import { HexGradientComponent } from './hex-gradient/hex-gradient.component';
 import { HexRotateComponent } from './hex-rotate/hex-rotate.component';
 import { HexRotateImgComponent } from './hex-rotate-img/hex-rotate-img.component';
-import { HexScewedComponent } from './hex-scewed/hex-scewed.component';
+import { HexSkewedComponent } from './hex-skewed/hex-skewed.component';
 import { HexSpinComponent } from './hex-spin/hex-spin.component';
 import { HexSvgComponent } from './hex-svg/hex-svg.component';
 import { HexTransformComponent } from './hex-transform/hex-transform.component';
@@ -36,7 +36,7 @@ import { HexUniCodeComponent } from './hex-uni-code/hex-uni-code.component';
   declarations: [
     HexagonsComponent,
     HexBorderArrowComponent, HexBorderArrowImgComponent, HexGradientComponent, HexRotateComponent, HexRotateImgComponent,
-    HexScewedComponent, HexSpinComponent, HexSvgComponent, HexTransformComponent, HexUniCodeComponent
+    HexSkewedComponent, HexSpinComponent, HexSvgComponent, HexTransformComponent, HexUniCodeComponent
   ]
 })
 export class HexagonsModule { }

@@ -1,4 +1,4 @@
-<!-- Header -->
+<!-- Header - Toolbar -->
 <mat-toolbar class="nlg-head" color="primary" >
 
   <!-- Navigation - Toggle -->
@@ -14,17 +14,20 @@
     <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="home">
       <mat-icon>home</mat-icon>
     </a>
+    <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="gn8-player">
+      GN8-Player
+    </a>
     <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="theorems">
       Theorems
     </a>
 
   </nav>
 
-  <!-- SpaceFiller -->
+  <!-- Space Filler -->
   <span class="flex-space-filler"><!-- {{title}} --></span>
 
   <!-- Settings - Toggle -->
-  <button type="button" mat-button aria-label="Toggle settings" (click)="set.toggle();">
+  <button type="button" mat-button aria-label="Toggle settings" (click)="set.toggle()">
     <mat-icon aria-label="Side settings toggle icon">settings</mat-icon>
   </button>
 

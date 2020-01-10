@@ -768,6 +768,7 @@ export default m;
 
 export const utils = {
 
+
     /** Clamp a value to Min/Max
      * @example if(n < min) return min;
      *          if(n > max) return max;
@@ -1094,13 +1095,13 @@ export const lookups = {
  * let octNum = 0o17;             // Octal
  * let hexNum = 0xf4;             // Hexadecimal
  *
- * let num4 = Number('');         // → 0
+ * let num  = Number('');         // → 0
  * let num1 = Number('123');      // → 123
- * let num2 = Number('12.3');     // → 12.3
+ * let num2 = Number('1.23');     // → 1.23
  * let num3 = Number('123e-1');   // → 12.3
- * let num6 = Number('0b11');     // → 3
- * let num7 = Number('0o11');     // → 9
- * let num5 = Number('0x11');     // → 17
+ * let num4 = Number('0b11');     // → 3
+ * let num5 = Number('0o11');     // → 9
+ * let num6 = Number('0x11');     // → 17
  *
  * let deci = 0xf7.toString(10);  // Convert number to decimal string
  * let binary = 8..toString(2);   // Convert number to binary string
@@ -1206,12 +1207,12 @@ export function nlg_echo() { }
 /** Masked Numbers
  * @example const str1 = '5';
  * console.log(str1.padStart(3, '0'));
- * // expected output: "005"
- * const fullNumber = '2034399002125581';
+ * // → "005"
+ * const fullNumber = '0123456789';
  * const last4Digits = fullNumber.slice(-4);
  * const maskedNumber = last4Digits.padStart(fullNumber.length, '*');
  * console.log(maskedNumber);
- * // expected output: "************5581"
+ * // → ******6789
  *
  * console.log((21..toString(2).padStart(9, '0')));
  * console.log((33..toString(2).padStart(9, '0')));
@@ -1220,7 +1221,9 @@ export function nlg_foxtrot() { }
 
 /* Binary 2 String */
 export function nlg_golf(txt: string) {
+
     return txt.replace(/\s*[01]{8}\s*/g, (bin) => {
+        
         return String.fromCharCode(parseInt(bin, 2));
     });
 }

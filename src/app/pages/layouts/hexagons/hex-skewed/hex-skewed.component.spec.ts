@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HexScewedComponent } from './hex-scewed.component';
+import { HexSkewedComponent } from './hex-skewed.component';
 
-describe('HexScewedComponent', () => {
-  let component: HexScewedComponent;
-  let fixture: ComponentFixture<HexScewedComponent>;
+describe('HexSkewedComponent', () => {
+  let component: HexSkewedComponent;
+  let fixture: ComponentFixture<HexSkewedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HexScewedComponent ]
+      declarations: [ HexSkewedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HexScewedComponent);
+    fixture = TestBed.createComponent(HexSkewedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
