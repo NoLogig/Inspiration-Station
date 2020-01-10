@@ -93,11 +93,11 @@ li {
 }
 .center { text-align: center; }
 .right { text-align: right; }
-.bg1 { background-image: url('../../../../../assets/images/parallax.jpg'); }
-.bg2 { background-image: url('../../../../../assets/images/bbsimpsons.jpg'); }
-.bg3 { background-image: url('../../../../../assets/images/parallax2.jpg'); }
+.bg1 { background-image: url('/assets/images/parallax.jpg'); }
+.bg2 { background-image: url('/assets/images/bbsimpsons.jpg'); }
+.bg3 { background-image: url('/assets/images/parallax2.jpg'); }
 .inner-parallax {
     position: relative;
-    background-image: url('../../../../../assets/images/bubbles.jpg');
+    background-image: url('/assets/images/bubbles.jpg');
     height: 200px;
 }

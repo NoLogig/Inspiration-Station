@@ -14,7 +14,7 @@ export class SplitScreenSkewedComponent implements OnInit, AfterContentChecked, 
     subExtra: '',
     links: {
       down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
-      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/home',
+      git:  'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/home',
       live: 'https://inspiration-station.herokuapp.com',
     }
   };

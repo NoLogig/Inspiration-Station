@@ -8,20 +8,20 @@ I went with "fixed," but "absolute" positioning also works, depending on the app
 
 
 .background {
-    background-image: url('../../../../../assets/images/infinity-bg.jpg');
+    background-image: url('/assets/images/infinity-bg.jpg');
 }
 
 .foreground {
-    background-image: url('../../../../../assets/images/435px-Metatrons-cube.png');
+    background-image: url('/assets/images/435px-Metatrons-cube.png');
 }
 
 .fore-foreground {
-    background-image: url('../../../../../assets/img/ethereum-icon-md.png');
+    background-image: url('/assets/img/ethereum-icon-md.png');
     background-size: 400px 400px;
 }
 
 div.fore-fore-foreground {
-    background-image: url('../../../../../assets/images/moon.png');
+    background-image: url('/assets/images/moon.png');
     background-position: center;
     background-repeat: no-repeat;
     z-index: 5;
