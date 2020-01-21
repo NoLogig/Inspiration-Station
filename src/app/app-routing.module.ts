@@ -7,6 +7,7 @@ import { SplitScreenSkewedComponent } from './pages/layouts/split-screen-skewed/
 import { TheoremsComponent } from './pages/math/theorems/theorems.component';
 
 export const routes: Routes = [
+  
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: SplitScreenSkewedComponent, pathMatch: 'full' },
   
