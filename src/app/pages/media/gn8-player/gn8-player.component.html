@@ -1,4 +1,5 @@
 <nlg-business-card [metas]="metas"></nlg-business-card>
+
 <div class="tw"></div>
 
 <div class="media-container">
@@ -6,10 +7,13 @@
   <mat-card class="player-container">
 
     <mat-card-header>
+
       <mat-card-title>
         <span>{{media.current.media.name ? media.current.media.name : 'NLGn8 Player'}}</span>
       </mat-card-title>
+      
       <!-- <mat-card-subtitle *ngIf="!media.current.media.name"></mat-card-subtitle> -->
+
     </mat-card-header>
 
     <mat-card-content class="player-wrapper">

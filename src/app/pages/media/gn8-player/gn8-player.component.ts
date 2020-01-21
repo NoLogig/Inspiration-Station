@@ -32,9 +32,8 @@ export class Gn8PlayerComponent implements OnInit, OnDestroy, AfterContentChecke
 
   metas = {
     title: 'Good N8 Player',
-    subTitle: `
-    Fall asleep during a movie & be awakened by extremely loud sounds?
-    Dialogues are too quiet, sound effects drowned out & makes watching movies as a torture!`,
+    subTitle: `Like falling asleep during a movie & hate be awakened by extremely loud sounds?
+               Most dialogues are too quiet, sound effects drowned out & make watch something as a torture in the middle of the night!`,
     subExtra: '',
     links: {
       down: 'https://github.com/NoLogig/Inspiration-Station.git',
@@ -75,9 +74,7 @@ export class Gn8PlayerComponent implements OnInit, OnDestroy, AfterContentChecke
   setup: ISetup;
   rangeDecibel: number;
 
-  constructor(private rend: Renderer2, private domSanitizer: DomSanitizer, private breakpointObserver: BreakpointObserver) {
-
-  }
+  constructor(private rend: Renderer2, private domSanitizer: DomSanitizer, private breakpointObserver: BreakpointObserver) { }
 
   /* ########################### */
   /* ####  Livecycle Hooks  #### */
