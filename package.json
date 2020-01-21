@@ -1,6 +1,6 @@
 {
   "name": "nologig",
-  "description": "Prototype MEAN Stack TypeScript Workspace",
+  "description": "Prototype MEAN Stack Workspace",
   "version": "0.8.0",
   "engines": {
     "node": "12.6.0",

@@ -4,9 +4,10 @@ import { IGoldenRatio, IPoint, ITheoremPythagoras, ITriangle } from './interface
 
 export const DEG = Math.PI / 180;
 export const RAD = 180 / Math.PI;
-export const PI = Math.PI;
 export const CIRCLE = Math.PI * 2;
+export const PI = Math.PI;
 export const PHI = 1.61803398875;
+
 
 export class MathUtilsService {
 
@@ -1085,7 +1086,6 @@ export const lookups = {
     wilsons: [5, 13, 563]
 
 }
-
 
 /*********************    Just My Notes    *********************/
 

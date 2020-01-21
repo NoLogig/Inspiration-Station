@@ -1,4 +1,3 @@
-
 # NoLogig's Inspiration Station [![Dependencies](https://img.shields.io/david/NoLogig/Inspiration-Station.svg)](https://david-dm.org/NoLogig/inspiration-station) [![License](https://img.shields.io/github/license/NoLogig/Inspiration-Station.svg)](https://choosealicense.com/licenses/mit/)
 
 ## [Live instance](https://inspiration-station.herokuapp.com/)
@@ -7,13 +6,13 @@ Please be patient, [Heroku](https://heroku.com) might take upto a minute to load
 
 ## Development
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.22.
 
 ### Prerequisites
 
- - [Node.js®](https://nodejs.org) & ([npm](http://npmjs.com) comes with node)
- - [Git](https://git-scm.com) 
- - [Angular CLI](https://cli.angular.io)
+ - [Node.js®](https://nodejs.org) & [npm](http://npmjs.com) (comes with node)
+ - [Angular CLI](https://cli.angular.io) Command line interface for Angular
+ - [Git](https://git-scm.com) GitHubs command line tool (Not necessary)
 
 ### How²Use
 
@@ -30,8 +29,9 @@ npm run start
 
 ## Notes & Resources
 
-- [ECMAScript](https://kangax.github.io/compat-table/es6/) `5|6|2016+|next|intl|non-standard` compatibility table
-- [TypeScript](https://www.typescriptlang.org)
+[ECMAScript](https://kangax.github.io/compat-table/es6/) `5|6|2016+|next|intl|non-standard` compatibility table
+
+[TypeScript](https://www.typescriptlang.org) Documentation
 
 [**MEAN Stack**](https://en.wikipedia.org/wiki/MEAN_(software_bundle))
 
@@ -76,13 +76,14 @@ npm run start
     http-server -p 8080 -c-1 dist/PROJECT-NAME
 ```
 Navigate to [`http://localhost:8080/`](http://localhost:8080/).
-Disconnect internet connection & reload the page.
 
-#### Native-File-System-API
+### Native-File-System-API
 
 The lack of access to the file system is one of the biggest obstacles to the success of **P**rogressive-**W**eb-**A**pps.
 In Chrome 77 (beta) an access to the file system can be activated.
 **!Hurray!**
+
+## NG CLI
 
 ### Development server
 

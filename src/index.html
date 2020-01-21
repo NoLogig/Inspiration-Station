@@ -8,7 +8,9 @@
   <title>Nologig</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-  <!-- Todo: ElectronJS <base href="./"/> & ServiceWorker reference conflicts  -->
+  <!-- Todo: ElectronJS <base href="./"/> & ServiceWorker & i18n <base href="de"/> & SCSS url() reference conflicts 
+       → SCSS: Use absolute paths for assets. Issue should be fixed in newer versions.
+       → i18n: Same as SCSS or import in styles.scss a stylesheet which import fonts... -->
   <base href="/" />
 
   <!-- Ng Service Worker -->
@@ -22,14 +24,14 @@
   <noscript>Please enable JavaScript to continue using this application.</noscript>
 
   <!-- Material Design -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" /> -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-  <!-- Google Maps, REPLACE ?key=XXX with your API-KEY -->
+  <!-- Google Maps, REPLACE  XXX  with your API-KEY -->
   <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=XXX"></script> -->
   <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR7ga0iuy_llG-JGoK1PrAe5gqt_d0aVU"></script> -->
 
-  <!-- Google Analytics, replace  UA-XXXX-xX  with your key -->
+  <!-- Google Analytics, replace  UA-XXXXX-Y  with your key -->
   <!-- <script>
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;
@@ -46,7 +48,7 @@
     ga('create', 'UA-XXXXX-Y', 'auto');
     ga('send', 'pageview');
 
-  </script-->
+  </script> -->
   
 </body>
 </html>

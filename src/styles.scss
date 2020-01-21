@@ -1,7 +1,7 @@
 // You can add global styles to this file and also import other style files
 
 html, body {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -63,6 +63,7 @@ $theme: mat-dark-theme($primary, $accent, $warn);
 // Rules for white icon on a dark background. 
 .material-icons[mat-light] { color: rgba(255, 255, 255, 1); }
 .material-icons[mat-light][mat-inactive] { color: rgba(255, 255, 255, 0.3); }
+
 
 // Rules for tabs
 mat-tab-group mat-tab-header { background: #0008; }
