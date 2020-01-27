@@ -44,10 +44,10 @@ export interface IVector extends IPoint {
     getLength(): number;
     setLength(length: number): void;
 
-    addTo(vec2: number);
-    subtractFrom(vec2: number);
-    multiplyBy(vec2: number);
-    divideBy(vec2: number);
+    addTo(vec2: number): void;
+    subtractFrom(vec2: number): void;
+    multiplyBy(vec2: number): void;
+    divideBy(vec2: number): void;
 }
 export interface ISpring extends IPoint {
 
@@ -133,6 +133,8 @@ export interface IRGBA {
     r: number;
     g: number;
     b: number;
+
+    rgb?: string;
     
     a?: number;
     rgba?: string;
