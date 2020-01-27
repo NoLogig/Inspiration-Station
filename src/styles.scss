@@ -6,15 +6,15 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: #1331;
+  
+  &::-webkit-scrollbar {
+     display: none;
+  }
 }
 
 body {
 
   font-family: Roboto, "Helvetica Neue", sans-serif;
-
-  // &::-webkit-scrollbar {
-    // display: none;
-  // }
 
   // &>nlg-root::-webkit-scrollbar {
     // display: none;

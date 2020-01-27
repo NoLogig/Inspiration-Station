@@ -1,4 +1,4 @@
-# NoLogig's Inspiration Station [![Dependencies](https://img.shields.io/david/NoLogig/Inspiration-Station.svg)](https://david-dm.org/NoLogig/inspiration-station) [![License](https://img.shields.io/github/license/NoLogig/Inspiration-Station.svg)](https://choosealicense.com/licenses/mit/)
+# NoLogig - Inspiration Station [![Dependencies](https://img.shields.io/david/NoLogig/Inspiration-Station.svg)](https://david-dm.org/NoLogig/inspiration-station) [![License](https://img.shields.io/github/license/NoLogig/Inspiration-Station.svg)](https://choosealicense.com/licenses/mit/)
 
 ## [Live instance](https://inspiration-station.herokuapp.com/)
 
@@ -33,21 +33,21 @@ npm run start
 
 [TypeScript](https://www.typescriptlang.org) Documentation
 
-[**MEAN Stack**](https://en.wikipedia.org/wiki/MEAN_(software_bundle))
+### [MEAN Stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle))
 
 * [**M**ongoDB](https://www.mongodb.com):                       NoSQL-Document Database
 * [**E**xpress](http://expressjs.com):                          A minimal & flexible NodeJS framework
 * [**A**ngular](https://angular.io):                            Frontend **S**ingle-**P**age-**A**pplication
 * [**N**odeJS](https://nodejs.org):                             Asynchronous event driven JavaScript runtime
 
-**Server (Node & Express)**
+### Server (Node & Express)
 * [body-parser](https://www.npmjs.com/package/body-parser):     Parse incoming request bodies before your handlers
 * [cors](https://www.npmjs.com/package/cors):                   Express middleware to enable CORS 
 * [errorhandler](https://www.npmjs.com/package/errorhandler):   Development error handler
 * [morgan](https://www.npmjs.com/package/morgan):               Logs HTTP request details to console (written by Express)
 * [path](https://nodejs.org/docs/latest/api/path.html):         Provides utilities for working with file and directory paths
 
-**Client (Angular)**
+### Client (Angular)
 * [Angular CLI](https://cli.angular.io):                        Command line frontend scaffolding
 * [Angular Material](https://material.angular.io):              Design components for Angular
     + [Material Icons](https://material.io/icons):              Material Icons
@@ -62,7 +62,7 @@ npm run start
 
 - [http-server](https://nodejs.org/http-server)
 
-##### Install 
+##### Install http-server
 
 ```bash
     npm i -g http-server
@@ -75,7 +75,7 @@ npm run start
 
     http-server -p 8080 -c-1 dist/PROJECT-NAME
 ```
-Navigate to [`http://localhost:8080/`](http://localhost:8080/).
+Navigate to [`http://localhost:8080/`](http://localhost:8080/)
 
 ### Native-File-System-API
 
