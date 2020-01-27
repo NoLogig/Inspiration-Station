@@ -93,30 +93,12 @@ export class Gn8PlayerComponent implements OnInit, OnDestroy, AfterContentChecke
     // this.initMultimedia();
     // this.initAudioContext();
   }
-
-  ngAfterViewChecked() {
-    console.log('GN8 ngAfterViewChecked');
-  }
-
-  ngAfterContentChecked() {
-    console.log('GN8 ngAfterContentChecked');
-  }
-
-  ngAfterContentInit() {
-    console.log('GN8 ngAfterContentInit');
-  }
-
-  ngAfterViewInit() {
-    console.log('GN8 ngAfterViewInit');
-  }
-
-  ngOnChanges() {
-    console.log('GN8 ngOnChanges');
-  }
-
-  ngOnDestroy(): void {
-    console.log('GN8 ngOnDestroy');
-  }
+  ngAfterViewChecked() {    console.log('Gn8 ViewChecked'); }
+  ngAfterContentChecked() { console.log('Gn8 ContentChecked'); }
+  ngAfterContentInit() {    console.log('Gn8 ContentInit'); }
+  ngAfterViewInit() {       console.log('Gn8 ViewInit'); }
+  ngOnChanges() {           console.log('Gn8 Changes'); }
+  ngOnDestroy() {           console.log('Gn8 Destroy'); }
 
   /* ########################### */
   /* ####    File Reader    #### */
