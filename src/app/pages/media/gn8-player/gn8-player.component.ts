@@ -180,6 +180,7 @@ export class Gn8PlayerComponent implements OnInit, OnDestroy, AfterContentChecke
     // Need to round cuz 0.94 rounding bug that turns value into 0.93999... 
     // Therefore it's impossible to mute the player without rounding here.
     if (e.deltaY < 0 && this.videoPlayer.volume < 1.00) {
+
       this.videoPlayer.volume = utils.roundToPlaces(this.videoPlayer.volume += 0.01, 3);
       return;
     }
@@ -191,6 +192,7 @@ export class Gn8PlayerComponent implements OnInit, OnDestroy, AfterContentChecke
     let i = this.media.current.index + 1;
 
     if (this.selectList[i].url) {
+
       this.media.current.index = i;
       this.media.current.media = this.selectList[i];
       this.videoPlayer.src = this.selectList[i].url;
@@ -244,10 +246,10 @@ export class Gn8PlayerComponent implements OnInit, OnDestroy, AfterContentChecke
 
     // video.addEventListener('canplaythrough', function () {
 
-      source = audioCtx.createMediaElementSource(video)
-      source.connect(processor)
-      source.connect(audioCtx.destination)
-      processor.connect(audioCtx.destination)
+      source = audioCtx.createMediaElementSource(video);
+      source.connect(processor);
+      source.connect(audioCtx.destination);
+      processor.connect(audioCtx.destination);
       // video.play()
     // }, false);
 
@@ -261,22 +263,24 @@ export class Gn8PlayerComponent implements OnInit, OnDestroy, AfterContentChecke
           i = 0,
           rms;
 
-      while (i < len) total += Math.abs(input[i++])
+      while (i < len) total += Math.abs(input[i++]);
 
-      rms = Math.sqrt(total / len)
+      rms = Math.sqrt(total / len);
 
       if (rms > this.rangeDecibel && video.volume > 0.05) video.volume -= 0.05;
       
       if (rms < this.rangeDecibel && video.volume < 0.995) video.volume += 0.005;
       
-      target.style.width = (rms * 100) + '%'
+      target.style.width = (rms * 100) + '%';
     }
 
   }
 
-  startDecibelMeter(tar: HTMLDivElement) {
+  startDecibelMeter(target: HTMLDivElement) {
+
     let url = this.media.current.media.url;
-    this.decibelMeter(this.videoPlayer, this.setup.audioCtx, tar, url)
+    this.decibelMeter(this.videoPlayer, this.setup.audioCtx, target, url);
+
   }
 
   /* ########################### */

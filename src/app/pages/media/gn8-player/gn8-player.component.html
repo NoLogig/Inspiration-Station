@@ -30,19 +30,23 @@
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="select2Paylist(plname.value); plname.value = ''"
         [disabled]="selectList[0] && plname.value !== '' ? false : true">
-          Save</button>
+          Save
+        </button>
 
         <!-- SelectList - Play Random -->
         <button mat-raised-button color="primary" (click)="playRnd();" [disabled]="selectList[0] ? false : true">
-          Rnd</button>
+          Rnd
+        </button>
           
         <!-- SelectList - Add -->
         <button mat-raised-button color="primary" (click)="selectList = selectList.concat(selectList);" [disabled]="selectList[0] ? false : true">
-          Add²List</button>
+          Add²List
+        </button>
 
         <!-- Audio Proccesor - Connect -->
         <button mat-raised-button color="primary" #con (click)="initAudioContextDecibelMeter(); startDecibelMeter(meter); con.disabled = true; rangeDecibel = 1;">
-          Decibel Ranger</button>
+          Decibel Ranger
+        </button>
 
       </form>
 
@@ -93,10 +97,11 @@
         <!-- <mat-divider></mat-divider> -->
 
         <mat-action-list>
-          <mat-list-item *ngFor="let item of selectList, let index = index" color="primary"
-          (click)="videoPlayer.src = item.url;  media.current.media = item; media.current.index = index">
+
+          <mat-list-item *ngFor="let item of selectList, let i = index" color="primary" (click)="videoPlayer.src = item.url; media.current.media = item; media.current.index = i">
             {{item.name}}
           </mat-list-item>
+
         </mat-action-list>
 
         <!-- </mat-card-content> -->
@@ -113,9 +118,11 @@
       <mat-card class="playl">
 
         <mat-action-list class="playlist">
+
           <mat-list-item mat-button *ngFor="let item of playList" color="warn" (click)="selectList = item.files">
             {{item.name}}
           </mat-list-item>
+
         </mat-action-list>
 
       </mat-card>
