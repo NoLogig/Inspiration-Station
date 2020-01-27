@@ -296,7 +296,7 @@ export class Gn8PlayerComponent implements OnInit, OnDestroy, AfterContentChecke
   }
 
   /* ########################### */
-  /* ####     Test Cases    #### */
+  /* ####       Tests       #### */
   /* ########################### */
 
   test(val: any) {
