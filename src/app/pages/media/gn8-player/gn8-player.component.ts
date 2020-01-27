@@ -82,7 +82,7 @@ export class Gn8PlayerComponent implements OnInit, OnDestroy, AfterContentChecke
   
   ngOnInit() {
 
-    console.log('GN8 ngOnInit');
+    console.log('Gn8 Init');
 
     this.videoPlayer = this.videoRef.nativeElement;
     // this.videoPlayer.width =  window.innerWidth * 0.68;
