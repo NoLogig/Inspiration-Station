@@ -8,19 +8,19 @@ export class Vector {
   public len: number;
 
   public get angle(): number { return Math.atan2(this.y, this.x); }
-  public set angle(a: number) {
+  public set angle(val: number) {
 
-    this.ang = a;    
-    this.x = Math.cos(a) * this.len;
-    this.y = Math.sin(a) * this.len;
+    this.ang = val;    
+    this.x = Math.cos(val) * this.len;
+    this.y = Math.sin(val) * this.len;
   }
 
   public get length(): number { return Math.sqrt(this.x ** 2 + this.y ** 2); }
-  public set length(l: number) {
+  public set length(val: number) {
 
-    this.len = l;  
-    this.x = Math.cos(this.ang) * l;
-    this.y = Math.sin(this.ang) * l;
+    this.len = val;  
+    this.x = Math.cos(this.ang) * val;
+    this.y = Math.sin(this.ang) * val;
   }
 
   constructor(x: number, y: number) {
@@ -31,16 +31,16 @@ export class Vector {
     this.len = this.length;
   }
 
-  public addTo(v: IPoint) {
+  public addTo(vect: IPoint) {
 
-    this.x += v.x;
-    this.y += v.y;
+    this.x += vect.x;
+    this.y += vect.y;
   }
   
-  public subtractFrom(v: IPoint) {
+  public subtractFrom(vect: IPoint) {
 
-    this.x -= v.x;
-    this.y -= v.y;
+    this.x -= vect.x;
+    this.y -= vect.y;
   }
 
   public multiplyBy(n: number) {
