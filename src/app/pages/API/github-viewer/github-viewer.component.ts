@@ -1,6 +1,4 @@
-import { Component, 
-  OnInit, OnChanges, OnDestroy, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit
- } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
@@ -18,8 +16,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './github-viewer.component.html',
   styleUrls: ['./github-viewer.component.scss']
 })
-export class GithubViewerComponent implements OnInit, AfterContentChecked, AfterContentInit, 
-AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
+export class GithubViewerComponent implements OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
 
   public gitUser$;
   public hide = true;
@@ -34,6 +31,16 @@ AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
 
   constructor(private http: HttpClient) { }
 
+  searchGitUser(gitUser) {
+    
+    this.http.get(`https://api.github.com/users/${gitUser}`).subscribe(res => {
+      this.gitUser$ = res;
+    }, err => {
+      this.noUserFound = { err404: 'User Not Found' };
+      this.emailFormControl.setErrors(this.noUserFound);
+    });
+  }
+
   /* ########################### */
   /* ####  Livecycle Hooks  #### */
   /* ########################### */
@@ -45,15 +52,5 @@ AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
   ngAfterViewInit(): void {       console.log('GithubViewerComponent ngAfterViewInit'); }
   ngOnChanges(): void {           console.log('GithubViewerComponent ngOnChanges'); }
   ngOnDestroy(): void {           console.log('GithubViewerComponent ngOnDestroy'); }
-
-
-  searchGitUser(gitUser) {
-    this.http.get(`https://api.github.com/users/${gitUser}`).subscribe(res => {
-      this.gitUser$ = res;
-    }, err => {
-      this.noUserFound = { err404: 'User Not Found' };
-      this.emailFormControl.setErrors(this.noUserFound);
-    });
-  }
 
 }
