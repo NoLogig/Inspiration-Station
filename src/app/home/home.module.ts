@@ -7,6 +7,8 @@ import { MatIconModule, MatFormFieldModule, MatInputModule, MatSlideToggleModule
 
 import { HomeComponent } from './home.component';
 import { ImpressumComponent } from './impressum/impressum.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   imports: [
@@ -17,7 +19,7 @@ import { ImpressumComponent } from './impressum/impressum.component';
     MatFormFieldModule, MatInputModule, MatSlideToggleModule, MatDividerModule, MatCardModule, MatSliderModule,
     MatSidenavModule, MatToolbarModule, MatIconModule, MatTabsModule, MatListModule, MatButtonModule
   ],
-  exports: [ ImpressumComponent, HomeComponent ],
-  declarations: [ ImpressumComponent, HomeComponent ]
+  exports: [ HomeComponent ],
+  declarations: [ ImpressumComponent, HomeComponent, FooterComponent, HeaderComponent ]
 })
 export class HomeModule { }

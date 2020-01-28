@@ -1,0 +1,26 @@
+
+<mat-toolbar class="nlg-head" color="primary" >
+
+
+    <span>{{title}}</span>
+  
+    <!-- Header - Links -->
+    <nav mat-tab-nav-bar>
+  
+      <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="home">
+        <mat-icon>home</mat-icon>
+      </a>
+      <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="gn8-player">
+        GN8-Player
+      </a>
+      <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="theorems">
+        Theorems
+      </a>
+  
+    </nav>
+  
+    <!-- Space Filler -->
+    <span class="flex-space-filler"><!-- {{title}} --></span>
+  
+  
+  </mat-toolbar>

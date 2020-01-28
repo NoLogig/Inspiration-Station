@@ -30,7 +30,6 @@ export class PISComponent implements OnInit {
     }
   };
 
-
   // Variables
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
@@ -59,12 +58,12 @@ export class PISComponent implements OnInit {
   cards: ICard[] = [];
 
   // Bubbles
-  bubble: {
-      x: number,
-      y: number,
-			z: number,
-			angle: number,
-			radius: number
+  bubble = {
+      x: 0,
+      y: 0,
+			z: 0,
+			angle: 0,
+			radius: 0
   };
   bubbles = [];
   numBubbles = 200;

@@ -17,10 +17,11 @@ import { PixelsModule } from './pixels/pixels.module';
 
 import { EnigmaComponent } from './games/enigma/enigma.component';
 import { GithubViewerComponent } from './API/github-viewer/github-viewer.component';
+import { HarmonyComponent } from './harmony/harmony.component';
 
 @NgModule({
   declarations: [
-    EnigmaComponent, GithubViewerComponent
+    EnigmaComponent, GithubViewerComponent, HarmonyComponent
   ],
   exports: [
     EnigmaComponent, GithubViewerComponent

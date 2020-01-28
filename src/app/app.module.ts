@@ -10,7 +10,7 @@ import { FormsModule } from "@angular/forms";
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-import { HomeModule } from './pages/home/home.module';
+import { HomeModule } from './home/home.module';
 import { LayoutsModule } from './pages/layouts/layouts.module';
 import { PagesModule } from './pages/pages.module';
 import { AppComponent } from './app.component';

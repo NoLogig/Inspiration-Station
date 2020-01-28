@@ -1,36 +1,38 @@
-<!-- Header - Toolbar -->
-<mat-toolbar class="nlg-head" color="primary" >
 
-  <!-- Navigation - Toggle -->
+<mat-toolbar class="nlg-head" color="primary" >
+  
+  <!-- Navigation - Toggle-Button -->
   <button type="button" mat-button aria-label="Toggle navigation" (click)="nav.toggle()">
     <mat-icon aria-label="Side navigation toggle icon">menu</mat-icon>
   </button>
 
-  <span>{{title}}</span>
+  <!-- Header - Toolbar Space Filler -->
+  <mat-toolbar class="nlg-head" color="primary" >
 
-  <!-- Header - Links -->
-  <nav mat-tab-nav-bar>
+    <span>{{title}}</span>
 
-    <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="home">
-      <mat-icon>home</mat-icon>
-    </a>
-    <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="gn8-player">
-      GN8-Player
-    </a>
-    <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="theorems">
-      Theorems
-    </a>
+    <!-- Header - Links -->
+    <nav mat-tab-nav-bar>
 
-  </nav>
+      <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="home">
+        <mat-icon>home</mat-icon>
+      </a>
+      <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="gn8-player">
+        GN8-Player
+      </a>
+      <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="theorems">
+        Theorems
+      </a>
 
-  <!-- Space Filler -->
-  <span class="flex-space-filler"><!-- {{title}} --></span>
+    </nav>
 
-  <!-- Settings - Toggle -->
+  </mat-toolbar>
+
+  <!-- Settings - Toggle-Button -->
   <button type="button" mat-button aria-label="Toggle settings" (click)="set.toggle()">
     <mat-icon aria-label="Side settings toggle icon">settings</mat-icon>
   </button>
-
+  
 </mat-toolbar>
 
 <!-- Main Content & Side Navigation -->
@@ -94,6 +96,7 @@
 
       <a mat-list-item routerLink="peil">PEIL</a>
       <a mat-list-item routerLink="pixels">Pixels</a>
+      <a mat-list-item routerLink="harmony">Harmony</a>
       <mat-divider></mat-divider>
 
       <a mat-list-item routerLink="impressum">Impressum</a>
@@ -127,7 +130,9 @@
 
   <!-- Sidenav - Content / Router Outlet -->
   <mat-sidenav-content>
+
     <router-outlet></router-outlet>
+    
   </mat-sidenav-content>
 
 </mat-sidenav-container>
