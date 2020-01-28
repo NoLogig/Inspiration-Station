@@ -5,31 +5,11 @@
   <button type="button" mat-button aria-label="Toggle navigation" (click)="nav.toggle()">
     <mat-icon aria-label="Side navigation toggle icon">menu</mat-icon>
   </button>
+  
+  <span>{{title}}</span>
 
   <!-- Header - Space Filler Toolbar -->
-  <mat-toolbar class="nlg-head" color="primary" >
-
-    <span>{{title}}</span>
-
-    <!-- Toolbar - Links -->
-    <nav mat-tab-nav-bar>
-
-      <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="home">
-        <mat-icon>home</mat-icon>
-      </a>
-      <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="gn8-player">
-        GN8-Player
-      </a>
-      <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="theorems">
-        Theorems
-      </a>
-
-    </nav>
-
-    <!-- Toolbar - Space Filler -->
-    <!-- <span class="flex-space-filler"> <!- {{title}} -> ></span> -->
-
-  </mat-toolbar>
+  <nlg-header class="flex-space-filler"></nlg-header>
 
   <!-- Settings - Toggle-Button -->
   <button type="button" mat-button aria-label="Toggle settings" (click)="set.toggle()">
@@ -38,13 +18,11 @@
   
 </mat-toolbar>
 
-<!-- Main Content & Side Navigation -->
+<!-- Main Content & Side Navigations -->
 <mat-sidenav-container>
 
   <!-- Left Sidenav - Navigation -->
-  <mat-sidenav #nav class="sidenav-shadow" fixedInViewport="true" opened="false"
-  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-  [mode]="(isHandset$ | async) ? 'over' : 'side'">
+  <mat-sidenav #nav fixedInViewport="true" [mode]="(isHandset$ | async) ? 'over' : 'side'" opened="false" class="sidenav-shadow">
 
     <!-- Navigation - Header -->
     <mat-toolbar class="navigation-bar" (click)="nav.close();">
@@ -109,7 +87,7 @@
   </mat-sidenav>
 
   <!-- Right Sidenav - Settings -->
-  <mat-sidenav #set mode="over" position="end" fixedInViewport="true" role="settings">
+  <mat-sidenav #set fixedInViewport="true" mode="over" position="end">
 
     <!-- Settings - Header -->
     <mat-toolbar color="primary" class="settings-bar" (click)="set.toggle();">

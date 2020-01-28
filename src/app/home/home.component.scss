@@ -1,4 +1,10 @@
 
+mat-toolbar {
+
+  height: 50px;
+  font-weight: bolder;
+}
+
 mat-toolbar.nlg-head {
 
   overflow: hidden;
@@ -8,7 +14,6 @@ mat-toolbar.nlg-head {
   //   display: none;
   // }
 }
-
 // This fills the remaining space, by using flexbox. 
 // Every material toolbar uses a flexbox row layout. 
 .flex-space-filler {
@@ -24,12 +29,6 @@ mat-sidenav {
   min-width: 80px;
   box-sizing: border-box;
   background-color: #333;
-}
-
-mat-toolbar {
-
-  height: 50px;
-  font-weight: bolder;
 }
 
 .sidenav-shadow {
