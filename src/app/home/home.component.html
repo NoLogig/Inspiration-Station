@@ -6,12 +6,12 @@
     <mat-icon aria-label="Side navigation toggle icon">menu</mat-icon>
   </button>
 
-  <!-- Header - Toolbar Space Filler -->
+  <!-- Header - Space Filler Toolbar -->
   <mat-toolbar class="nlg-head" color="primary" >
 
     <span>{{title}}</span>
 
-    <!-- Header - Links -->
+    <!-- Toolbar - Links -->
     <nav mat-tab-nav-bar>
 
       <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="home">
@@ -26,7 +26,7 @@
 
     </nav>
 
-    <!-- Space Filler -->
+    <!-- Toolbar - Space Filler -->
     <!-- <span class="flex-space-filler"> <!- {{title}} -> ></span> -->
 
   </mat-toolbar>
