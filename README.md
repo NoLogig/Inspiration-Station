@@ -83,6 +83,7 @@ The lack of access to the file system is one of the biggest obstacles to the suc
 In Chrome 77 (beta) an access to the file system can be activated.
 **!Hurray!**
 
+
 ## NG CLI
 
 ### Development server
@@ -108,3 +109,27 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+# Pen
+
+## Gathering
+
+iwlist -MonitorMode
+
+wavemon -MonitorMode
+
+[Airodump-ng](https://www.) +MonitorMode
+
+[Wash](https://www.)  only WPS WLANs
+
+## Attacks
+
+[HashCat](https://www.hashcat.net/hashCat) Advanced Password Recovery :D
+
+[Reaver](https://www.) Brute-Force WPS PINs
+
+[PixieWPS](https://www.) Pixie-Dust WPS PINs
+
+## Maleficent
+
+[ByteCode Viewer](https://bytecodeviewer.com) Advanced Lightweight Bytecode Decompiler
