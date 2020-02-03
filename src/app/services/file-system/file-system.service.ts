@@ -5,35 +5,70 @@ import { Injectable } from '@angular/core';
 })
 export class FileSystemService {
 
+  window: IWindow = window;
+  filesystem_handler: IFSFDHandle;
+  filesystem_options: IChooseFileSystemEntriesOptions;
 
-  constructor(window: IWindow) {
+  file_reader: FileReader;
+
+  constructor() {
+    this.initFileSystemOptions();
   }
 
+  initFileSystemOptions(options?: IChooseFileSystemEntriesOptions) {
 
-  async fs() {
-    let window: IWindow = self.window;
-    // Show a file picker to open a file.
-    let file_ref = await window.chooseFileSystemEntries({
+    if(options) {
+      this.filesystem_options = options;
+      return;
+    }
+
+    this.filesystem_options = {
       type: 'openFile',
-      multiple: false, // If true, returns an array rather than a single handle.
-
+      // If true, returns an array rather than a single handle.
+      multiple: false,
       // If true, the resulting file reference won't be writable. Note that there
       // is no guarantee that the resulting file reference will be writable when
       // readOnly is set to false. Both filesystem level permissions as well as
       // browser UI/user intent might result in a file reference that isn't usable
       // for writing, even if the website asked for a writable reference.
-      readOnly: false,
+      readOnly: true, 
+      accepts: [{
+        description: 'Texts',
+        extensions: ['txt', 'json', 'md']
+      }, {
+        description: 'Images',
+        extensions: ['jpeg', 'jpg', 'png', 'gif']
+      }, {
+        description: 'Videos',
+        extensions: ['mp4', 'ogg']
+      }]
+      // suggestedStartLocation: 'player-library'
+    };
+    
+  }
 
-      accepts: [{ description: 'Images', extensions: ['jpg', 'gif', 'png'] }],
-      suggestedStartLocation: 'pictures-library'
-    });
+  async fileSystem() {
 
-    // User cancelled, or otherwise failed to open a file.
-    if (!file_ref) { return; }
+    try {
+      // Show a file picker to open a file.
+      this.filesystem_handler = await this.window.chooseFileSystemEntries(this.filesystem_options);
 
+      // User cancelled, or otherwise failed to open a file.
+      if (!this.filesystem_handler) { return }
+      console.log(this.filesystem_handler);
+
+      let file = await this.filesystem_handler.getFile();
+      console.log(file);
+
+    } catch (err) { console.log(err) }
+
+  }
+
+  async fileWriter() {
+    
     // Read the contents of the file.
-    let file_reader = new FileReader();
-    file_reader.onload = async (event) => {
+    this.file_reader = new FileReader();
+    this.file_reader.onload = async (event) => {
       // File contents will appear in event.target.result. 
       // See https://developer.mozilla.org/en-US/docs/Web/API/FileReader/onload for more info.
 
@@ -46,7 +81,7 @@ export class FileSystemService {
       // file might have changed, or the user/user agent might have revoked write
       // access for this website to this file after it acquired the file
       // reference.
-      const file_writer = await file_ref.createWriter();
+      const file_writer = await this.filesystem_handler.createWriter();
       await file_writer.write(0, new Blob(['foobar']));
       await file_writer.write(1024, new Blob(['bla']));
 
@@ -55,89 +90,152 @@ export class FileSystemService {
       // Can also write contents of a ReadableStream.
       let response = await fetch('foo');
       await response.body.pipeTo(stream);
+      
     };
 
-    // file_ref.file() method will reject if site (no longer) has access to the file.
-    let file = await file_ref.file();
+    // filesystem_handler.file() method will reject if site (no longer) has access to the file.
+    let file = await this.filesystem_handler.getFile();
 
-    // readAsArrayBuffer() is async and returns immediately.  |file_reader|'s onload
+    // readAsArrayBuffer() is async and returns immediately. |file_reader|'s onload
     // handler will be called with the result of the file read.
-    file_reader.readAsArrayBuffer(file);
+    this.file_reader.readAsArrayBuffer(file);
+
   }
 
 }
 
 
-export interface IWindow extends Window {
-  chooseFileSystemEntries?: (options?: ChooseFileSystemEntriesOptions) => Promise<FileSystemFileHandle>;
+export interface IFileSystemHandlePermissionDescriptor {
+  writable?: boolean;
 }
 
-export interface FileSystemHandle {
-  isFile: boolean;
-  isDirectory: boolean;
-  name: string;
+export interface IFileSystemHandle {
+  readonly isDirectory: boolean;
+  readonly isFile: boolean;
+  readonly name: string;
+
+  queryPermission(descriptor?: IFileSystemHandlePermissionDescriptor): Promise<PermissionState>;
+  requestPermission(descriptor?: IFileSystemHandlePermissionDescriptor): Promise<PermissionState>;
 }
 
-export interface FileSystemFileHandle {
-  getFile(): Promise<FSFile>;
-  file?: () => any;
-  createWriter: (options?: FileSystemCreateWriterOptions) => FileSystemWriter;
+export interface IFileSystemCreateWriterOptions {
+  keepExistingData?: boolean;
 }
 
-export interface FileSystemDirectoryHandle {
-  getFile(name: string, options: FileSystemGetFileOptions): Promise<any>;
-  getDirectory: (name: string, options: FileSystemCreateWriterOptions) => {};
+export interface IFileSystemFileHandle extends IFileSystemHandle {
+  readonly isFile: true;
+  readonly isDirectory: false;
 
-  getEntries: () => {};
-  removeEntry: (name: string, options: FileSystemRemoveOptions) => Promise<void>;
+  getFile(): Promise<IFSFile>;
+  createWriter: (options?: IFileSystemCreateWriterOptions) => Promise<IFileSystemWriter>;
 }
 
-export interface FileSystemHandlePermissionDescriptor {
-  writable: boolean;
+export interface IFileSystemGetFileOptions {
+  create?: boolean;
 }
 
-export interface FileSystemCreateWriterOptions {
-  keepExistingData: boolean;
+export interface IFileSystemGetDirectoryOptions {
+  create?: boolean;
 }
 
-export interface FileSystemGetFileOptions {
-  create: boolean;
+export interface IFileSystemRemoveOptions {
+  recursive?: boolean;
 }
 
-export interface FileSystemGetDirectoryOptions {
-  create: boolean;
+export interface IFileSystemDirectoryHandle extends IFileSystemHandle {
+  readonly isFile: false;
+  readonly isDirectory: true;
+
+  getFile(name: string, options: IFileSystemGetFileOptions): Promise<IFileSystemFileHandle>;
+  getDirectory: (name: string, options: IFileSystemGetDirectoryOptions) => Promise<IFileSystemDirectoryHandle>;
+
+  getEntries(): AsyncIterable<IFileSystemDirectoryHandle | IFileSystemFileHandle>;
+  removeEntry: (name: string, options: IFileSystemRemoveOptions) => Promise<void>;
 }
 
-export interface FileSystemRemoveOptions {
-  recursive: boolean;
+export interface IFSFDHandle extends IFileSystemHandle {
+
+  createWriter?: (options?: IFileSystemCreateWriterOptions) => Promise<IFileSystemWriter>;
+  getFile?(): Promise<IFSFile>;
+
+  getFile?(name: string, options: IFileSystemGetFileOptions): Promise<IFileSystemFileHandle>;
+  getDirectory?: (name: string, options: IFileSystemGetDirectoryOptions) => Promise<IFileSystemDirectoryHandle>;
+
+  getEntries?(): AsyncIterable<IFileSystemDirectoryHandle | IFileSystemFileHandle>;
+  removeEntry?: (name: string, options: IFileSystemRemoveOptions) => Promise<void>;
 }
 
-export interface FileSystemWriter {
+export interface IFileSystemWriter {
   write(position: number, data: Blob | BufferSource | string): Promise<void>;
   truncate(size: number): Promise<void>;
   close(): Promise<void>;
   asWritableStream(): WritableStream<Uint8Array>;
 }
 
-export enum ChooseFileSystemEntriesType { "open-file", "save-file", "open-directory" };
-
-export interface ChooseFileSystemOptionsAccepts {
-  description?: string;
-  mineTypes?: string[];
-  extensions?: string[];
-}
-export interface ChooseFileSystemEntriesOptions {
-  type?: string;
-  multiple?: boolean;
-  readOnly: boolean;
-  accepts?: ChooseFileSystemOptionsAccepts[];
-  excludeAcceptAllOptions?: boolean;
-  suggestedStartLocation?: string;
-}
-
-export interface FSFile extends File {
+export interface IFSFile extends File {
   text();
   sclice();
   stream();
   arrayBuffer();
+}
+
+export type IChooseFileSystemEntriesType = "openFile" | "saveFile" | "openDirectory";
+
+export interface IChooseFileSystemOptionsAccepts {
+  description?: string;
+  extensions?: string[];
+  mineTypes?: string[];
+}
+
+export interface IChooseFileSystemEntriesOptions {
+  accepts?: IChooseFileSystemOptionsAccepts[];
+  excludeAcceptAllOptions?: boolean;
+  multiple?: boolean;
+  readOnly?: boolean;
+  recursive?: boolean;
+  suggestedStartLocation?: string;
+  type?: IChooseFileSystemEntriesType;
+}
+
+// export interface IChooseFileSystemEntriesOptionsMultiple extends IChooseFileSystemEntriesOptions {
+//   multiple: true;
+// }
+// export interface IChooseFileSystemEntriesOptionsDirectory extends IChooseFileSystemEntriesOptions {
+//   type: 'openDirectory';
+//   multiple?: false;
+// }
+// export interface IChooseFileSystemEntriesOptionsDirectoryMultiple extends IChooseFileSystemEntriesOptions {
+//   type: 'openDirectory';
+//   multiple: true;
+// }
+// export interface IChooseFileSystemEntriesOptionsFile extends IChooseFileSystemEntriesOptions {
+//   type?: 'openFile' | 'saveFile';
+//   multiple?: false;
+// }
+// export interface IChooseFileSystemEntriesOptionsFileMultiple extends IChooseFileSystemEntriesOptions {
+//   type?: 'openFile' | 'saveFile';
+//   multiple: true;
+// }
+
+// declare function chooseFileSystemEntries(
+//   options?: IChooseFileSystemEntriesOptionsFile,
+// ): Promise<IFileSystemFileHandle>;
+// declare function chooseFileSystemEntries(
+//   options?: IChooseFileSystemEntriesOptionsFileMultiple,
+// ): Promise<IFileSystemFileHandle[]>;
+// declare function chooseFileSystemEntries(
+//   options?: IChooseFileSystemEntriesOptionsDirectory,
+// ): Promise<IFileSystemDirectoryHandle>;
+// declare function chooseFileSystemEntries(
+//   options?: IChooseFileSystemEntriesOptionsDirectoryMultiple,
+// ): Promise<IFileSystemDirectoryHandle[]>;
+// declare function chooseFileSystemEntries(
+//   options?: IChooseFileSystemEntriesOptionsMultiple,
+// ): Promise<Array<IFileSystemDirectoryHandle | IFileSystemFileHandle>>;
+// declare function chooseFileSystemEntries(
+//   options?: IChooseFileSystemEntriesOptions,
+// ): Promise<IFileSystemDirectoryHandle | IFileSystemFileHandle>;
+export interface IWindow extends Window {
+  // chooseFileSystemEntries?: typeof chooseFileSystemEntries;
+  chooseFileSystemEntries?: (options?: IChooseFileSystemEntriesOptions ) => IFSFDHandle;
 }
