@@ -7,7 +7,6 @@ import { IWindow, IChooseFileSystemEntriesOptionsFileMultiple, IFileSystemEntrie
 export class FileSystemService {
 
   window: IWindow = window;
-
   filesystem_handler: IFileSystemEntries;
   filesystem_options: IChooseFileSystemEntriesOptions;
   

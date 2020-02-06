@@ -769,7 +769,6 @@ export default m;
 
 export const utils = {
 
-
     /** Clamp a value to Min/Max
      * @example if(n < min) return min;
      *          if(n > max) return max;
@@ -1085,7 +1084,7 @@ export const lookups = {
     wieferichs: [1093, 3511],
     wilsons: [5, 13, 563]
 
-}
+};
 
 /*********************    Just My Notes    *********************/
 
