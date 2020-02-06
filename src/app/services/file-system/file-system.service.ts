@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { IWindow, IChooseFileSystemEntriesOptionsFileMultiple, IFileSystemEntries, IFileSystemFileHandle, IFileSystemDirectoryHandle, IChooseFileSystemEntriesOptionsDirectoryMultiple, IChooseFileSystemEntriesOptions, IChooseFileSystemEntriesOptionsFile } from 'src/app/services/file-system/file-system.interface';
+import {
+  IWindow, IChooseFileSystemEntriesOptionsFileMultiple, IFileSystemEntries, IFileSystemFileHandle,
+  IFileSystemDirectoryHandle, IChooseFileSystemEntriesOptionsDirectoryMultiple, IChooseFileSystemEntriesOptions,
+  IChooseFileSystemEntriesOptionsFile, IChooseFileSystemEntriesOptionsDirectory
+} from 'src/app/services/file-system/file-system.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +13,10 @@ export class FileSystemService {
   window: IWindow = window;
   filesystem_handler: IFileSystemEntries;
   filesystem_options: IChooseFileSystemEntriesOptions;
-  
+
   filesystem_fileHandler: IFileSystemFileHandle;
   filesystem_fileHandlers: IFileSystemFileHandle[];
-  
-  filesystem_dirOptions: IChooseFileSystemEntriesOptionsDirectoryMultiple;
+
   filesystem_dirHandler: IFileSystemDirectoryHandle;
   filesystem_dirHandlers: IFileSystemDirectoryHandle[];
 
@@ -24,8 +27,8 @@ export class FileSystemService {
   }
 
   initFileSystemOptions(options?: IChooseFileSystemEntriesOptionsFileMultiple) {
-        
-    if(options) {
+
+    if (options) {
       this.filesystem_options = options;
       return;
     }
@@ -39,11 +42,11 @@ export class FileSystemService {
       // readOnly is set to false. Both filesystem level permissions as well as
       // browser UI/user intent might result in a file reference that isn't usable
       // for writing, even if the website asked for a writable reference.
-      readOnly: true, 
+      readOnly: true,
       accepts: [{
         description: 'All',
         extensions: ['*']
-      },{
+      }, {
         description: 'Texts',
         extensions: ['txt', 'json', 'md', 'pdf']
       }, {
@@ -55,27 +58,48 @@ export class FileSystemService {
       }]
       // suggestedStartLocation: 'player-library'
     };
-    
+
   }
 
   async fileSystem(options?: IChooseFileSystemEntriesOptions) {
 
-    if(options) {
+    if (options) {
       this.filesystem_options = options;
     }
-    
-    try {
 
-      if(!this.filesystem_options.multiple) {
-        this.filesystem_handler = this.filesystem_fileHandler = await this.window.chooseFileSystemEntries(this.filesystem_options as IChooseFileSystemEntriesOptionsFile);
-      }
+    if (options.type === "openFile") {
 
-      if(this.filesystem_options.multiple) {
-        this.filesystem_handler = this.filesystem_fileHandlers = await this.window.chooseFileSystemEntries(this.filesystem_options as IChooseFileSystemEntriesOptionsFileMultiple);
-      }
+      try {
 
-    // User cancelled, or otherwise failed
-    } catch (err) { console.log(err) }
+        if (!this.filesystem_options.multiple) {
+          this.filesystem_handler = this.filesystem_fileHandler = await this.window.chooseFileSystemEntries(this.filesystem_options as IChooseFileSystemEntriesOptionsFile);
+        }
+
+        if (this.filesystem_options.multiple) {
+          this.filesystem_handler = this.filesystem_fileHandlers = await this.window.chooseFileSystemEntries(this.filesystem_options as IChooseFileSystemEntriesOptionsFileMultiple);
+        }
+
+        // User cancelled, or otherwise failed
+      } catch (err) { console.log(err) }
+
+    }
+
+    if (options.type === "openDirectory") {
+
+      try {
+
+        if (this.filesystem_options.multiple) {
+          this.filesystem_handler = this.filesystem_dirHandler = await this.window.chooseFileSystemEntries(this.filesystem_options as IChooseFileSystemEntriesOptionsDirectory);
+        }
+
+        if (!this.filesystem_options.multiple) {
+          this.filesystem_handler = this.filesystem_dirHandlers = await this.window.chooseFileSystemEntries(this.filesystem_options as IChooseFileSystemEntriesOptionsDirectoryMultiple);
+        }
+
+        // User cancelled, or otherwise failed
+      } catch (err) { console.log(err) }
+
+    }
 
   }
 
@@ -86,7 +110,7 @@ export class FileSystemService {
     let file = await this.filesystem_fileHandler.getFile();
 
     console.log(file);
-    
+
   }
 
   async fileSystemGetFiles() {
@@ -100,31 +124,30 @@ export class FileSystemService {
     });
 
     console.log(files);
-    
+
   }
 
   async fileSystemGetDir(options?: IChooseFileSystemEntriesOptions) {
 
-    if(options.multiple) {
-        
-    }
+    if (!this.filesystem_handler) { return }
 
-    try {
+    let dir = await this.filesystem_dirHandler.getDirectory(this.filesystem_dirHandler.name, {create: false});
+   
+    console.log(dir);
 
-      this.filesystem_handler = this.filesystem_dirHandlers = await this.window.chooseFileSystemEntries(this.filesystem_dirOptions);
+  }
 
-      if (!this.filesystem_handler) { return }
-      
-    // User cancelled, or otherwise failed
-    } catch (err) { console.log(err) }
+  async fileSystemGetDirs(options?: IChooseFileSystemEntriesOptions) {
+
+    if (!this.filesystem_handler) { return }
 
   }
 
   async fileSystemWriter() {
-    
+
     // Read the contents of the file.
     this.file_reader = new FileReader();
-    
+
     this.file_reader.onload = async (event) => {
       // File contents will appear in event.target.result. 
       // See https://developer.mozilla.org/en-US/docs/Web/API/FileReader/onload for more info.
@@ -143,11 +166,11 @@ export class FileSystemService {
 
       // Can also write using a WritableStream
       let stream = file_writer.asWritableStream();
-    
+
       // Can also write contents of a ReadableStream.
       let response = await fetch('foo');
       await response.body.pipeTo(stream);
-      
+
     };
 
     // filesystem_handler.file() method will reject if site (no longer) has access to the file.
