@@ -109,7 +109,7 @@ export declare function chooseFileSystemEntries(
 ): Promise<IFileSystemDirectoryHandle | IFileSystemFileHandle>;
 
 export interface IWindow extends Window {
-   chooseFileSystemEntries?: typeof chooseFileSystemEntries;
+  chooseFileSystemEntries?: typeof chooseFileSystemEntries;
 }
 
 // export interface IWindow extends Window {
