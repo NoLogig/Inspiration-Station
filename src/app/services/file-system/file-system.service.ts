@@ -3,7 +3,7 @@ import {
   IWindow, IChooseFileSystemEntriesOptionsFileMultiple, IFileSystemEntries, IFileSystemFileHandle,
   IFileSystemDirectoryHandle, IChooseFileSystemEntriesOptionsDirectoryMultiple, IChooseFileSystemEntriesOptions,
   IChooseFileSystemEntriesOptionsFile, IChooseFileSystemEntriesOptionsDirectory
-} from 'src/app/services/file-system/file-system.interface';
+} from './file-system.interface';
 
 @Injectable({
   providedIn: 'root'
