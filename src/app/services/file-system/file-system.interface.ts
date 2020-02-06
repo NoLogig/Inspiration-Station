@@ -1,129 +1,117 @@
+/*******    NativeFileSystem Interface - Helpers    *******/
 
-export type IChooseFileSystemEntriesType = 'open-file' | 'save-file' | 'open-directory';
+export interface IFileSystemHandle {
+  isDirectory: boolean;
+  isFile: boolean;
+  name: string;
 
-export interface IChooseFileSystemEntriesOptionsAccepts {
-  description?: string;
-  mimeTypes?: string[];
-  extensions?: string[];
+  queryPermission(descriptor?: IFileSystemHandlePermissionDescriptor): Promise<PermissionState>;
+  requestPermission(descriptor?: IFileSystemHandlePermissionDescriptor): Promise<PermissionState>;
+}
+
+export interface IFileSystemFileHandle extends IFileSystemHandle {
+  isFile: true;
+  isDirectory: false;
+
+  getFile?(): Promise<File>;
+  createWriter(options?: IFileSystemCreateWriterOptions): Promise<IFileSystemWriter>;
+}
+
+export interface IFileSystemDirectoryHandle extends IFileSystemHandle {
+  isFile: false;
+  isDirectory: true;
+
+  getFile?(name: string, options: IFileSystemGetFileOptions): Promise<IFileSystemFileHandle>;
+  getDirectory?(name: string, options: IFileSystemGetDirectoryOptions): Promise<IFileSystemDirectoryHandle>;
+
+  getEntries?(): AsyncIterable<IFileSystemDirectoryHandle | IFileSystemFileHandle>;
+  removeEntry?(name: string, options: IFileSystemRemoveOptions): Promise<void>;
 }
 
 export interface IChooseFileSystemEntriesOptions {
-  type?: IChooseFileSystemEntriesType;
+  accepts?: IChooseFileSystemOptionsAccepts[];
+  excludeAcceptAllOptions?: boolean;
   multiple?: boolean;
   readOnly?: boolean;
-  accepts?: IChooseFileSystemEntriesOptionsAccepts[];
-  excludeAcceptAllOption?: boolean;
+  recursive?: boolean;
   suggestedStartLocation?: string;
+  type?: IChooseFileSystemEntriesType;
+}
+
+export interface IFileSystemWriter {
+  write(position: number, data: Blob | BufferSource | string): Promise<void>;
+  truncate(size: number): Promise<void>;
+  close(): Promise<void>;
+  asWritableStream(): WritableStream<Uint8Array>;
+}
+
+export type IChooseFileSystemEntriesType = "openFile" | "saveFile" | "openDirectory";
+export type IFileSystemEntries = IFileSystemFileHandle | IFileSystemDirectoryHandle | IFileSystemDirectoryHandle[] | IFileSystemFileHandle[];
+
+export interface IFileSystemHandlePermissionDescriptor {
+  writable?: boolean;
+}
+export interface IFileSystemCreateWriterOptions {
+  keepExistingData?: boolean;
+}
+export interface IFileSystemGetFileOptions {
+  create?: boolean;
+}
+export interface IFileSystemGetDirectoryOptions {
+  create?: boolean;
+}
+export interface IFileSystemRemoveOptions {
+  recursive?: boolean;
+}
+export interface IChooseFileSystemOptionsAccepts {
+  description?: string;
+  extensions?: string[];
+  mineTypes?: string[];
 }
 
 export interface IChooseFileSystemEntriesOptionsMultiple extends IChooseFileSystemEntriesOptions {
   multiple: true;
 }
-
 export interface IChooseFileSystemEntriesOptionsDirectory extends IChooseFileSystemEntriesOptions {
-  type: 'open-directory';
+  type: 'openDirectory';
   multiple?: false;
 }
-
 export interface IChooseFileSystemEntriesOptionsDirectoryMultiple extends IChooseFileSystemEntriesOptions {
-  type: 'open-directory';
+  type: 'openDirectory';
   multiple: true;
 }
-
 export interface IChooseFileSystemEntriesOptionsFile extends IChooseFileSystemEntriesOptions {
-  type?: 'open-file' | 'save-file';
+  type?: 'openFile' | 'saveFile';
   multiple?: false;
 }
-
 export interface IChooseFileSystemEntriesOptionsFileMultiple extends IChooseFileSystemEntriesOptions {
-  type?: 'open-file' | 'save-file';
+  type?: 'openFile' | 'saveFile';
   multiple: true;
 }
 
-export interface IFileSystemHandlePermissionDescriptor {
-  writable?: boolean;
-}
-
-export interface IFileSystemHandle {
-  readonly isFile: boolean;
-  readonly isDirectory: boolean;
-  readonly name: string;
-
-  queryPermission(
-    descriptor?: IFileSystemHandlePermissionDescriptor,
-  ): Promise<PermissionState>;
-  requestPermission(
-    descriptor?: IFileSystemHandlePermissionDescriptor,
-  ): Promise<PermissionState>;
-}
-
-export interface IFileSystemCreateWriterOptions {
-  keepExistingData?: boolean;
-}
-
-export interface IFileSystemFileHandle extends IFileSystemHandle {
-  readonly isFile: true;
-  readonly isDirectory: false;
-
-  getFile(): File;
-  createWriter(
-    options?: IFileSystemCreateWriterOptions,
-  ): Promise<IFileSystemWriter>;
-}
-
-export interface IFileSystemGetFileOptions {
-  create?: boolean;
-}
-
-export interface IFileSystemGetDirectoryOptions {
-  create?: boolean;
-}
-
-export interface IFileSystemRemoveOptions {
-  recursive?: boolean;
-}
-
-export interface IFileSystemDirectoryHandle extends IFileSystemHandle {
-  readonly isFile: false;
-  readonly isDirectory: true;
-
-  getFile(
-    name: string,
-    options?: IFileSystemGetFileOptions,
-  ): Promise<IFileSystemFileHandle>;
-  getDirectory(
-    name: string,
-    options?: IFileSystemGetDirectoryOptions,
-  ): Promise<IFileSystemDirectoryHandle>;
-  getEntries(): AsyncIterable<IFileSystemDirectoryHandle | IFileSystemFileHandle>;
-  removeEntry(name: string, options?: IFileSystemRemoveOptions): Promise<void>;
-}
-
-export interface IFileSystemWriter {
-  write(position: number, data: BufferSource | Blob | string): Promise<void>;
-  truncate(size: number): Promise<void>;
-  close(): Promise<void>;
-}
-
-declare function chooseFileSystemEntries(
-  options?: IChooseFileSystemEntriesOptionsFile,
+export declare function chooseFileSystemEntries(
+  options?: IChooseFileSystemEntriesOptionsFile
 ): Promise<IFileSystemFileHandle>;
-declare function chooseFileSystemEntries(
-  options?: IChooseFileSystemEntriesOptionsFileMultiple,
+export declare function chooseFileSystemEntries(
+  options?: IChooseFileSystemEntriesOptionsFileMultiple
 ): Promise<IFileSystemFileHandle[]>;
-declare function chooseFileSystemEntries(
-  options?: IChooseFileSystemEntriesOptionsDirectory,
+export declare function chooseFileSystemEntries(
+  options?: IChooseFileSystemEntriesOptionsDirectory
 ): Promise<IFileSystemDirectoryHandle>;
-declare function chooseFileSystemEntries(
-  options?: IChooseFileSystemEntriesOptionsDirectoryMultiple,
+export declare function chooseFileSystemEntries(
+  options?: IChooseFileSystemEntriesOptionsDirectoryMultiple
 ): Promise<IFileSystemDirectoryHandle[]>;
-declare function chooseFileSystemEntries(
-  options?: IChooseFileSystemEntriesOptionsMultiple,
+export declare function chooseFileSystemEntries(
+  options?: IChooseFileSystemEntriesOptionsMultiple
 ): Promise<Array<IFileSystemDirectoryHandle | IFileSystemFileHandle>>;
-declare function chooseFileSystemEntries(
+export declare function chooseFileSystemEntries(
   options?: IChooseFileSystemEntriesOptions,
 ): Promise<IFileSystemDirectoryHandle | IFileSystemFileHandle>;
 
 export interface IWindow extends Window {
-  chooseFileSystemEntries?: typeof chooseFileSystemEntries;
+   chooseFileSystemEntries?: typeof chooseFileSystemEntries;
 }
+
+// export interface IWindow extends Window {
+//   chooseFileSystemEntries?: (options?: IChooseFileSystemEntriesOptions ) =>  IFileSystemFileHandle | IFileSystemDirectoryHandle;
+// }

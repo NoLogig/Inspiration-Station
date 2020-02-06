@@ -10,14 +10,25 @@ import { FileSystemService } from 'src/app/services/file-system/file-system.serv
 export class HarmonyComponent implements OnInit {
 
   constructor(public fs: FileSystemService) {
+    
    }
 
   ngOnInit() { }
 
   nativeFileSystem() {
 
-      this.fs.fileSystem();
+    this.fs.fileSystem();
 
-  }
+}
+getFile() {
+
+    this.fs.fileSystemGetFile();
+
+}
+getFiles() {
+
+    this.fs.fileSystemGetFiles();
+
+}
 
 }
