@@ -75,7 +75,7 @@ export class FileSystemService {
         this.filesystem_handler = this.filesystem_fileHandlers = await this.window.chooseFileSystemEntries(this.filesystem_options as IChooseFileSystemEntriesOptionsFileMultiple);
       }
 
-      // User cancelled, or otherwise failed to open a file.
+    // User cancelled, or otherwise failed
     } catch (err) { console.log(err) }
 
   }
@@ -112,11 +112,11 @@ export class FileSystemService {
 
     try {
 
-      this.filesystem_dirHandlers = await this.window.chooseFileSystemEntries(this.filesystem_dirOptions);
+      this.filesystem_handler = this.filesystem_dirHandlers = await this.window.chooseFileSystemEntries(this.filesystem_dirOptions);
 
       if (!this.filesystem_handler) { return }
       
-      // User cancelled, or otherwise failed to open a file.
+    // User cancelled, or otherwise failed
     } catch (err) { console.log(err) }
 
   }

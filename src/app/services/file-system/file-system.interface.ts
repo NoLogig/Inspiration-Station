@@ -28,6 +28,10 @@ export interface IFileSystemDirectoryHandle extends IFileSystemHandle {
   removeEntry?(name: string, options: IFileSystemRemoveOptions): Promise<void>;
 }
 
+export type IChooseFileSystemEntriesType = "openFile" | "saveFile" | "openDirectory";
+
+export type IFileSystemEntries = IFileSystemFileHandle | IFileSystemDirectoryHandle | IFileSystemDirectoryHandle[] | IFileSystemFileHandle[];
+
 export interface IChooseFileSystemEntriesOptions {
   accepts?: IChooseFileSystemOptionsAccepts[];
   excludeAcceptAllOptions?: boolean;
@@ -44,9 +48,6 @@ export interface IFileSystemWriter {
   close(): Promise<void>;
   asWritableStream(): WritableStream<Uint8Array>;
 }
-
-export type IChooseFileSystemEntriesType = "openFile" | "saveFile" | "openDirectory";
-export type IFileSystemEntries = IFileSystemFileHandle | IFileSystemDirectoryHandle | IFileSystemDirectoryHandle[] | IFileSystemFileHandle[];
 
 export interface IFileSystemHandlePermissionDescriptor {
   writable?: boolean;
@@ -89,24 +90,12 @@ export interface IChooseFileSystemEntriesOptionsFileMultiple extends IChooseFile
   multiple: true;
 }
 
-export declare function chooseFileSystemEntries(
-  options?: IChooseFileSystemEntriesOptionsFile
-): Promise<IFileSystemFileHandle>;
-export declare function chooseFileSystemEntries(
-  options?: IChooseFileSystemEntriesOptionsFileMultiple
-): Promise<IFileSystemFileHandle[]>;
-export declare function chooseFileSystemEntries(
-  options?: IChooseFileSystemEntriesOptionsDirectory
-): Promise<IFileSystemDirectoryHandle>;
-export declare function chooseFileSystemEntries(
-  options?: IChooseFileSystemEntriesOptionsDirectoryMultiple
-): Promise<IFileSystemDirectoryHandle[]>;
-export declare function chooseFileSystemEntries(
-  options?: IChooseFileSystemEntriesOptionsMultiple
-): Promise<Array<IFileSystemDirectoryHandle | IFileSystemFileHandle>>;
-export declare function chooseFileSystemEntries(
-  options?: IChooseFileSystemEntriesOptions,
-): Promise<IFileSystemDirectoryHandle | IFileSystemFileHandle>;
+export declare function chooseFileSystemEntries(options?: IChooseFileSystemEntriesOptionsFile): Promise<IFileSystemFileHandle>;
+export declare function chooseFileSystemEntries(options?: IChooseFileSystemEntriesOptionsFileMultiple): Promise<IFileSystemFileHandle[]>;
+export declare function chooseFileSystemEntries(options?: IChooseFileSystemEntriesOptionsDirectory): Promise<IFileSystemDirectoryHandle>;
+export declare function chooseFileSystemEntries(options?: IChooseFileSystemEntriesOptionsDirectoryMultiple): Promise<IFileSystemDirectoryHandle[]>;
+export declare function chooseFileSystemEntries(options?: IChooseFileSystemEntriesOptionsMultiple): Promise<Array<IFileSystemDirectoryHandle | IFileSystemFileHandle>>;
+export declare function chooseFileSystemEntries(options?: IChooseFileSystemEntriesOptions): Promise<IFileSystemDirectoryHandle | IFileSystemFileHandle>;
 
 export interface IWindow extends Window {
   chooseFileSystemEntries?: typeof chooseFileSystemEntries;

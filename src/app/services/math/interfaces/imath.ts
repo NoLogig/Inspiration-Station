@@ -25,38 +25,6 @@ export interface IPhysics {
 }
 export interface IPhysicParticle extends IParticle, IPhysics { }
 
-export interface IVector extends IPoint {
-
-    angle: number;
-    lenght: number;
-
-    getX(): number;
-    setX(n: number): void;
-    getY(): number;
-    setY(n: number): void;
-
-    getZ?(): number;
-    setZ?(n: number): void;
-
-    getAngle(): number;
-    setAngle(angle: number): void;
-
-    getLength(): number;
-    setLength(length: number): void;
-
-    addTo(vec2: number): void;
-    subtractFrom(vec2: number): void;
-    multiplyBy(vec2: number): void;
-    divideBy(vec2: number): void;
-}
-export interface ISpring extends IPoint {
-
-    k: number;
-    length: number;
-    
-    point?: IPoint;
-}
-
 export interface ICircle {
 
     r: number;
@@ -118,6 +86,39 @@ export interface ITriangle {
 export interface ITriPoint extends IPoint, ITriangle { }
 export interface ITriParticle extends IParticle, ITriangle { }
 export interface ITriPhysicalParticle extends IPhysicParticle, ITriangle { }
+
+
+export interface IVector extends IPoint {
+
+    angle: number;
+    lenght: number;
+
+    getX(): number;
+    setX(n: number): void;
+    getY(): number;
+    setY(n: number): void;
+
+    getZ?(): number;
+    setZ?(n: number): void;
+
+    getAngle(): number;
+    setAngle(angle: number): void;
+
+    getLength(): number;
+    setLength(length: number): void;
+
+    addTo(vec2: number): void;
+    subtractFrom(vec2: number): void;
+    multiplyBy(vec2: number): void;
+    divideBy(vec2: number): void;
+}
+export interface ISpring extends IPoint {
+
+    k: number;
+    length: number;
+    
+    point?: IPoint;
+}
 
 
 export interface IGoldenRatio {
