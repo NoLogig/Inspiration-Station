@@ -10,7 +10,10 @@ import {
 })
 export class FileSystemService {
 
+  /* ####  FileSystem -            #### */
+
   private window: IWindow = window;
+
 
   public handler: IFileSystemEntries;
   public options: IChooseFileSystemEntriesOptions;
@@ -24,24 +27,24 @@ export class FileSystemService {
   public entry: IFileSystemFileHandle | IFileSystemDirectoryHandle;
   public entries: IFileSystemFileHandle[] | IFileSystemDirectoryHandle[];
 
-  public file_reader: FileReader;
+
+  private file_reader: FileReader;
+
 
   constructor() {
     this.initOptions();
   }
 
-  initOptions(options?: IChooseFileSystemEntriesOptions) {
+  /* ####  FileSystem - Options    #### */
 
-    if (options) {
-      this.options = options;
-      return;
-    }
+  initOptions() {
 
     this.options = {
+
       type: 'openFile',
 
       // If true, returns an array rather than a single handle.
-      multiple: true,
+      multiple: false,
 
       // If true, the resulting file reference won't be writable. Note that there
       // is no guarantee that the resulting file reference will be writable when
@@ -49,7 +52,7 @@ export class FileSystemService {
       // browser UI/user intent might result in a file reference that isn't usable
       // for writing, even if the website asked for a writable reference.
       readOnly: true,
-      
+
       accepts: [{
         description: 'All',
         extensions: ['*']
@@ -68,6 +71,12 @@ export class FileSystemService {
 
   }
 
+  setOptions(options: IChooseFileSystemEntriesOptions) {
+      this.options = options;
+  }
+  
+  /* ####  FileSystem - Pickers?   #### */
+
   async openPicker() {
 
     try {
@@ -75,15 +84,16 @@ export class FileSystemService {
       if (!this.options.multiple) {
 
         if (this.options.type === "openFile") {
-          this.handler = this.file_ref = await this.window.chooseFileSystemEntries(this.options as IChooseFileSystemEntriesOptionsFile);
+          this.file_ref = await this.window.chooseFileSystemEntries(this.options as IChooseFileSystemEntriesOptionsFile);
         }
 
         if (this.options.type === "openDirectory") {
-          this.handler = this.dir_ref = await this.window.chooseFileSystemEntries(this.options as IChooseFileSystemEntriesOptionsDirectory);
+          this.dir_ref = await this.window.chooseFileSystemEntries(this.options as IChooseFileSystemEntriesOptionsDirectory);
         }
 
-        this.handler = this.entry = await this.window.chooseFileSystemEntries(this.options as IChooseFileSystemEntriesOptions);
-        return;
+        this.entry = await this.window.chooseFileSystemEntries(this.options as IChooseFileSystemEntriesOptions);
+        
+        return this.handler;
 
       }
 
@@ -100,7 +110,7 @@ export class FileSystemService {
         }
 
         this.handler = this.entries = await this.window.chooseFileSystemEntries(this.options as IChooseFileSystemEntriesOptionsMultiple);
-        return;
+        return this.handler;
 
       }
 
@@ -109,19 +119,24 @@ export class FileSystemService {
 
   }
 
+  /* ####  FileSystem - Handlers?  #### */
+
   async getFile(handler: IFileSystemFileHandle) {
 
     if (!this.handler) { return }
+    if (!this.file_ref) { return }
 
     let file = await handler.getFile();
 
     console.log(file);
+    return file;
 
   }
 
   async getFiles(handler: IFileSystemFileHandle[]) {
 
     if (!this.handler) { return }
+    if (!this.file_refs) { return }
 
     let files = [];
 
@@ -131,30 +146,37 @@ export class FileSystemService {
     // await this.file_refs.forEach(item => { files.push(item.getFile()); });
 
     console.log(await files);
+    return files;
 
   }
 
   async getDir(handler: IFileSystemDirectoryHandle) {
 
     if (!this.handler) { return }
+    if (!this.dir_ref) { return }
 
     let dir = await this.dir_ref.getDirectory(this.dir_ref.name, { create: false });
 
     console.log(dir);
+    return dir;
 
   }
 
   async getDirs(handler: IFileSystemDirectoryHandle[]) {
 
+    if (!this.handler) { return }
+    if (!this.dir_refs) { return }
+
     const dir_refs = await this.window.chooseFileSystemEntries({ type: 'openDirectory' });
-    
+
     // if (!this.handler) { return }
     if (!dir_refs) {
       // User cancelled, or otherwise failed to open a directory.
       return;
     }
+
     // Read directory contents.
-    for await (const entry of dir_refs.getEntries()) {
+    for await (let entry of dir_refs.getEntries()) {
       // entry is a FileSystemFileHandle or a FileSystemDirectoryHandle.
     }
 
@@ -162,15 +184,20 @@ export class FileSystemService {
     const file_ref = await dir_refs.getFile('foo.js');
     // Do something useful with the file.
 
-    // Get a subdirectory.
+    // Get a specific subdirectory.
     const subdir = await dir_refs.getDirectory('bla', { create: true });
+    // Do something useful with the directory.
 
-    // No special API to create copies, but still possible to do so by using available read and write APIs.
-    const new_file = await dir_refs.getFile('new_name', { create: true });
-    const new_file_writer = await new_file.createWriter();
-    await new_file_writer.truncate(0);
-    await new_file_writer.write(0, await file_ref.getFile());
+    // Thre is no special API available to create copies, but's still possible, by using read & write APIs.
+    const copy = await dir_refs.getFile('new_name', { create: true });
+    const copied_writer = await copy.createWriter();
+    await copied_writer.truncate(0);
+    await copied_writer.write(0, await file_ref.getFile());
+
+    // return dirs;
   }
+
+  /* ####  FileSystem - Writers?   #### */
 
   async writer() {
 
