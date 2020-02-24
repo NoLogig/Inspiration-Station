@@ -9,9 +9,7 @@ import { FileSystemService } from 'src/app/services/file-system/file-system.serv
 })
 export class HarmonyComponent implements OnInit {
 
-  constructor(public file_system: FileSystemService) {
-
-  }
+  constructor(public file_system: FileSystemService) {  }
 
   ngOnInit() { }
 
@@ -20,19 +18,19 @@ export class HarmonyComponent implements OnInit {
   }
 
   getFile() {
-    this.file_system.getFile(this.file_system.file_ref);
+    this.file_system.file(this.file_system.file_ref);
   }
 
   getFiles() {
-    this.file_system.getFiles(this.file_system.file_refs);
+    this.file_system.files(this.file_system.file_refs);
   }
 
   getDir() {
-    this.file_system.getDir(this.file_system.dir_ref);
+    this.file_system.directory(this.file_system.dir_ref);
   }
 
   getDirs() {
-    this.file_system.getDirs(this.file_system.dir_refs);
+    this.file_system.directories(this.file_system.dir_refs);
   }
 
 }
