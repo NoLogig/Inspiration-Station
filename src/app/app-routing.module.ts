@@ -17,8 +17,8 @@ export const routes: Routes = [
   { path: 'theorems', component: TheoremsComponent },
   { path: 'harmony', component: HarmonyComponent },
   
-  { path: 'timers', loadChildren: './pages/PEIL/timers/timers.module#TimersModule' },
-  { path: 'outside-clicks', loadChildren: './pages/PEIL/outside-clicks/outside-clicks.module#OutsideClicksModule' },
+  { path: 'timers', loadChildren: () => import('./pages/PEIL/timers/timers.module').then(m => m.TimersModule) },
+  { path: 'outside-clicks', loadChildren: () => import('./pages/PEIL/outside-clicks/outside-clicks.module').then(m => m.OutsideClicksModule) },
   
   // { path: 'img/:id', component: ImageManipulationComponent,
   //   children: [
