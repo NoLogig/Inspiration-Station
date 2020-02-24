@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { PixelsComponent } from './pixels.component';
-import { MatTabsModule, MatDividerModule } from "@angular/material";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatTabsModule } from "@angular/material/tabs";
 import { ImageEditorComponent } from './img-editor/img-editor.component';
 import { VideoEditorComponent } from './video-editor/video-editor.component';
 

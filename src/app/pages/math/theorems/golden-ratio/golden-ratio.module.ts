@@ -5,7 +5,10 @@ import { RouterModule } from '@angular/router';
 
 import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
 
-import { MatCardModule, MatSliderModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { GoldenRatioComponent } from './golden-ratio.component';
 import { GoldenRectComponent } from './golden-rect/golden-rect.component';

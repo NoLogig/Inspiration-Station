@@ -2,7 +2,7 @@ import { Component,
   OnInit, AfterViewChecked, AfterViewInit, OnChanges, AfterContentChecked, AfterContentInit, OnDestroy
 } from '@angular/core';
 
-import { Sort } from '@angular/material';
+import { Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'chart-bar-component',

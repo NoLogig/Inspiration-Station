@@ -5,7 +5,7 @@ import { TimersRoutingModule } from './timers-routing.module';
 import { MainComponent } from './main/main.component';
 import { CanvasComponent } from './canvas/canvas.component';
 import { CanvasOptimizedComponent } from './canvas-optimized/canvas-optimized.component';
-import { MatButtonModule } from "@angular/material";
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
   imports: [

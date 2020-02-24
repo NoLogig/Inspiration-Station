@@ -5,9 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
 
-import {
-  MatCardModule, MatSliderModule, MatButtonModule, MatSlideToggleModule, MatFormFieldModule, MatIconModule, MatButtonToggleModule, MatInputModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { CheckboardComponent } from './color-board/checkboard.component';
 import { NumberShazamComponent } from './number-shazam/number-shazam.component';

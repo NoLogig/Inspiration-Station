@@ -5,7 +5,10 @@ import { RouterModule } from '@angular/router';
 
 import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
 
-import { MatTabsModule, MatCardModule, MatDividerModule, MatSliderModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { HexagonsComponent } from './hexagons.component';
 import { HexBorderArrowComponent } from './hex-border-arrow/hex-border-arrow.component';

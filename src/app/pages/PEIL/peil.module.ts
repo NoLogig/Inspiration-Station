@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { PEILComponent } from './peil.component';
-import { MatTabsModule } from "@angular/material";
+import { MatTabsModule } from "@angular/material/tabs";
 
 @NgModule({
   imports: [
