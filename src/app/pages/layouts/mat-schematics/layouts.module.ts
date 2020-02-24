@@ -42,7 +42,7 @@ import { MatLayoutsComponent } from "./layouts.component";
 
 import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
 
-import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { VirtualScollingComponent } from './virtual-scolling/virtual-scolling.component';
 
 import { PlatformComponent } from './platform/platform.component';
@@ -66,7 +66,7 @@ import { PlatformComponent } from './platform/platform.component';
   imports: [
     CommonModule,
 
-    DragDropModule, LayoutModule, BusinessCardModule, CdkTableModule, ScrollDispatchModule,
+    DragDropModule, LayoutModule, BusinessCardModule, CdkTableModule, ScrollingModule,
     
     MatTabsModule, MatCardModule, MatDividerModule, MatSliderModule, MatProgressSpinnerModule,
     MatTreeModule, MatIconModule, MatButtonModule, MatGridListModule, MatCardModule, 
