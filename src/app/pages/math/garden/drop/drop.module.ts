@@ -24,7 +24,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 
 import { DropNodesComponent } from './drop.component';
-import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
+import { BusinessCardModule } from 'src/app/services/business-card/business-card.module';
 
 @NgModule({
   imports: [

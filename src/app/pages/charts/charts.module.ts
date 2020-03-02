@@ -25,7 +25,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { FormsModule } from '@angular/forms';
-import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
+import { BusinessCardModule } from 'src/app/services/business-card/business-card.module';
 
 @NgModule({
   imports: [

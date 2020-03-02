@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
-import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
+import { BusinessCardModule } from 'src/app/services/business-card/business-card.module';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';

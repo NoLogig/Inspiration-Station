@@ -40,7 +40,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { RouterModule } from '@angular/router';
 import { MatLayoutsComponent } from "./layouts.component";
 
-import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
+import { BusinessCardModule } from 'src/app/services/business-card/business-card.module';
 
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { VirtualScollingComponent } from './virtual-scolling/virtual-scolling.component';

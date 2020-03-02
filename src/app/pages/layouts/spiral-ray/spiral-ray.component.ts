@@ -1,17 +1,17 @@
-import { Component, OnInit, ViewChild, ElementRef, NgZone, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, OnChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, OnChanges, OnDestroy } from '@angular/core';
 
 @Component({
-  selector: 'nlg-particle-spiral-ray',
-  templateUrl: './particle-spiral-ray.component.html',
-  styleUrls: ['./particle-spiral-ray.component.scss']
+  selector: 'nlg-spiral-ray',
+  templateUrl: './spiral-ray.component.html',
+  styleUrls: ['./spiral-ray.component.scss']
 })
-export class ParticleSpiralRayComponent implements OnInit, AfterContentChecked, AfterContentInit, 
+export class SpiralRayComponent implements OnInit, AfterContentChecked, AfterContentInit, 
 AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
 
   items = [];
 
   metas = {
-    title: 'CSS - Particle Ray',
+    title: 'CSS - Particle Spiral Ray',
     subTitle: 'Show up div\'s as ray particles:',
     subExtra: 'Math, SCSS',
     links: {

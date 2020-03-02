@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
+import { BusinessCardModule } from 'src/app/services/business-card/business-card.module';
 import { DropNodesModule } from './garden/drop/drop.module';
 import { GoldenModule } from './theorems/golden-ratio/golden-ratio.module';
 import { TheoremsModule } from './theorems/theorems.module';

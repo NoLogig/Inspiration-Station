@@ -9,8 +9,7 @@ import {
   styleUrls: ['./business-card.component.scss']
 })
 
-export class BusinessCardComponent implements OnInit, AfterContentChecked, AfterContentInit,
-  AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
+export class BusinessCardComponent implements OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
 
   @Input('metas') public metas;
 
@@ -54,6 +53,7 @@ export class BusinessCardComponent implements OnInit, AfterContentChecked, After
     this.links = this.defaultMetas.links;
     return;
   }
+
   ngAfterContentChecked(): void { console.log('BusinessCard ContentChecked'); }
   ngAfterContentInit():    void { console.log('BusinessCard ContentInit'); }
   ngAfterViewChecked():    void { console.log('BusinessCard ViewChecked'); }

@@ -22,8 +22,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ParticleSpiralRayComponent } from './particle-spiral-ray.component';
-import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
+import { SpiralRayComponent } from './spiral-ray.component';
+import { BusinessCardModule } from 'src/app/services/business-card/business-card.module';
 
 @NgModule({
   imports: [
@@ -36,14 +36,14 @@ import { BusinessCardModule } from 'src/app/utils/business-card/business-card.mo
     FormsModule,
     RouterModule.forRoot([
       {
-        path: 'particle-spiral-ray',
-        component: ParticleSpiralRayComponent
+        path: 'spiral-ray',
+        component: SpiralRayComponent
       }
     ])
   ],
-  exports: [ ParticleSpiralRayComponent ],
+  exports: [ SpiralRayComponent ],
   declarations: [
-    ParticleSpiralRayComponent
+    SpiralRayComponent
   ]
 })
 export class ParticleSpiralRayModule { }

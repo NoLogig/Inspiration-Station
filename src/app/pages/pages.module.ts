@@ -14,7 +14,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { BusinessCardModule } from '../utils/business-card/business-card.module';
+import { BusinessCardModule } from '../services/business-card/business-card.module';
 import { ChartsDataModule } from './charts/charts.module';
 import { GamesModule } from './games/games.module';
 import { MapModule } from './API/google-maps/maps.module';

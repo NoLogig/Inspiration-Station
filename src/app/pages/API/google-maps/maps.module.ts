@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MapsComponent } from './maps.component';
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
+import { BusinessCardModule } from 'src/app/services/business-card/business-card.module';
 
 @NgModule({
   imports: [

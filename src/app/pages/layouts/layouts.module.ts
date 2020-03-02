@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { MatSchematicLayoutsModule } from './mat-schematics/layouts.module';
 import { ParallaxModule } from './parallax/parallax.module';
-import { ParticleSpiralRayModule  } from './particle-spiral-ray/particle-spiral-ray.module';
+import { ParticleSpiralRayModule } from './spiral-ray/spiral-ray.module';
 import { SplitScreenModule } from './split-screen-skewed/split-screens.module';
 import { HexagonsModule } from './hexagons/hexagons.module';
 
@@ -19,7 +19,7 @@ import { CssFlipCardComponent } from './pure-css/css-flip-card/css-flip-card.com
   ],
   imports: [
     SplitScreenModule, ParallaxModule, MatSchematicLayoutsModule, 
-    HexagonsModule, ParticleSpiralRayModule,
+    HexagonsModule, ParticleSpiralRayModule
   ]
 })
 export class LayoutsModule { }
