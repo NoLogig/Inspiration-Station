@@ -80,9 +80,9 @@ export class SierpinskiTriangleComponent implements OnDestroy, OnInit {
       y: 50
     };
 
-    cptx.drawPoint(this.ctx, this.points[0].x, this.points[0].y);
-    cptx.drawPoint(this.ctx, this.points[1].x, this.points[1].y);
-    cptx.drawPoint(this.ctx, this.points[2].x, this.points[2].y);
+    cptx.draw.point(this.ctx, this.points[0].x, this.points[0].y);
+    cptx.draw.point(this.ctx, this.points[1].x, this.points[1].y);
+    cptx.draw.point(this.ctx, this.points[2].x, this.points[2].y);
   }
 
   createPoint = (e: MouseEvent): void => {
@@ -129,7 +129,7 @@ export class SierpinskiTriangleComponent implements OnDestroy, OnInit {
     
     console.log('Sierpinski render');
 
-    cptx.drawPoint(this.ctx, this.nextPoint.x, this.nextPoint.y);
+    cptx.draw.point(this.ctx, this.nextPoint.x, this.nextPoint.y);
     this.update();
 
     this.raf = requestAnimationFrame(this.render);

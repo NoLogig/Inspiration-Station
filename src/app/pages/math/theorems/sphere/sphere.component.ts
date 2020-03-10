@@ -73,7 +73,7 @@ export class SphereComponent implements OnInit, AfterViewChecked, AfterViewInit,
       this.laySyntax[i].y = 125 + 100 * Math.cos(0.1257 * i) + 50;
 
       this.ctx.fillStyle = 'aqua';
-      ctxTools.drawCircle(this.ctx, p);
+      ctxTools.draw.circle(this.ctx, p);
     }
 
     for (let i = 51; i < 101; i++) {
@@ -82,7 +82,7 @@ export class SphereComponent implements OnInit, AfterViewChecked, AfterViewInit,
       this.laySyntax[i].y = 125 + 100 * Math.cos(0.1257 * i) * Math.sin(this.alpha) + 50;
 
       this.ctx.fillStyle = 'lime';
-      ctxTools.drawCircle(this.ctx, this.laySyntax[i]);
+      ctxTools.draw.circle(this.ctx, this.laySyntax[i]);
     }
 
     for (let i = 101; i < 151; i++) {
@@ -90,7 +90,7 @@ export class SphereComponent implements OnInit, AfterViewChecked, AfterViewInit,
       this.laySyntax[i].y = 125 + 100 * Math.cos(0.1257 * i) + 50;
 
       this.ctx.fillStyle = 'teal';
-      ctxTools.drawCircle(this.ctx, this.laySyntax[i]);
+      ctxTools.draw.circle(this.ctx, this.laySyntax[i]);
     }
 
   }
@@ -105,7 +105,7 @@ export class SphereComponent implements OnInit, AfterViewChecked, AfterViewInit,
       c.y = this.laySyntax[p].y = 125 + 100 * Math.cos(this.alpha + 0.1257 * p) + 50;
 
       this.ctx.fillStyle = 'aqua';
-      ctxTools.drawCircle(this.ctx, c);
+      ctxTools.draw.circle(this.ctx, c);
     }
 
     for (let p = 51; p < 101; p++) {
@@ -114,7 +114,7 @@ export class SphereComponent implements OnInit, AfterViewChecked, AfterViewInit,
       c.y = this.laySyntax[p].y = 125 + 100 * Math.cos(0.1257 * p) * Math.sin(this.alpha) + 50;
 
       this.ctx.fillStyle = 'lime';
-      ctxTools.drawCircle(this.ctx, c);
+      ctxTools.draw.circle(this.ctx, c);
     }
 
     for (let p = 101; p < 151; p++) {
@@ -123,7 +123,7 @@ export class SphereComponent implements OnInit, AfterViewChecked, AfterViewInit,
       c.y = this.laySyntax[p].y = 125 + 100 * Math.cos(this.alpha + 0.1257 * p) + 50;
 
       this.ctx.fillStyle = 'teal';
-      ctxTools.drawCircle(this.ctx, c);
+      ctxTools.draw.circle(this.ctx, c);
     }
 
     // Winkel-Geschwindigkeit

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, Renderer2, ElementRef, AfterViewChecked, AfterViewInit, OnChanges, AfterContentChecked, AfterContentInit, OnDestroy } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import maths, { utils } from 'src/app/services/math/math.service';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { utils } from 'src/app/services/math/math.service';
 
 export interface IMediaPlayer {
   controls: boolean;
@@ -74,7 +73,7 @@ export class Gn8PlayerComponent implements OnInit, OnDestroy, AfterContentChecke
   setup: ISetup;
   rangeDecibel: number;
 
-  constructor(private rend: Renderer2, private domSanitizer: DomSanitizer, private breakpointObserver: BreakpointObserver) { }
+  constructor(private domSanitizer: DomSanitizer) { }
 
   /* ########################### */
   /* ####  Livecycle Hooks  #### */

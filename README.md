@@ -6,13 +6,13 @@ Please be patient, [Heroku](https://heroku.com) might take upto a minute to load
 
 ## Development
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.22.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2
 
 ### Prerequisites
 
  - [Node.js®](https://nodejs.org) & [npm](http://npmjs.com) (comes with node)
  - [Angular CLI](https://cli.angular.io) Command line interface for Angular
- - [Git](https://git-scm.com) GitHubs command line tool (Not necessary)
+ - [Git](https://git-scm.com) GitHubs command line tool (Optional)
 
 ### How²Use
 
@@ -31,7 +31,7 @@ npm run start
 
 [ECMAScript](https://kangax.github.io/compat-table/es6/) `5|6|2016+|next|intl|non-standard` compatibility table
 
-[TypeScript](https://www.typescriptlang.org) Documentation
+[TypeScript Documentation](https://www.typescriptlang.org)
 
 ### [MEAN Stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle))
 
@@ -47,18 +47,20 @@ npm run start
 * [morgan](https://www.npmjs.com/package/morgan):               Logs HTTP request details to console (written by Express)
 * [path](https://nodejs.org/docs/latest/api/path.html):         Provides utilities for working with file and directory paths
 
-### Client (Angular)
+### Client
 * [Angular CLI](https://cli.angular.io):                        Command line frontend scaffolding
 * [Angular Material](https://material.angular.io):              Design components for Angular
+    + [HammerJS](https://hammerjs.github.io/):                  Touch gesture support
     + [Material Icons](https://material.io/icons):              Material Icons
-    + [HammerJS](https://hammerjs.github.io/):                  Add Touch gesture support
+* [Angular Service Worker](https://):                           PWA
 * [Googlemaps](https://cloud.google.com/maps-platform/):        Google Maps API
+* [Native File System](https://):                               Native-File-System API    
 * [ng2-charts](https://github.com/valor-software/ng2-chart):    Angular 2+ Charts
     + [Chart.js](https://www.chartjs.org/):                     Flexible JavaScript charting
 
 ### PWA / Service Worker - Test
 
-#### Prerequisites
+####  Prerequisites
 
 - [http-server](https://nodejs.org/http-server)
 
@@ -83,8 +85,7 @@ The lack of access to the file system is one of the biggest obstacles to the suc
 In Chrome 77 (beta) an access to the file system can be activated.
 **!Hurray!**
 
-
-## NG CLI
+## Angular CLI
 
 ### Development server
 
@@ -114,13 +115,17 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Gathering
 
-iwlist -MonitorMode
+[iwlist]() -MonitorMode
 
-wavemon -MonitorMode
+[wavemon]() -MonitorMode
 
 [Airodump-ng](https://www.) +MonitorMode
 
 [Wash](https://www.) only WPS WLANs
+
+[Fiddler]( )
+
+[WireShark]( )
 
 ## Attacks
 

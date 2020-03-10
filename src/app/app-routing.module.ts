@@ -5,7 +5,7 @@ import { GithubViewerComponent } from './pages/API/github-viewer/github-viewer.c
 import { ImpressumComponent } from './home/impressum/impressum.component';
 import { SplitScreenSkewedComponent } from './pages/layouts/split-screen-skewed/split-screen-skewed.component';
 import { TheoremsComponent } from './pages/math/theorems/theorems.component';
-import { HarmonyComponent } from './pages/harmony/harmony.component';
+import { HarmonyComponent } from './pages/layouts/harmony/harmony.component';
 
 export const routes: Routes = [
   

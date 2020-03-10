@@ -82,7 +82,7 @@ export class NodeGardenComponent implements OnInit, OnDestroy, AfterContentCheck
       node.x = utils.lock(node.x + node.vx, 0, this.cWidth);
       node.y = utils.lock(node.y + node.vy, 0, this.cHeight);
 
-      ctxTools.drawCircle(this.ctx, node);
+      ctxTools.draw.circle(this.ctx, node);
       ctxTools.connectNodes(this.ctx, this.nodes, i, this.connectRange);
 
     }

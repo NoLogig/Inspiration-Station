@@ -125,7 +125,7 @@ export class VelocityComponent implements OnInit, OnDestroy, AfterContentChecked
   initOverlay = (): void => {
 
     this.canu.grid.init(this.ctx, this.width, this.height, 39);
-    this.canu.drawCenter(this.ctx);
+    this.canu.draw.canvasCenter(this.ctx);
   }
 
   canvasAnimate = (): void => {
