@@ -29,8 +29,19 @@ export class HarmonyComponent implements OnInit {
     this.file_system.getDirectory(this.file_system.dir_ref);
   }
 
+  getDirRecursive() {
+    this.file_system.getDirectoryRecursive(this.file_system.dir_ref);
+  }
+
   getDirs() {
     this.file_system.getDirectories(this.file_system.dir_refs);
+  }
+
+  test() {
+    this.file_system.test(this.file_system.handler);
+  }
+   log() {
+     this.file_system.log(this.file_system.arr);
   }
 
 }

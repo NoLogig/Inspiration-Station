@@ -28,83 +28,84 @@ export class FileSystemService {
 
   private file_reader: FileReader;
 
+  public arr = [];
+
   constructor() {
+
+    this.options = {
+
+      file: {
+        type: 'openFile',
+        // If true, returns an array rather than a single handle.
+        multiple: false,
+        // If true, the resulting file reference won't be writable. Note that there
+        // is no guarantee that the resulting file reference will be writable when
+        // readOnly is set to false. Both filesystem level permissions as well as
+        // browser UI/user intent might result in a file reference that isn't usable
+        // for writing, even if the website asked for a writable reference.
+        readOnly: true,
+        accepts: [{
+          description: 'All',
+          extensions: ['*']
+        }, {
+          description: 'Texts',
+          extensions: ['txt', 'json', 'md', 'pdf']
+        }, {
+          description: 'Images',
+          extensions: ['jpeg', 'jpg', 'png', 'gif']
+        }, {
+          description: 'Videos',
+          extensions: ['mp4', 'ogg']
+        }]
+        // suggestedStartLocation: 'player-library'
+      },
+      files: {
+        type: 'openFile',
+        multiple: true,
+        readOnly: true,
+        accepts: [{
+          description: 'All',
+          extensions: ['*']
+        }]
+      },
+      dir: {
+        type: 'openDirectory',
+        multiple: false,
+        readOnly: true,
+        accepts: [{
+          description: 'All',
+          extensions: ['*']
+        }]
+      },
+      dirs: {
+        type: 'openDirectory',
+        multiple: true,
+        readOnly: true,
+        accepts: [{
+          description: 'All',
+          extensions: ['*']
+        }]
+      }
+
+    };
 
     this.initOptions();
 
   }
 
   /* ####  FileSystem - Options    #### */
-  
+
   initOptions(option?: IChooseFileSystemEntriesOption) {
 
-    if(!option) {
+    if (!option) {
 
-      this.options = {
-
-        file: {
-          type: 'openFile',
-          // If true, returns an array rather than a single handle.
-          multiple: false,
-          // If true, the resulting file reference won't be writable. Note that there
-          // is no guarantee that the resulting file reference will be writable when
-          // readOnly is set to false. Both filesystem level permissions as well as
-          // browser UI/user intent might result in a file reference that isn't usable
-          // for writing, even if the website asked for a writable reference.
-          readOnly: true,
-          accepts: [{
-            description: 'All',
-            extensions: ['*']
-          }, {
-            description: 'Texts',
-            extensions: ['txt', 'json', 'md', 'pdf']
-          }, {
-            description: 'Images',
-            extensions: ['jpeg', 'jpg', 'png', 'gif']
-          }, {
-            description: 'Videos',
-            extensions: ['mp4', 'ogg']
-          }]
-          // suggestedStartLocation: 'player-library'
-        },
-        files: {
-          type: 'openFile',
-          multiple: true,
-          readOnly: true,
-          accepts: [{
-            description: 'All',
-            extensions: ['*']
-          }]
-        },
-        dir: {
-          type: 'openDirectory',
-          multiple: false,
-          readOnly: true,
-          accepts: [{
-            description: 'All',
-            extensions: ['*']
-          }]
-        },
-        dirs: {
-          type: 'openDirectory',
-          multiple: true,
-          readOnly: true,
-          accepts: [{
-            description: 'All',
-            extensions: ['*']
-          }]
-        }
-
-      };
-
-      this.option = this.options.dirs;
+      this.option = this.options.dir;
 
       return;
-
     }
 
     this.option = option;
-    
+
   }
 
   /* ####  FileSystem - Picker     #### */
@@ -130,22 +131,19 @@ export class FileSystemService {
         return;
       }
 
-      if (!this.option.multiple) {
-
-        if (this.option.type === "openDirectory") {
-          this.handler = this.dir_ref = await this.window.chooseFileSystemEntries(this.option as IChooseFileSystemEntriesOptionDirectory);
-          return;
-        }
-
-        if (this.option.type === "openFile") {
-          this.handler = this.file_ref = await this.window.chooseFileSystemEntries(this.option as IChooseFileSystemEntriesOptionFile);
-          return;
-        }
-
-        this.handler = this.entry = await this.window.chooseFileSystemEntries(this.option as IChooseFileSystemEntriesOption);
-
+      if (this.option.type === "openDirectory") {
+        this.handler = this.dir_ref = await this.window.chooseFileSystemEntries(this.option as IChooseFileSystemEntriesOptionDirectory);
         return;
       }
+
+      if (this.option.type === "openFile") {
+        this.handler = this.file_ref = await this.window.chooseFileSystemEntries(this.option as IChooseFileSystemEntriesOptionFile);
+        return;
+      }
+
+      this.handler = this.entry = await this.window.chooseFileSystemEntries(this.option as IChooseFileSystemEntriesOption);
+
+      return;
 
       // User cancelled, or otherwise failed
     } catch (err) { console.info(err) }
@@ -160,8 +158,8 @@ export class FileSystemService {
 
     let file = await handler.getFile();
 
-    console.log(await file);
-    return await file;
+    console.log( file);
+    return  file;
 
   }
 
@@ -180,14 +178,116 @@ export class FileSystemService {
 
   }
 
-  async getDirectory(handler?: IFileSystemDirectoryHandle) {
+  async getDirectory(dirHandler?: IFileSystemDirectoryHandle) {
 
     // User cancelled, or otherwise failed to open a directory.
+    if (!dirHandler) { return }
+
+    // Read directory content.
+    // entry is a FileSystemFileHandle or a FileSystemDirectoryHandle.
+    for await (let entry of dirHandler.getEntries()) {
+
+      if (entry.isDirectory) {
+        // console.info("Dirs-Dir", entry.value);
+      }
+
+      if (entry.isFile && entry.name !== "desktop.ini") {
+        // console.info("Dirs-File", entry);
+        // await this.getFile(entry);
+      }
+
+    }
+
+  }
+
+  async getDirectoryRecursive(handler?: IFileSystemDirectoryHandle) {
+
     if (!handler) { return }
+
+    let tmp_arr = [];
+    let test = await handler.getEntries();
+    let entry = await test[Symbol.asyncIterator]().next();
+
+    while (!entry.done) {
+
+      if (entry.value.isFile && entry.value.name !== "desktop.ini") {
+        tmp_arr.push(entry.value.name);
+      }
+
+      if (entry.value.isDirectory) {
+        this.getDirectoryRecursive(entry.value);
+      }
+
+      entry = await test[Symbol.asyncIterator]().next();
+
+    }
+
+    let item = {
+      name: handler.name,
+      files: tmp_arr
+    };
+    this.arr.push(item);
+
+  }
+  // async getDirectory(handler?: IFileSystemDirectoryHandle) {
+
+  //   // User cancelled, or otherwise failed to open a directory.
+  //   if (!handler) { return }
+
+  //   let test = await handler.getEntries();
+  //   let leave = false;
+  //   let arr = [];
+
+  //   while (!leave) {
+
+  //     let entry = await test[Symbol.asyncIterator]().next();
+
+  //     if(entry.done) {
+  //       leave = true;
+  //       continue;
+  //     }
+
+  //     console.warn(entry);
+
+  //     arr.push(entry.value);
+
+  //   }
+
+  //   this.arr.push(arr);
+  //   console.log(arr);
 
     // Read directory contents.
     // entry is a FileSystemFileHandle or a FileSystemDirectoryHandle.
-    for await (let entry of handler.getEntries()) {
+    // for await (let entry of handler.getEntries()) {
+
+    //   if (entry.isDirectory) {
+    //     // let dir = await this.dir_ref.getDirectory(entry.name, { create: false });
+    //     // console.info("Dir\nDir", entry);
+    //     this.getDirectory(entry);
+    //   }
+
+    //   // NOTE: Thought desktop.ini was removed after Win7, curios it's still there... 
+    //   // TODO: Check if the new Explorer Dark Mode is the same like in Win7... if (shame on MicroSoft) else ( WTF )
+    //   if (entry.isFile && entry.name !== "desktop.ini") {
+    //     // let file = await this.dir_ref.getFile(entry.name, { create: false });
+    //     // console.warn("Dir\nFile", entry);
+    //   }
+
+    // }
+
+    // console.log(dir);
+    // return dir;
+  // }
+
+  async getDirectories(handler?: IFileSystemDirectoryHandle[]) {
+
+    if (!handler) { return }
+
+    console.warn("DIRS - Start", handler);
+
+    // Read directory contents.
+    // entry is a FileSystemFileHandle or a FileSystemDirectoryHandle.
+    for await (let entry of handler) {
 
       if (entry.isDirectory) {
         // let dir = await this.dir_ref.getDirectory(entry.name, { create: false });
@@ -204,47 +304,65 @@ export class FileSystemService {
 
     }
 
-    // console.log(dir);
-    // return dir;
+    // for await (let entry of handler.getEntries()) {
+
+    //   if (entry.isDirectory) {
+    //     console.info("Subs\nDir", entry);
+    //     // this.getDirectories(entry);
+    //   }
+
+    //   if (entry.isFile) {
+    //     console.info("Subs\nFile", entry);
+    //     // entry.getFile();
+    //   }
+
+    // }
+
+    console.warn("DIRS - End", handler);
   }
+  // async getDirectories(handler?: IFileSystemDirectoryHandle[]) {
 
-  async getDirectories(handler?: IFileSystemDirectoryHandle[]) {
+  //   if (!handler) { return }
 
-    if (!handler) { return }
+  //   for await (let entry of handler) {
 
-    for await (let entry of handler) {
+  //     if (entry.isDirectory) {
+  //       console.info("Sub\nDir", entry);
+  //       this.getDirectory(entry);
+  //     }
 
-      if (entry.isDirectory) {
-        console.info("Sub\nDir", entry);
-        this.getDirectory(entry);
-      }
+  //     if (entry.isFile) {
+  //       console.warn("Sub\nFile", entry);
+  //       entry.getFile(entry.name, {create: false});
+  //     }
 
-      if (entry.isFile) {
-        console.warn("Sub\nFile", entry);
-        entry.getFile(entry.name, {create: false});
-      }
+  //   }
 
-    }
-
-  }
+  // }
 
   /* ####  FileSystem - Writers?   #### */
 
-  async test(dir_refs: IFileSystemDirectoryHandle) {
+  async log(val: any) {
+    console.warn(val);
+  }
+
+  async test(dir_refs?: IFileSystemDirectoryHandle) {
+
+    console.log(this.arr);
 
     // Get a specific file.
-    let file_ref = await dir_refs.getFile('foo.js');
+    // let file_ref = await dir_refs.getFile('foo.js');
     // Do something useful with the file.
 
     // Get a specific subdirectory.
-    let subdir = await dir_refs.getDirectory('bla', { create: true });
+    // let subdir = await dir_refs.getDirectory('bla', { create: true });
     // Do something useful with the directory.
 
     // Thre is no special API available to create copies, but's still possible, by using read & write APIs.
-    let copy = await dir_refs.getFile('new_name', { create: true });
-    let copied_writer = await copy.createWriter();
-    await copied_writer.truncate(0);
-    await copied_writer.write(0, await file_ref.getFile());
+    // let copy = await dir_refs.getFile('new_name', { create: true });
+    // let copied_writer = await copy.createWriter();
+    // await copied_writer.truncate(0);
+    // await copied_writer.write(0, await file_ref.getFile());
 
     // return dirs;
   }
@@ -289,3 +407,29 @@ export class FileSystemService {
   }
 
 }
+
+export async function fsGetDir(dirHandler: IFileSystemDirectoryHandle) {
+
+    // User cancelled, or otherwise failed to open a directory.
+    if (!dirHandler) { return }
+
+    // Read directory content.
+    // entry is a FileSystemFileHandle or a FileSystemDirectoryHandle.
+    for await (let entry of dirHandler.getEntries()) {
+
+      if (entry.isDirectory) {
+
+      }
+
+      // NOTE: Thought desktop.ini was removed after Win7, curios it's still sometimes there... 
+      // TODO: Check if the new Explorers Dark Mode is the same like in Win7... if (shame on MicroSoft) else ( WTF )
+      if (entry.isFile && entry.name !== "desktop.ini") {
+
+      }
+
+    }
+
+    // console.log(dir);
+    // return dir;
+}
+
