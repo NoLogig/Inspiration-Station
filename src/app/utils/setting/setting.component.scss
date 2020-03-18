@@ -1,0 +1,27 @@
+.config-inputs {
+  min-width: 200px;
+  width: auto;
+  max-width: 400px;
+  border: 1px solid aqua;
+  border-radius: 2%;
+}
+
+.example-section {
+  margin: 8px;
+}
+
+.example-form {
+  margin: 8px;
+}
+
+.example-margin {
+  margin-right: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-radio-button~.mat-radio-button {
+  margin-left: 16px;
+}

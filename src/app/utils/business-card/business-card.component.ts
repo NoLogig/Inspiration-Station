@@ -2,11 +2,13 @@ import {
   Component, Input,
   OnInit, OnChanges, OnDestroy, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit
 } from '@angular/core';
+import { ActiveDirective } from '../directives/active.directive';
 
 @Component({
   selector: 'nlg-business-card',
   templateUrl: './business-card.component.html',
-  styleUrls: ['./business-card.component.scss']
+  styleUrls: ['./business-card.component.scss'],
+  providers: [ActiveDirective]
 })
 
 export class BusinessCardComponent implements OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {

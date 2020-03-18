@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -13,8 +16,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
-import { BusinessCardModule } from '../services/business-card/business-card.module';
+import { SettingModule } from "src/app/utils/setting/setting.module";
+import { BusinessCardModule } from '../utils/business-card/business-card.module';
 import { ChartsDataModule } from './charts/charts.module';
 import { GamesModule } from './games/games.module';
 import { MapModule } from './API/google-maps/maps.module';
@@ -35,14 +42,15 @@ import { HarmonyComponent } from './layouts/harmony/harmony.component';
     EnigmaComponent, GithubViewerComponent
   ],
   imports: [
-    CommonModule,
-
+    CommonModule, FormsModule,
+    SettingModule,
     BusinessCardModule, ChartsDataModule, GamesModule,
     MathModule, MapModule, MediaModule, 
     PEILModule, PixelsModule,
 
+    MatCheckboxModule, MatAutocompleteModule, MatInputModule, MatAutocompleteModule, MatButtonToggleModule,
     MatFormFieldModule, MatInputModule, MatSlideToggleModule, MatDividerModule, MatListModule, MatButtonModule,
-    MatCardModule, MatSliderModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatTabsModule
+    MatCardModule, MatSliderModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatTabsModule, MatRadioModule
   ]
 })
 export class PagesModule { }

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from "@angular/router";
 
 import { SplitScreenSkewedComponent } from './split-screen-skewed.component';
-import { BusinessCardModule } from 'src/app/services/business-card/business-card.module';
+import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
 
 @NgModule({
   imports: [

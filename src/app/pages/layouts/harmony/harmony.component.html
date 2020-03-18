@@ -1,18 +1,24 @@
 <mat-toolbar>
 
-    <button mat-button (click)="fileSystem();" >Picker</button>
-    <button mat-button (click)="getFile();" >File</button>
-    <button mat-button (click)="getFiles();" >Files</button>
-    <button mat-button (click)="getDir();" >Dir</button>
-    <button mat-button (click)="getDirRecursive();" >Recursive</button>
-    <button mat-button (click)="getDirs();" >Dirs</button>
-    <button mat-button (click)="test();" >TEST</button>
-    
-    <button mat-button (click)="log();" >Log</button>
-    
+    <button mat-button (click)="fileSystem();">Picker</button>
+
+    <button mat-button (click)="getFile();">File</button>
+    <button mat-button (click)="getFiles();">Files</button>
+    <button mat-button (click)="getDir();">Dir</button>
+    <button mat-button (click)="getDirRecursive();">Recursive</button>
+    <button mat-button (click)="getDirs();">Dirs</button>
+
+    <button mat-button (click)="log();">Log A</button>
+    <button mat-button (click)="log();">Log D</button>
+    <button mat-button (click)="log();">Log H</button>
+
 </mat-toolbar>
 
+<nlg-setting></nlg-setting>
+
 <div>
+
     <!-- Video Player -->
     <video #player [controls]="'true'"></video>
+
 </div>

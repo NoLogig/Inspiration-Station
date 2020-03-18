@@ -10,6 +10,7 @@ import { CssCarouselComponent } from './pure-css/css-carousel/css-carousel.compo
 import { CssCubeComponent } from './pure-css/css-cube/css-cube.component';
 import { CssFlipCardComponent } from './pure-css/css-flip-card/css-flip-card.component';
 
+
 @NgModule({
   declarations: [
     CssCarouselComponent, CssCubeComponent, CssFlipCardComponent

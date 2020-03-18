@@ -8,7 +8,7 @@ import { FileSystemService } from 'src/app/services/file-system/file-system.serv
   providers: [FileSystemService]
 })
 export class HarmonyComponent implements OnInit {
-
+  
   constructor(public file_system: FileSystemService) {  }
 
   ngOnInit() { }
@@ -37,11 +37,13 @@ export class HarmonyComponent implements OnInit {
     this.file_system.getDirectories(this.file_system.dir_refs);
   }
 
-  test() {
-    this.file_system.test(this.file_system.handler);
+  log(val?: any) {
+    this.file_system.log(val);
   }
-   log() {
-     this.file_system.log(this.file_system.arr);
+  t(val?: any) {
+    console.log(val);
+    // val.style.backgroundColor = 'transparent';
+    // val.style.display = 'block';
   }
 
 }

@@ -29,6 +29,10 @@ export class FileSystemService {
   private file_reader: FileReader;
 
   public arr = [];
+  public dir = {};
+  public file: File;
+
+  public i = 0;
 
   constructor() {
 
@@ -93,21 +97,6 @@ export class FileSystemService {
 
   }
 
-  /* ####  FileSystem - Options    #### */
-
-  initOptions(option?: IChooseFileSystemEntriesOption) {
-
-    if (!option) {
-
-      this.option = this.options.dir;
-
-      return;
-    }
-
-    this.option = option;
-
-  }
-
   /* ####  FileSystem - Picker     #### */
 
   async openPicker() {
@@ -150,6 +139,21 @@ export class FileSystemService {
 
   }
 
+  /* ####  FileSystem - Options    #### */
+
+  initOptions(option?: IChooseFileSystemEntriesOption) {
+
+    if (!option) {
+
+      this.option = this.options.dir;
+
+      return;
+    }
+
+    this.option = option;
+
+  }
+
   /* ####  FileSystem - Handlers   #### */
 
   async getFile(handler?: IFileSystemFileHandle): Promise<File> {
@@ -178,55 +182,77 @@ export class FileSystemService {
 
   }
 
-  async getDirectory(dirHandler?: IFileSystemDirectoryHandle) {
+  async getDirectory(dirHandler: IFileSystemDirectoryHandle, recursive?: boolean) {
 
     // User cancelled, or otherwise failed to open a directory.
     if (!dirHandler) { return }
+
+    let dir_arr = [],
+        file_arr = [];
 
     // Read directory content.
     // entry is a FileSystemFileHandle or a FileSystemDirectoryHandle.
     for await (let entry of dirHandler.getEntries()) {
 
       if (entry.isDirectory) {
-        // console.info("Dirs-Dir", entry.value);
+        // console.info("Dirs-Dir", entry);
+        dir_arr.push(entry);
+
+        if(recursive) {
+          this.getDirectory(entry, true);
+        }
+
       }
 
       if (entry.isFile && entry.name !== "desktop.ini") {
         // console.info("Dirs-File", entry);
+        file_arr.push(entry);
         // await this.getFile(entry);
       }
 
     }
 
+    let dir = {
+      name: dirHandler.name,
+      dirs: dir_arr,
+      files: file_arr,
+    };
+
+    this.arr.push(dir);
+
   }
 
-  async getDirectoryRecursive(handler?: IFileSystemDirectoryHandle) {
+  async getDirectoryRecursive(dirHandler: IFileSystemDirectoryHandle) {
 
-    if (!handler) { return }
+    if (!dirHandler) { return }
 
-    let tmp_arr = [];
-    let test = await handler.getEntries();
-    let entry = await test[Symbol.asyncIterator]().next();
+    let dir_arr = [],
+        file_arr = [];
+    let entries = await dirHandler.getEntries(),
+        entry = await entries[Symbol.asyncIterator]().next();
 
     while (!entry.done) {
 
-      if (entry.value.isFile && entry.value.name !== "desktop.ini") {
-        tmp_arr.push(entry.value.name);
-      }
-
       if (entry.value.isDirectory) {
+        dir_arr.push(entry.value);
         this.getDirectoryRecursive(entry.value);
       }
 
-      entry = await test[Symbol.asyncIterator]().next();
+      if (entry.value.isFile && entry.value.name !== "desktop.ini") {
+        file_arr.push(entry.value);
+      }
+
+      entry = await entries[Symbol.asyncIterator]().next();
 
     }
 
-    let item = {
-      name: handler.name,
-      files: tmp_arr
+    let dir = {
+      name: dirHandler.name,
+      dirs: dir_arr,
+      files: file_arr,
     };
-    this.arr.push(item);
+
+    this.arr.push(dir);
 
   }
   // async getDirectory(handler?: IFileSystemDirectoryHandle) {
@@ -283,7 +309,7 @@ export class FileSystemService {
 
     if (!handler) { return }
 
-    console.warn("DIRS - Start", handler);
+    // console.warn("DIRS - Start", handler);
 
     // Read directory contents.
     // entry is a FileSystemFileHandle or a FileSystemDirectoryHandle.
@@ -291,7 +317,7 @@ export class FileSystemService {
 
       if (entry.isDirectory) {
         // let dir = await this.dir_ref.getDirectory(entry.name, { create: false });
-        console.info("Dir\nDir", entry);
+        // console.info("Dir\nDir", entry);
         this.getDirectory(entry);
       }
 
@@ -299,7 +325,7 @@ export class FileSystemService {
       // TODO: Check if the new Explorer Dark Mode is the same like in Win7... if (shame on MicroSoft) else ( WTF )
       if (entry.isFile && entry.name !== "desktop.ini") {
         // let file = await this.dir_ref.getFile(entry.name, { create: false });
-        console.warn("Dir\nFile", entry);
+        // console.warn("Dir\nFile", entry);
       }
 
     }
@@ -318,7 +344,7 @@ export class FileSystemService {
 
     // }
 
-    console.warn("DIRS - End", handler);
+    // console.warn("DIRS - End", handler);
   }
   // async getDirectories(handler?: IFileSystemDirectoryHandle[]) {
 
@@ -341,31 +367,6 @@ export class FileSystemService {
   // }
 
   /* ####  FileSystem - Writers?   #### */
-
-  async log(val: any) {
-    console.warn(val);
-  }
-
-  async test(dir_refs?: IFileSystemDirectoryHandle) {
-
-    console.log(this.arr);
-
-    // Get a specific file.
-    // let file_ref = await dir_refs.getFile('foo.js');
-    // Do something useful with the file.
-
-    // Get a specific subdirectory.
-    // let subdir = await dir_refs.getDirectory('bla', { create: true });
-    // Do something useful with the directory.
-
-    // Thre is no special API available to create copies, but's still possible, by using read & write APIs.
-    // let copy = await dir_refs.getFile('new_name', { create: true });
-    // let copied_writer = await copy.createWriter();
-    // await copied_writer.truncate(0);
-    // await copied_writer.write(0, await file_ref.getFile());
-
-    // return dirs;
-  }
 
   async writer(file_ref: IFileSystemFileHandle) {
 
@@ -404,6 +405,30 @@ export class FileSystemService {
     // |file_reader|'s onload handler will be called with the result of the file read.
     this.file_reader.readAsArrayBuffer(file);
 
+  }
+
+  /* ####   Helpers   #### */
+
+  async log(val?: any) {
+
+    console.log(this.arr);
+    console.info(val);
+
+    // Get a specific file.
+    // let file_ref = await dir_refs.getFile('foo.js');
+    // Do something useful with the file.
+
+    // Get a specific subdirectory.
+    // let subdir = await dir_refs.getDirectory('bla', { create: true });
+    // Do something useful with the directory.
+
+    // Thre is no special API available to create copies, but's still possible, by using read & write APIs.
+    // let copy = await dir_refs.getFile('new_name', { create: true });
+    // let copied_writer = await copy.createWriter();
+    // await copied_writer.truncate(0);
+    // await copied_writer.write(0, await file_ref.getFile());
+
+    // return dirs;
   }
 
 }

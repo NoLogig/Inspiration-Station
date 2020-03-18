@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PISComponent } from './pis.component';
-import { BusinessCardModule } from 'src/app/services/business-card/business-card.module';
+import { BusinessCardModule } from 'src/app/utils/business-card/business-card.module';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
