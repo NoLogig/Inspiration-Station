@@ -1,95 +1,101 @@
 
 <div class="config-inputs">
 
-  <section class="example-section">
+    <section class="example-section">
 
-      <form class="example-form">
+        <form class="example-form">
 
-          <mat-form-field class="full-width"
-          [color]="color" >
+            <mat-form-field class="full-width"
+            [color]="color" >
 
-              <input matInput placeholder="Recursive" autocomplete="off" />
+                <input #input matInput placeholder="Recursive" autocomplete="off" />
 
-          </mat-form-field>
+            </mat-form-field>
 
-      </form>
+            <div class="example-selected-value">Value: {{input.value}}</div>
 
-  </section>
+        </form>
 
-  <section class="example-section">
+    </section>
 
-      <mat-button-toggle-group name="fs_options" #group="matButtonToggleGroup"
-      [disabled]="disabled">
+    <mat-divider></mat-divider>
 
-          <mat-button-toggle value="file">File</mat-button-toggle>
-          <mat-button-toggle value="files">Files</mat-button-toggle>
-          <mat-button-toggle value="dir">Dir</mat-button-toggle>
-          <mat-button-toggle value="dirs">Dirs</mat-button-toggle>
+    <section class="example-section">
 
-      </mat-button-toggle-group>
+        <mat-button-toggle-group name="fs_options" #group="matButtonToggleGroup"
+        [disabled]="disabled">
 
-      <div class="example-selected-value">Selected value: {{group.value}}</div>
+            <mat-button-toggle value="file">File</mat-button-toggle>
+            <mat-button-toggle value="files">Files</mat-button-toggle>
+            <mat-button-toggle value="dir">Dir</mat-button-toggle>
+            <mat-button-toggle value="dirs">Dirs</mat-button-toggle>
 
-  </section>
+        </mat-button-toggle-group>
 
-  <section class="example-section">
+        <div class="example-selected-value">Value: {{group.value}}</div>
 
-      <mat-checkbox class="example-margin"
-      [(ngModel)]="multiple"
-      [(indeterminate)]="indeterminate"
-      [labelPosition]="labelPosition"
-      [color]="color"
-      [disabled]="disabled">
-          Multiple
-      </mat-checkbox>
+    </section>
 
-  <div class="example-selected-value">Selected value: {{multiple}}</div>
+    <mat-divider></mat-divider>
 
-  </section>
+    <section class="example-section">
 
-  <section class="example-section">
+        <mat-checkbox class="example-margin"
+        [(ngModel)]="multiple"
+        [(indeterminate)]="indeterminate"
+        [labelPosition]="labelPosition"
+        [color]="color"
+        [disabled]="disabled">
+            Multiple
+        </mat-checkbox>
 
-      <mat-slide-toggle class="example-margin"
-      [(ngModel)]="recursive"
-      [color]="color"
-      [disabled]="disabled">
-          Recursive
-      </mat-slide-toggle>
-      
-      <div class="example-selected-value">Selected value: {{recursive}}</div>
+        <div class="example-selected-value">Selected value: {{multiple}}</div>
 
-  </section>
+    </section>
 
-  <section class="example-section">
-  
+    <mat-divider></mat-divider>
 
-      <mat-slide-toggle class="example-margin"
-      [(ngModel)]="disabled"
-      [color]="color">
-          Disabled
-      </mat-slide-toggle>
+    <section class="example-section">
 
-      <div class="example-selected-value">Selected value: {{disabled}}</div>
+        <mat-slider max="1" min="0" step="0.01" thumbLabel="true" [(ngModel)]="range" [disabled]="disabled"></mat-slider>
 
-  </section>
+        <div class="example-selected-value">Value: {{range}}</div>
 
-  <section class="example-section">
+    </section>
 
-      <label class="example-margin">Color:</label>
+    <mat-divider></mat-divider>
 
-      <mat-radio-group
-      [(ngModel)]="color"
-      [color]="color"
-      [disabled]="disabled">
+    <section class="example-section">
 
-          <mat-radio-button value="primary">Primary</mat-radio-button>
-          <mat-radio-button value="accent">Accent</mat-radio-button>
-          <mat-radio-button value="warn">Warn</mat-radio-button>
+        <mat-slide-toggle class="example-margin"
+        [(ngModel)]="disabled"
+        [color]="color">
+            Disabled
+        </mat-slide-toggle>
 
-      </mat-radio-group>
+        <div class="example-selected-value">Value: {{disabled}}</div>
 
-      <div class="example-selected-value">Selected value: {{color}}</div>
+    </section>
 
-  </section>
+    <mat-divider></mat-divider>
+
+    <section class="example-section">
+
+        <label class="example-margin">Color:</label>
+
+        <mat-radio-group
+        [(ngModel)]="color"
+        [color]="color"
+        [disabled]="disabled">
+
+            <mat-radio-button value="primary">Primary</mat-radio-button>
+            <mat-radio-button value="accent">Accent</mat-radio-button>
+            <mat-radio-button value="warn">Warn</mat-radio-button>
+
+        </mat-radio-group>
+
+        <div class="example-selected-value">Value: {{color}}</div>
+
+    </section>
 
 </div>

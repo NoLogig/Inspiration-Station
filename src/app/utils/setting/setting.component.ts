@@ -1,6 +1,6 @@
 import {
   Component, Input,
-  OnInit, OnChanges, OnDestroy, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit
+  OnInit, OnChanges, OnDestroy, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Output
 } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 
@@ -12,8 +12,10 @@ import { ThemePalette } from '@angular/material/core';
 
 export class SettingComponent implements OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, OnChanges, OnDestroy {
 
+  @Output('multiple') multi;
+
   multiple = false;
-  recursive = false;
+  range = 0;
   indeterminate = false;
   disabled = false;
   labelPosition: 'before' | 'after' = 'after';
