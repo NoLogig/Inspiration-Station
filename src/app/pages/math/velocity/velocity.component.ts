@@ -1,9 +1,7 @@
-
 import { Component, NgZone, ViewChild, ElementRef,
-  OnInit, OnDestroy, AfterContentChecked, AfterViewChecked, AfterViewInit, AfterContentInit, OnChanges  } from '@angular/core';
-import { CanvasPaintToolsService } from '../../../utils/canvas/tools/paint-tools.service';
+  OnInit, OnDestroy, AfterContentChecked, AfterViewChecked, AfterViewInit, AfterContentInit, OnChanges } from '@angular/core';
+import { CanvasPaintToolsService } from '../../../utils/tools/paint-tools.service';
 import { Particle } from 'src/app/services/math/particle.service';
-import { Vector } from 'src/app/services/math/vector.service';
 
 export interface ICanvas {
   canvas: HTMLCanvasElement;
@@ -13,14 +11,25 @@ export interface ICanvas {
 }
 
 @Component({
-  selector: 'nlg-canvas-init',
-  templateUrl: './initializer.component.html',
-  styleUrls: ['./initializer.component.scss']
+  selector: 'nlg-velocity',
+  templateUrl: './velocity.component.html',
+  styleUrls: ['./velocity.component.scss']
 })
 export class VelocityComponent implements OnInit, OnDestroy, AfterContentChecked, AfterViewChecked, AfterViewInit, AfterContentInit, OnChanges {
 
   @ViewChild('base', { static: true }) baseCanvas: ElementRef;
   @ViewChild('overlay', { static: true }) overlayCanvas: ElementRef;
+
+  metas = {
+    title: 'Velocity & Gravity',
+    subTitle: '',
+    subExtra: '',
+    links: {
+      down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
+      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/math/velocity',
+      live: 'https://heroku.apps.com/NoLogig/Inspiration-Station/velocity',
+    }
+  };
 
   cbase: ICanvas;
 
@@ -115,7 +124,7 @@ export class VelocityComponent implements OnInit, OnDestroy, AfterContentChecked
 
   initOverlay = (): void => {
 
-    this.canu.grid.draw(this.ctx, this.width, this.height, 39);
+    this.canu.grid.init(this.ctx, this.width, this.height, 39);
     this.canu.drawCenter(this.ctx);
   }
 

@@ -39,6 +39,7 @@ export const corsOptions = {
 };
 
 export const db = {
+
   host: "ds129143.mlab.com",
   dbuser: "NoLogig",
   dbpassword: "XXXxxxXXX",

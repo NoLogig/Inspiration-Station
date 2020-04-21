@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild, OnInit, OnDestroy, Input, NgZone } from '@angular/core';
 import { IPoint } from 'src/app/services/math/interfaces/imath';
-import cptx from "src/app/utils/canvas/tools/paint-tools.service";
+import cptx from "src/app/utils/tools/paint-tools.service";
 
 @Component({
   selector: 'nlg-triangle-sierpinski',

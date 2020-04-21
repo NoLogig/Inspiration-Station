@@ -1,18 +1,18 @@
 import { json, urlencoded } from "body-parser";
 import * as cors from "cors";
-// import * as errorHandler from "errorhandler";
+import * as errorHandler from "errorhandler";
 import * as express from "express";
-// import { Db } from "mongodb";
+import { Db } from "mongodb";
 import * as logger from "morgan";
 import { join } from "path";
 
-// Application Configure Objects
+// Application Configure Object
 import * as appConfig from "./config";
 // Database
-// import { database, dbCtrl } from "./mongoDB/index";
+import { database } from "./mongoDB/index";
 // Routers
-// import homeRouter from "./routes/home";
-// import { simpleCrudRouter as todosRouter } from "./routes/todoRouter";
+import homeRouter from "./routes/home";
+import { simpleCrudRouter as todosRouter } from "./routes/todoRouter";
 
 // Creates and configures an ExpressJS web server.
 export class Server {
@@ -21,9 +21,9 @@ export class Server {
   public app: express.Application = null;
 
   // Database variable for later reuse
-  // public db: Db = null;
+  public db: Db = null;
   // MongoDataBase Configure Object
-  // private dbConfig = appConfig.db;
+  private dbConfig = appConfig.db;
 
   // CORS Configure Object
   private corsOptions: cors.CorsOptions = appConfig.corsOptions;
@@ -32,19 +32,18 @@ export class Server {
   constructor() {
 
     this.app = express();
-    // this.database();
+    this.database();
     this.middleware();
     this.routes();
-
   }
 
   // Configure DataBase
-  // private database() {
-  //   // Connect to Database an store for later reuse
-  //   // database.connectToDatabase(this.dbConfig, (db) => {
-  //   //   this.db = db;
-  //   // });
-  // }
+  private database() {
+
+    // Connect to Database an store for later reuse
+    database.connectToDatabase(this.dbConfig, (db) => this.db = db);
+
+  }
 
   // Configure Express middleware
   private middleware() {
@@ -63,37 +62,41 @@ export class Server {
 
     // Morgan log HTTP request details
     this.app.use(logger("dev"));
+
   }
 
   // Configure Routes & API endpoints
   private routes() {
 
-    // this.app.use("/home", homeRouter);
+    this.app.use("/home", homeRouter);
 
-    // API-Routes
-    /* Should stay last, since "/api/todos/:" covers quite a broad range of requests
+    /* API-Routes
+     * Should stay last, since "/api/todos/:" covers quite a broad range of requests
      * and if it's moved above, it will steal away the endpoints of the more specific implementations. */
-    // this.app.use("/api/todos/", todosRouter);
+    this.app.use("/api/todos/", todosRouter);
 
     // In production catch 404 and forward redirect to index
-    // if (process.env.NODE_ENV === "production") {
-    this.app.use((req, res, next) => {
-      res.sendFile(join(__dirname, "/../client/index.html"));
-    });
-    // }
+    if (process.env.NODE_ENV === "production") {
+
+      this.app.use((req, res, next) => {
+        res.sendFile(join(__dirname, "/../client/index.html"));
+      });
+    }
 
     // Errorhandler only in development
-    // if (process.env.NODE_ENV === "development") {
-    //   // catch 404 and forward to errorHandler
-    //   this.app.use((req, res, next) => {
-    //     let err = new Error("Not Found");
-    //     err["status"] = 404;
-    //     next(err);
-    //   });
-    //   this.app.use(errorHandler());
-    // }
+    if (process.env.NODE_ENV === "development") {
+
+      // catch 404 and forward to errorHandler
+      this.app.use((req, res, next) => {
+        let err = new Error("Not Found");
+        err["status"] = 404;
+        next(err);
+      });
+      this.app.use(errorHandler());
+    }
 
   }
+
 }
 
 let server = new Server();

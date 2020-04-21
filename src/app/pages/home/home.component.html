@@ -1,4 +1,4 @@
-<!-- Header -->
+<!-- Header - Toolbar -->
 <mat-toolbar class="nlg-head" color="primary" >
 
   <!-- Navigation - Toggle -->
@@ -14,17 +14,20 @@
     <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="home">
       <mat-icon>home</mat-icon>
     </a>
+    <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="gn8-player">
+      GN8-Player
+    </a>
     <a mat-tab-link color="primary" #rla="routerLinkActive" routerLinkActive [active]="rla.isActive" routerLink="theorems">
       Theorems
     </a>
 
   </nav>
 
-  <!-- SpaceFiller -->
+  <!-- Space Filler -->
   <span class="flex-space-filler"><!-- {{title}} --></span>
 
   <!-- Settings - Toggle -->
-  <button type="button" mat-button aria-label="Toggle settings" (click)="set.toggle();">
+  <button type="button" mat-button aria-label="Toggle settings" (click)="set.toggle()">
     <mat-icon aria-label="Side settings toggle icon">settings</mat-icon>
   </button>
 
@@ -52,10 +55,10 @@
     <!-- Navigation - Links -->
     <mat-nav-list>
 
-      <span mat-list-item></span>
       <a mat-list-item routerLink="home">Split Screen</a>
       <a mat-list-item routerLink="parallax-scroll">Parallax Scroll</a>
       <a mat-list-item routerLink="parallax-mouse">Parallax Mouse</a>
+      <!-- <a mat-list-item routerLink="parallax-mouse-js">Parallax Mouse JS</a> -->
       <mat-divider></mat-divider>
 
       <a mat-list-item routerLink="charts">Charts</a>
@@ -85,6 +88,7 @@
 
       <a mat-list-item routerLink="numberzam">NumberShazam</a>
       <a mat-list-item routerLink="isometric">Isometric</a>
+      <a mat-list-item routerLink="pis">PIS</a>
       <a mat-list-item routerLink="checkboard">ColorBoard</a>
       <mat-divider></mat-divider>
 
@@ -92,7 +96,6 @@
       <a mat-list-item routerLink="pixels">Pixels</a>
       <mat-divider></mat-divider>
 
-      <span mat-list-item></span>
       <a mat-list-item routerLink="impressum">Impressum</a>
 
     </mat-nav-list>

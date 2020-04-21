@@ -1,14 +1,15 @@
-<nlg-business-card></nlg-business-card>
+<nlg-business-card [metas]="metas"></nlg-business-card>
  
- <div class="board" >
+<div class="board" >
    <canvas #base ></canvas>
    <canvas #char ></canvas>
- </div>
+</div>
 
- <button mat-raised-button (click)="drawer();" (keydown)="moveCharacter($event)" style="margin: 50px auto;">
-    Create Cubes
- </button>
- <button mat-raised-button (click)="drawMap();" (keydown)="moveCharacter($event)" style="margin: 50px auto;">
-    Create Map
- </button>
+<button mat-raised-button (click)="drawer();" (keydown)="moveCharacter($event)" style="margin: 50px auto;">
+   Create Cubes
+</button>
+
+<button mat-raised-button (click)="drawMap();" (keydown)="moveCharacter($event)" style="margin: 50px auto;">
+   Create Map
+</button>
 

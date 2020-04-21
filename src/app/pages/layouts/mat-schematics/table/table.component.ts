@@ -6,26 +6,29 @@ import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
 
+
 @Component({
   selector: 'nlg-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements AfterViewInit {
-  displayedColumns: string[] = ['created', 'state', 'number', 'title'];
-  exampleDatabase: ExampleHttpDatabase | null;
-  data: GithubIssue[] = [];
-
-  resultsLength = 0;
-  isLoadingResults = true;
-  isRateLimitReached = false;
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
+  data: GithubIssue[] = [];
+  displayedColumns: string[] = ['created', 'state', 'number', 'title'];
+  exampleDatabase: ExampleHttpDatabase | null;
+
+  isLoadingResults = true;
+  isRateLimitReached = false;
+  resultsLength = 0;
+
   constructor(private _httpClient: HttpClient) {}
 
   ngAfterViewInit() {
+
     this.exampleDatabase = new ExampleHttpDatabase(this._httpClient);
 
     // If the user changes the sort order, reset back to the first page.
@@ -54,15 +57,19 @@ export class TableComponent implements AfterViewInit {
           return observableOf([]);
         })
       ).subscribe(data => this.data = data);
+
   }
+
 }
 
 export interface GithubApi {
+
   items: GithubIssue[];
   total_count: number;
 }
 
 export interface GithubIssue {
+
   created_at: string;
   number: string;
   state: string;
@@ -71,13 +78,15 @@ export interface GithubIssue {
 
 /** An example database that the data source uses to retrieve data for the table. */
 export class ExampleHttpDatabase {
+
   constructor(private _httpClient: HttpClient) {}
 
   getRepoIssues(sort: string, order: string, page: number): Observable<GithubApi> {
+
     const href = 'https://api.github.com/search/issues';
-    const requestUrl =
-        `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${page + 1}`;
+    const requestUrl = `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${page + 1}`;
 
     return this._httpClient.get<GithubApi>(requestUrl);
   }
+
 }

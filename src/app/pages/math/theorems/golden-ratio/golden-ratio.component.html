@@ -36,15 +36,15 @@
 
           <!-- Main -->
           <mat-form-field class="golden-calc-input">
-            <input #main type="number" name="nmain" [value]="golden.main" (input)="golden = this.nlgMath.goldenMain(main.value);" matInput placeholder="Main" />
+            <input #main type="number" name="nmain" [value]="golden.main" (input)="golden = maths.ratio.golden.main(main.value);" matInput placeholder="Main" />
           </mat-form-field>
           <!-- Major -->
           <mat-form-field class="golden-calc-input">
-            <input #major type="number" name="nmajor" [value]="golden.major" (input)="golden = this.nlgMath.goldenMajor(major.value);" matInput placeholder="Major" />
+            <input #major type="number" name="nmajor" [value]="golden.major" (input)="golden = maths.ratio.golden.major(major.value);" matInput placeholder="Major" />
           </mat-form-field>
           <!-- Minor -->
           <mat-form-field class="golden-calc-input">
-            <input #minor type="number" name="nminor" [value]="golden.minor" (input)="golden = this.nlgMath.goldenMinor(minor.value);"  matInput placeholder="Minor" />
+            <input #minor type="number" name="nminor" [value]="golden.minor" (input)="golden = maths.ratio.golden.minor(minor.value);"  matInput placeholder="Minor" />
           </mat-form-field>
       
         </div>

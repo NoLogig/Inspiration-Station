@@ -1,5 +1,4 @@
 # [Sierpinski](https://de.wikipedia.org/wiki/Wac%C5%82aw_Sierpi%C5%84ski)
-[![License](https://img.shields.io/github/license/NoLogig/Sierpinski.svg)](https://choosealicense.com/licenses/mit/)
 
 ![Sierpinski Triangle](https://upload.wikimedia.org/wikipedia/commons/3/38/Sierpinski-zoom4-ani.gif)
 
@@ -15,5 +14,3 @@ Well-known fractals are named after him (the **[Sierpinski triangle](https://en.
 ### [Sierpinski triangle](https://en.wikipedia.org/wiki/Sierpinski_triangle)
 
 The **Sierpinski triangle**, also called the **Sierpinski gasket** or the **Sierpinski Sieve**, is a **fractal** and **attractive fixed set** with the overall *shape of an equilateral triangle, subdivided recursively into smaller equilateral triangles*. Originally constructed as a curve, this is one of the basic examples of *self-similar* sets, i.e., it is a mathematically generated pattern that is reproducible at any magnification or reduction.
-
-## [![Donate](https://img.shields.io/badge/PayPal-Donate-blue.svg)](https://www.paypal.me/NoLogig)

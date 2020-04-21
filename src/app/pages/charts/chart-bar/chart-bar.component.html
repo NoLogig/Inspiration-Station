@@ -4,17 +4,16 @@
   </mat-select>
 </mat-form-field>
 
-
 <div style="display: block; width: 600px;" class="glas">
   <canvas baseChart [datasets]="chartData" [labels]="chartLabels.quartal" [options]="chartOptions"
     [legend]="chartLegend" [chartType]="chartType.active" (chartHover)="chartHover($event)"
     (chartClick)="chartClicked($event)"></canvas>
 </div>
 
-
 <mat-form-field>
   <input matInput placeholder="Filter Argument" #myFilter>
 </mat-form-field>
+
 <button mat-button (click)="stateOfData(myFilter.value)">Filter State</button>
 <button mat-button (click)="idOfData()">Filter ID</button>
 

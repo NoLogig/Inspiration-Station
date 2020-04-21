@@ -1,5 +1,4 @@
-// import database from './database';
+import database from './database';
 
-// export { dbCtrl } from './dbCtrl';
-// export { database }
-
+export { dbCtrl } from './dbCtrl';
+export { database }

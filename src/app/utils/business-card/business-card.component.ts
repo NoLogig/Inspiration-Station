@@ -55,10 +55,10 @@ export class BusinessCardComponent implements OnInit, AfterContentChecked, After
     return;
   }
   ngAfterContentChecked(): void { console.log('BusinessCard ContentChecked'); }
-  ngAfterContentInit(): void { console.log('BusinessCard ContentInit'); }
-  ngAfterViewChecked(): void { console.log('BusinessCard ViewChecked'); }
-  ngAfterViewInit(): void { console.log('BusinessCard ViewInit'); }
-  ngOnChanges(): void { console.log('BusinessCard Changes'); }
-  ngOnDestroy(): void { console.log('BusinessCard Destroy'); }
+  ngAfterContentInit():    void { console.log('BusinessCard ContentInit'); }
+  ngAfterViewChecked():    void { console.log('BusinessCard ViewChecked'); }
+  ngAfterViewInit():       void { console.log('BusinessCard ViewInit'); }
+  ngOnChanges():           void { console.log('BusinessCard Changes'); }
+  ngOnDestroy():           void { console.log('BusinessCard Destroy'); }
 
 }

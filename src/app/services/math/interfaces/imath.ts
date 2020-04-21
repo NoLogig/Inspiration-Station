@@ -1,4 +1,5 @@
 export interface IPoint {
+    
     x: number;
     y: number;
 
@@ -6,12 +7,14 @@ export interface IPoint {
 }
 
 export interface IParticle extends IPoint {
+
     vx: number;
     vy: number;
 
     vz?: number;
 }
 export interface IPhysics {
+
     mass?: number;
     bounce?: number;
     friction?: number;
@@ -23,6 +26,7 @@ export interface IPhysics {
 export interface IPhysicParticle extends IParticle, IPhysics { }
 
 export interface IVector extends IPoint {
+
     angle: number;
     lenght: number;
 
@@ -46,6 +50,7 @@ export interface IVector extends IPoint {
     divideBy(vec2: number);
 }
 export interface ISpring extends IPoint {
+
     k: number;
     length: number;
     
@@ -53,6 +58,7 @@ export interface ISpring extends IPoint {
 }
 
 export interface ICircle {
+
     r: number;
     d?: number;
 
@@ -67,6 +73,7 @@ export interface ICircleParticle extends IParticle, ICircle { }
 export interface ICirclePhysicalParticle extends IPhysicParticle, ICircle { }
 
 export interface IRectangle {
+
     w: number;
     h: number;
 
@@ -84,6 +91,7 @@ export interface IRectParticle extends IParticle, IRectangle { }
 export interface IRectPhysicalParticle extends IPhysicParticle, IRectangle { }
 
 export interface ITriangle {
+
     adjacent: number;
     opposite: number;
     hypotenuse: number;
@@ -113,6 +121,7 @@ export interface ITriPhysicalParticle extends IPhysicParticle, ITriangle { }
 
 
 export interface IGoldenRatio {
+
     main: number;
     major: number;
     minor: number;
@@ -120,6 +129,7 @@ export interface IGoldenRatio {
 
 
 export interface IRGBA {
+
     r: number;
     g: number;
     b: number;
@@ -129,7 +139,7 @@ export interface IRGBA {
 }
 
 
-export type ITheoremPythagoras = { adjacent: number, opposite: undefined, hypotenuse: number }
-                               | { adjacent: undefined, opposite: number, hypotenuse: number }
-                               | { adjacent: number, opposite: number, hypotenuse: undefined }
-                               | { adjacent: number, opposite: number, hypotenuse: number };
+export type ITheoremPythagoras = { adjacent: number,    opposite: undefined, hypotenuse: number }
+                               | { adjacent: undefined, opposite: number,    hypotenuse: number }
+                               | { adjacent: number,    opposite: number,    hypotenuse: undefined }
+                               | { adjacent: number,    opposite: number,    hypotenuse: number };

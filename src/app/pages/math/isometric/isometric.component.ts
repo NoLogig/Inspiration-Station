@@ -10,6 +10,17 @@ export class IsometricComponent implements OnInit {
   @ViewChild('base', { static: true }) canvasBase: ElementRef;
   @ViewChild('char', { static: true }) canvasChar: ElementRef;
 
+  metas = {
+    title: 'Isometrics',
+    subTitle: 'JS',
+    subExtra: '',
+    links: {
+      down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
+      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/math/isometric',
+      live: 'https://inspiration-station.herokuapp.com/isometric',
+    }
+  };
+
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
   charCanvas: HTMLCanvasElement;
@@ -88,18 +99,9 @@ export class IsometricComponent implements OnInit {
       for (let y = 0; y < 25; y++) {
 
         // this.drawImageTile(x, y, Math.floor(Math.random() * 16));
-        this.drawBlock(x, y, Math.random() * 4, ); //this.randomColor());
+        this.drawBlock(x, y, Math.random() * 4, ); //ctxTools.randomColor());
       }
     }
-  }
-
-  randomColor(): string {
-
-    let r = Math.floor(Math.random() * 255),
-        g = Math.floor(Math.random() * 255),
-        b = Math.floor(Math.random() * 255);
-        
-    return "rgb(" + r + "," + g + "," + b + ")";
   }
 
   drawTile(x: number, y: number, color: string, ctx?: CanvasRenderingContext2D) {
@@ -197,9 +199,11 @@ export class IsometricComponent implements OnInit {
 	}
 
 	moveCharacter = (event: KeyboardEvent) => {
+
     event.preventDefault();
-    console.log(event);
+
 		switch(event.keyCode) {
+
 			case 37: // left
 				if(this.canMove(this.charX - 1, this.charY)) {
 					this.charX--;
@@ -223,25 +227,21 @@ export class IsometricComponent implements OnInit {
 					this.charY++;
 					this.drawCharacter(this.charImg, this.charX, this.charY);
 				}
-				break;
-
-		}
+    }
+    
 	}
 
 	canMove(x: number, y: number) {
 
 		x = Math.floor(x);
-		y = Math.floor(y);
-		if(y < 0 || y >= this.grid.length) {
-			return false;
-		}
-		if(x < 0 || x >= this.grid[y].length) {
-			return false;
-		}
-		let tile = this.grid[y][x];
-		if(tile < 3 || tile > 14) {
-			return false;
-		}
+    y = Math.floor(y);
+    
+		if(y < 0 || y >= this.grid.length) { return false; }
+		if(x < 0 || x >= this.grid[y].length) { return false; }
+    
+    let tile = this.grid[y][x];
+    
+		if(tile < 3 || tile > 14) { return false;	}
 		return true;
 	}
 
@@ -249,12 +249,16 @@ export class IsometricComponent implements OnInit {
 
 
 		for(let y = 0; y < this.grid.length; y++) {
-			let row = this.grid[y];
+
+      let row = this.grid[y];
+      
 			for(let x = 0; x < row.length; x++) {
+
 				this.drawImageTile(x, y, row[x]);
-			}
+      }
     }
     this.drawCharacter(this.charImg, this.charX, this.charY);
+
   }
   
 }

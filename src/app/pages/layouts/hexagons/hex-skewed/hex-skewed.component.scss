@@ -1,0 +1,83 @@
+.side {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #6c6c;
+}
+
+.hex {
+
+  position: absolute;
+  transform: rotateZ(0deg) translateX(90px);
+  width: 44px;
+  height: 75px;
+  border: 1px solid #6c6c;
+  float: right;
+  border-bottom: none;
+  border-right: none;
+
+  &.rotate {
+
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        transform: rotateZ(#{$i * 60 - 60}deg) translateX(90px);
+      }
+    }
+  }
+
+  &.skew {
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        transform: rotateZ(#{$i * 60 - 60}deg) translateX(66px) skew(30deg);
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+.container {
+  margin: 100px auto;
+  width: 100px;
+  height: 100px;
+  border: 1px dotted aqua;
+  position: relative;
+  //   animation: spin 30s alternate infinite;
+}
+
+.h1 {
+  transform: rotateZ(0deg) skewX(50%);
+}
+
+
+.h2 {
+  transform: rotateZ(60deg) skewX(30deg);
+}
+
+.h3 {
+  transform: rotateZ(120deg) skewX(30deg);
+}
+
+.h4 {
+  transform: rotateZ(180deg) skewX(30deg);
+}
+
+.h5 {
+  transform: rotateZ(240deg) skewX(30deg);
+}
+
+.h6 {
+  transform: rotateZ(300deg) skewX(30deg);
+}

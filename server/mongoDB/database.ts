@@ -1,38 +1,34 @@
-// import { MongoClient, Db } from 'mongodb';
-// import { IDatabaseConfig } from './interfaces/index';
+import { MongoClient, Db } from 'mongodb';
+import { IDatabaseConfig } from './interfaces/index';
 
-// export class Database {
+export class Database {
 
-//   private db: Db;
+  private db: Db;
+  private mongoClient;
+  private mongoURI = (dbConfig: IDatabaseConfig) => `mongodb://${dbConfig.dbuser}:${dbConfig.dbpassword}@${dbConfig.host}:${dbConfig.port}/${dbConfig.dbname}`;
 
-  
-//   private mongoClient;
+  constructor() {  }
 
-//   private mongoURI = (dbConfig: IDatabaseConfig) => {
-//     return `mongodb://${dbConfig.dbuser}:${dbConfig.dbpassword}@${dbConfig.host}:${dbConfig.port}/${dbConfig.dbname}`;
-//   }
+  public get getDB() { return this.db; }
 
-//   constructor() {  }
+  public connectToDatabase(dbConfig: IDatabaseConfig, next?: (database: Db) => any) {
 
-//   public get getDB() { return this.db; }
+    // Connect to the db
+    MongoClient.connect(this.mongoURI(dbConfig), (err, mongo) => {
 
-//   public connectToDatabase(dbConfig: IDatabaseConfig, next?: (database: Db) => any) {
+      if (!err) {
+        this.mongoClient = mongo;
+        if (next) return next(this.mongoClient.db(dbConfig.dbname));
+      }
 
+      console.error('Error while connecting to Database:');
+      console.error(err);
+      return // next(err);
+    });
 
-//     // Connect to the db
-//     // MongoClient.connect(this.mongoURI(dbConfig), (err, db) => {
+  }
 
-//     //   if (!err) {
-//     //     this.db = db;
-//     //     if (next) return next(db);
-//     //   }
+}
 
-//     //   console.error('Error while connecting to Database:');
-//     //   console.error(err);
-//     //   return // next(err);
-//     // });
-//   };
-// }
-
-// let database = new Database();
-// export default database;
+let database = new Database();
+export default database;

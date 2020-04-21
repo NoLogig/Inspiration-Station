@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HexSpinComponent implements OnInit {
 
+  metas = {
+    title: 'Hexagon - Spin',
+    subTitle: '',
+    subExtra: '',
+    links: {
+      down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
+      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/layouts/hexagons/hex-spin',
+      live: 'https://inspiration-station.herokuapp.com/hexagon',
+    }
+  };
+
   constructor() { }
 
   ngOnInit() {

@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HexTransformComponent implements OnInit {
 
+  metas = {
+    title: 'Hexagon - Transform',
+    subTitle: '',
+    subExtra: '',
+    links: {
+      down: 'https://github.com/NoLogig/Inspiration-Station/archive/master.zip',
+      git: 'https://github.com/NoLogig/Inspiration-Station/tree/master/src/app/pages/layouts/hexagons/hex-transform',
+      live: 'https://inspiration-station.herokuapp.com/hexagon',
+    }
+  };
+
   items: any[] = Array(6);
 
   constructor() { }
